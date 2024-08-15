@@ -1,8 +1,8 @@
 "use client"
 
-import { FlexContainer } from "@cs-magic/eval-ai/packages/common-ui/components/flex-container"
-import { LabelLine } from "@cs-magic/eval-ai/packages/common-ui/components/label-line"
-import { useInit } from "@cs-magic/react-hooks/dist/hooks/use-init.js"
+import { FlexContainer } from "@cs-magic/react/components/flex-container"
+import { LabelLine } from "@cs-magic/react/components/label-line"
+import { useInit } from "@cs-magic/react/dist/hooks/use-init.js"
 import { useState } from "react"
 import DDS_lanhupage_0 from "./comp"
 import { IWechatPreference } from "@cs-magic/swot-backend/dist/schema/bot-preference.js"

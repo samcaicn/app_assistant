@@ -1,4 +1,7 @@
-import { tvFullScreenAtom, tvScreenOnAtom } from "@cs-magic/react-hooks"
+import {
+  tvFullScreenAtom,
+  tvScreenOnAtom,
+} from "@cs-magic/react/dist/store/tv.atom.js"
 import { useSetAtom } from "jotai"
 
 export const Controls = () => {

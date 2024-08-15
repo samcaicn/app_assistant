@@ -1,5 +1,5 @@
 import { MSG_TODO } from "@cs-magic/common/dist/const.js"
-import { AspectRatio } from "@cs-magic/react-ui/shadcn/ui/aspect-ratio"
+import { AspectRatio } from "@cs-magic/react/shadcn/ui/aspect-ratio"
 import Image from "next/image"
 import Link from "next/link"
 import { toast } from "sonner"

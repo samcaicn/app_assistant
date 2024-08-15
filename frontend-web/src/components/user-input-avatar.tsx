@@ -1,8 +1,10 @@
-import { useDraftSession } from "@cs-magic/next-hooks"
+"use client"
+
+import { uploadFile } from "@cs-magic/common/dist/oss/oss.server.js"
+import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
+import { useDraftSession } from "@/hooks/use-user"
 
 import { UserAvatar } from "./user-avatar"
-import { uploadFile } from "@cs-magic/common/dist/oss/oss.server.js"
-import { Label } from "@cs-magic/react-ui/shadcn/ui/label"
 
 export const UserInputAvatar = () => {
   const { draft, setDraft } = useDraftSession("image")

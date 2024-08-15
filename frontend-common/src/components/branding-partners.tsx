@@ -1,5 +1,5 @@
-import { ImageEqualHeight } from "@cs-magic/react-ui/components/image-equal-height"
-import { SeparatorContainer } from "@cs-magic/react-ui/components/separator-container"
+import { ImageEqualHeight } from "@cs-magic/react/components/image-equal-height"
+import { SeparatorContainer } from "@cs-magic/react/components/separator-container"
 
 export const BrandingPartners = () => {
   const sponsors: string[] = []

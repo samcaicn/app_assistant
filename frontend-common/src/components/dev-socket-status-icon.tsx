@@ -1,4 +1,4 @@
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
+import { cn } from "@cs-magic/react/shadcn/utils"
 import { SVGProps } from "react"
 
 /**

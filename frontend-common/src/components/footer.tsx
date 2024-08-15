@@ -1,5 +1,5 @@
 import CsMagicBannerSvg from "@/../../../assets/branding/CS-magic_banner_方正字汇-锐速体.svg"
-import { ImageEqualHeight } from "@cs-magic/react-ui/components/image-equal-height"
+import { ImageEqualHeight } from "@cs-magic/react/components/image-equal-height"
 import Link from "next/link"
 
 export const Footer = () => {

@@ -1,11 +1,14 @@
 "use client"
 
-import { userImageAtom, userNameAtom } from "@cs-magic/react-hooks"
-import { Button } from "@cs-magic/react-ui/shadcn/ui/button"
-import { Label } from "@cs-magic/react-ui/shadcn/ui/label"
+import { Button } from "@cs-magic/react/dist/shadcn/ui/button.js"
+import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
 import { useAtom } from "jotai"
-import { UserInputAvatar } from "./user-input-avatar"
-import { UserInputName } from "./user-input-name"
+import { UserInputAvatar } from "@/components/user-input-avatar"
+import { UserInputName } from "@/components/user-input-name"
+import {
+  userNameAtom,
+  userImageAtom,
+} from "@cs-magic/react/dist/store/user.atom.js"
 
 export const AuthUpdateProfile = () => {
   const [name] = useAtom(userNameAtom)

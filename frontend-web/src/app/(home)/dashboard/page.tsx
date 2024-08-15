@@ -1,21 +1,25 @@
 "use client"
-import { useDraftSession } from "@cs-magic/next-hooks/dist/hooks/use-user.js"
-import { UserInputAvatar } from "@cs-magic/common-frontend/components/user-input-avatar"
-import { UserInputName } from "@cs-magic/common-frontend/components/user-input-name"
-import { UserSignOutButton } from "@cs-magic/common-frontend/components/user-sign-out-button"
+
 import { EditIcon } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
-import { FlexContainer } from "@cs-magic/react-ui/components/flex-container"
+
+// import { useDraftSession } from "@cs-magic/next/hooks/use-user"
+import { UserInputAvatar } from "@/components/user-input-avatar"
+import { UserInputName } from "@/components/user-input-name"
+import { UserSignOutButton } from "@/components/user-sign-out-button"
+import { FlexContainer } from "@cs-magic/react/components/flex-container"
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-} from "@cs-magic/react-ui/shadcn/ui/card"
-import { Label } from "@cs-magic/react-ui/shadcn/ui/label"
-import { Button } from "@cs-magic/react-ui/shadcn/ui/button"
+} from "@cs-magic/react/shadcn/ui/card"
+import { Label } from "@cs-magic/react/shadcn/ui/label"
+import { Button } from "@cs-magic/react/shadcn/ui/button"
+
+import { useDraftSession } from "./use-user"
 
 export default function DashboardPage() {
   const session = useSession()

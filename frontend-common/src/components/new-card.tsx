@@ -1,16 +1,16 @@
 "use client"
 
 import clsx from "clsx"
-import { useUploadFiles } from "@cs-magic/react-hooks/dist/hooks/use-upload-file.js"
-import { VerticalAspectRatio } from "@cs-magic/react-ui/dist/components/aspect-ratio.js"
-import { ButtonWithLoading } from "@cs-magic/react-ui/dist/components/button-with-loading.js"
-import { FileComp } from "@cs-magic/react-ui/dist/components/file.js"
-import { FlexContainer } from "@cs-magic/react-ui/dist/components/flex-container.js"
+import { useUploadFiles } from "@cs-magic/react/dist/hooks/use-upload-file.js"
+import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio.js"
+import { ButtonWithLoading } from "@cs-magic/react/dist/components/button-with-loading.js"
+import { FileComp } from "@cs-magic/react/dist/components/file.js"
+import { FlexContainer } from "@cs-magic/react/dist/components/flex-container.js"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@cs-magic/react-ui/dist/shadcn/ui/tooltip.js"
+} from "@cs-magic/react/dist/shadcn/ui/tooltip.js"
 import MdEditor from "@uiw/react-md-editor"
 import { produce } from "immer"
 import { useAtom } from "jotai"
@@ -18,7 +18,7 @@ import { useState } from "react"
 import { useDrop } from "react-use"
 import { toast } from "sonner"
 import { IUploadFile } from "@cs-magic/common/dist/oss/schema.js"
-// import { cn } from "@cs-magic/react-ui/shadcn/utils"
+// import { cn } from "@cs-magic/react/shadcn/utils"
 
 import { cardNewContentAtom } from "../store/card.atom"
 

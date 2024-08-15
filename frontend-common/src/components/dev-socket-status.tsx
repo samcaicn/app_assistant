@@ -3,10 +3,10 @@
 import { useAtom } from "jotai"
 import { BarChart } from "lucide-react"
 
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
+import { cn } from "@cs-magic/react/shadcn/utils"
 
-import { pusherLatencyAtom } from "@cs-magic/react-hooks/dist/store/pusher.atom.js"
-import { devEnabledAtom } from "@cs-magic/react-hooks/dist/store/dev.atom.js"
+import { pusherLatencyAtom } from "@cs-magic/react/dist/store/pusher.atom.js"
+import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom.js"
 
 import { DevSocketStatusIcon } from "./dev-socket-status-icon"
 

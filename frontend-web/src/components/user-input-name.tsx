@@ -1,5 +1,7 @@
-import { useDraftSession } from "@cs-magic/next-hooks"
-import { InputWithEnter } from "@cs-magic/react-ui/components/input"
+"use client"
+
+import { useDraftSession } from "@/hooks/use-user"
+import { InputWithEnter } from "@cs-magic/react/dist/components/input.js"
 
 export const UserInputName = ({
   onEnter,

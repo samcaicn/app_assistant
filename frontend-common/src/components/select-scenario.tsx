@@ -4,7 +4,7 @@ import {
   Select,
   SelectContent,
   SelectValue,
-} from "@cs-magic/react-ui/dist/shadcn/ui/select.js"
+} from "@cs-magic/react/dist/shadcn/ui/select.js"
 import { SelectTrigger as SelectPrimitiveTrigger } from "@radix-ui/react-select"
 
 import { useAtom } from "jotai"

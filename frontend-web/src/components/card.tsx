@@ -3,21 +3,21 @@
 import { useAtomValue } from "jotai"
 import React from "react"
 
-import { useSearchParam } from "@cs-magic/next-hooks"
 import {
   cardPreviewEngineTypeSchema,
   GenCardApproach,
-} from "@cs-magic/swot-backend/schema"
-import { CardInputBackend } from "./card-input-backend"
-import { CardInputFrontend } from "./card-input-frontend"
-import { cardPreviewAtom } from "../store/card.atom"
-import { cardPreviewEngineAtom } from "../store/card.rendered.atom"
+} from "@cs-magic/swot-backend/dist/schema/card.js"
+import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
+import { StandardCard } from "@cs-magic/react/dist/components/standard-card.js"
+import { AtomSelector } from "@cs-magic/react/dist/components/atom-switcher.js"
+import { Separator } from "@cs-magic/react/dist/shadcn/ui/separator.js"
+import { useSearchParam } from "@cs-magic/next/dist/hooks/use-search-param.js"
 
-import { CardPreviewContainer } from "./card-preview-container"
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
-import { StandardCard } from "@cs-magic/react-ui/components/standard-card"
-import { AtomSelector } from "@cs-magic/react-ui/components/atom-switcher"
-import { Separator } from "@cs-magic/react-ui/shadcn/ui/separator"
+import { cardPreviewAtom } from "@cs-magic/common-frontend/dist/store/card.atom.js"
+import { cardPreviewEngineAtom } from "@cs-magic/common-frontend/dist/store/card.rendered.atom.js"
+import { CardInputBackend } from "@cs-magic/common-frontend/dist/components/card-input-backend.js"
+import { CardInputFrontend } from "@cs-magic/common-frontend/dist/components/card-input-frontend.js"
+import { CardPreviewContainer } from "@/components/card-preview-container"
 
 export const Card = () => {
   const preview = useAtomValue(cardPreviewAtom)

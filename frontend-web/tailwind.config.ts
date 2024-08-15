@@ -4,6 +4,7 @@ const config = {
   darkMode: ["class"],
   content: [
     "./src/**/*.{ts,tsx}",
+    "../frontend-common/src/**/*.{ts,tsx}",
     "../../packages_frontend/*/src/**/*.{ts,tsx}",
   ],
   prefix: "",

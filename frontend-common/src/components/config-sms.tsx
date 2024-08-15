@@ -4,8 +4,8 @@ import { SmsProviderType } from "@cs-magic/common/dist/sms.schema.js"
 import {
   smsCodeToCountdownSecondsAtom,
   smsProviderTypeAtom,
-} from "@cs-magic/react-hooks/dist/store/sms.atom.js"
-import { StandardCard } from "@cs-magic/react-ui/components/standard-card"
+} from "@cs-magic/react/dist/store/sms.atom.js"
+import { StandardCard } from "@cs-magic/react/components/standard-card"
 
 import {
   Select,
@@ -14,9 +14,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@cs-magic/react-ui/dist/shadcn/ui/select.js"
-import { Input } from "@cs-magic/react-ui/shadcn/ui/input"
-import { Label } from "@cs-magic/react-ui/shadcn/ui/label"
+} from "@cs-magic/react/dist/shadcn/ui/select.js"
+import { Input } from "@cs-magic/react/shadcn/ui/input"
+import { Label } from "@cs-magic/react/shadcn/ui/label"
 
 import { useAtom } from "jotai"
 

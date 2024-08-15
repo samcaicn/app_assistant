@@ -1,4 +1,4 @@
-import { getServerAuthSession } from "@cs-magic/next-auth/dist/get-server-auth-session.js"
+import { getServerAuthSession } from "@cs-magic/next/dist/get-server-auth-session.js"
 
 /**
  * 1. CONTEXT

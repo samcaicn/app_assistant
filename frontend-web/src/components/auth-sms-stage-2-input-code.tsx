@@ -1,11 +1,5 @@
 "use client"
 
-import {
-  smsCodeAtom,
-  smsSignInPayloadAtom,
-  uiLoadingAlertDialogAtom,
-} from "@cs-magic/react-hooks"
-
 import { useHotkeys } from "@mantine/hooks"
 import { useAtom, useSetAtom } from "jotai"
 import { signIn } from "next-auth/react"
@@ -14,10 +8,15 @@ import { toast } from "sonner"
 
 import { SmsReInputPhone } from "./auth-sms-reinput-phone"
 import { SmsResendCode } from "./auth-sms-resend-code"
-import { Label } from "@cs-magic/react-ui/shadcn/ui/label"
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
+import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
+import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
 import { SMS_DIGIT_SIZE } from "@cs-magic/common/dist/config.js"
 import { SMS_PROVIDER_ID } from "@cs-magic/common/dist/sms.base.js"
+import { uiLoadingAlertDialogAtom } from "@cs-magic/react/dist/store/ui.atom.js"
+import {
+  smsCodeAtom,
+  smsSignInPayloadAtom,
+} from "@cs-magic/react/dist/store/sms.atom.js"
 
 export const AuthSmsStage2InputCode = () => {
   const [digits, setDigits] = useAtom(smsCodeAtom)

@@ -4,8 +4,8 @@ import { useAtom } from "jotai"
 import React from "react"
 
 import { cardArticleUrlAtom } from "../store/card.atom"
-import { LabelLine } from "@cs-magic/react-ui/components/label-line"
-import { Input } from "@cs-magic/react-ui/shadcn/ui/input"
+import { LabelLine } from "@cs-magic/react/components/label-line"
+import { Input } from "@cs-magic/react/shadcn/ui/input"
 
 export const CardInputUrl = () => {
   const [inputUrl, setInputUrl] = useAtom(cardArticleUrlAtom)

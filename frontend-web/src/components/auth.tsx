@@ -1,13 +1,13 @@
 "use client"
 
-import { useEnvironments } from "@cs-magic/react-hooks"
-import { JoinComponents } from "@cs-magic/react-ui/components/join-components"
-import { Label } from "@cs-magic/react-ui/shadcn/ui/label"
-import { SeparatorContainer } from "@cs-magic/react-ui/components/separator-container"
+import { useEnvironments } from "@cs-magic/react/dist/hooks/use-environments.js"
+import { JoinComponents } from "@cs-magic/react/dist/components/join-components.js"
+import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
+import { SeparatorContainer } from "@cs-magic/react/dist/components/separator-container.js"
 
 import { AuthSmsSignIn } from "./auth-sms-sign-in"
 import { AuthWechatSignIn } from "./auth-wechat-sign-in"
-import { BrandingTitle } from "./branding-title"
+import { BrandingTitle } from "@cs-magic/common-frontend/dist/components/branding-title.js"
 
 export const Auth = () => {
   const { isWechat } = useEnvironments()

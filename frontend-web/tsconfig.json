@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.dom.json",
   "compilerOptions": {
 //    "module": "CommonJS",
+    "moduleResolution": "Bundler",
     "allowJs": false,
 
     // 需要加以下两行，否则会有 Type error: The inferred type of 'api' cannot be named without a reference to '../../../../node_modules/@trpc/react-query/dist/createTRPCReact'. This is likely not portable. A type annotation is necessary.
@@ -54,9 +55,5 @@
   "exclude": [
     "node_modules"
   ],
-  "references": [
-    {"path": "../../packages/common"},
-    {"path": "../../packages/react-ui"},
-    {"path": "../../packages/react-hooks"}
-  ]
+  "references": []
 }

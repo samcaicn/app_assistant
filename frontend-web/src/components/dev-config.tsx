@@ -5,26 +5,26 @@ import { useAtom } from "jotai"
 import { SettingsIcon } from "lucide-react"
 import { useState } from "react"
 
-import { devEnabledAtom } from "@cs-magic/react-hooks/dist/store/dev.atom.js"
+import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom.js"
 
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
+import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
-} from "@cs-magic/react-ui/shadcn/ui/sheet"
+} from "@cs-magic/react/dist/shadcn/ui/sheet.js"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@cs-magic/react-ui/shadcn/ui/tabs"
-import { IconContainer } from "@cs-magic/react-ui/components/icon-container"
+} from "@cs-magic/react/dist/shadcn/ui/tabs.js"
+import { IconContainer } from "@cs-magic/react/dist/components/icon-container.js"
 
-import { ConfigDevCard } from "./config-dev-card"
-import { ConfigLogCard } from "./config-log-card"
-import { ConfigSMSCard } from "./config-sms"
-import { UserSignOutButton } from "./user-sign-out-button"
+import { ConfigDevCard } from "@cs-magic/common-frontend/dist/components/config-dev-card.js"
+import { ConfigLogCard } from "@cs-magic/common-frontend/dist/components/config-log-card.js"
+import { ConfigSMSCard } from "@cs-magic/common-frontend/dist/components/config-sms.js"
+import { UserSignOutButton } from "@/components/user-sign-out-button"
 
 export const DevConfig = () => {
   const [devEnabled] = useAtom(devEnabledAtom)

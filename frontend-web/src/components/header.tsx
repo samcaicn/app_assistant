@@ -4,23 +4,23 @@ import { MenuIcon } from "lucide-react"
 import Link from "next/link"
 import React, { PropsWithChildren } from "react"
 
-import { IconContainer } from "@cs-magic/react-ui/dist/components/icon-container.js"
+import { IconContainer } from "@cs-magic/react/dist/components/icon-container.js"
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@cs-magic/react-ui/dist/shadcn/ui/navigation-menu.js"
+} from "@cs-magic/react/dist/shadcn/ui/navigation-menu.js"
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
-} from "@cs-magic/react-ui/dist/shadcn/ui/sheet.js"
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
+} from "@cs-magic/react/dist/shadcn/ui/sheet.js"
+import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
 
-import { BrandingTitle } from "./branding-title"
-import { UserButton } from "./header-user"
+import { BrandingTitle } from "@cs-magic/common-frontend/dist/components/branding-title.js"
+import { UserButton } from "@/components/header-user"
 
 const menus = [
   {
@@ -68,6 +68,7 @@ export const Header = () => {
       <div className={"ml-auto flex shrink-0 items-center gap-2"}>
         {/*<Apps />*/}
 
+        {/* todo: [next-auth]: `useSession` must be wrapped in a <SessionProvider />*/}
         <UserButton />
       </div>
     </div>

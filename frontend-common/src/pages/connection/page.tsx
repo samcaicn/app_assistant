@@ -6,7 +6,7 @@ import { useState } from "react"
 import { CSVLink } from "react-csv"
 import { toast } from "sonner"
 
-import { useInit } from "@cs-magic/react-hooks/dist/hooks/use-init.js"
+import { useInit } from "@cs-magic/react/dist/hooks/use-init.js"
 
 import { IWechatBotTransfer, ScanStatus } from "@cs-magic/swot-backend/schema"
 
@@ -19,12 +19,12 @@ import {
   botScanValueAtom,
   botUserAtom,
 } from "../../store/bot.atom"
-import { FlexContainer } from "@cs-magic/react-ui/components/flex-container"
-import { StandardCard } from "@cs-magic/react-ui/components/standard-card"
-import { ButtonWithLoading } from "@cs-magic/react-ui/components/button-with-loading"
-import { Button, buttonVariants } from "@cs-magic/react-ui/shadcn/ui/button"
+import { FlexContainer } from "@cs-magic/react/components/flex-container"
+import { StandardCard } from "@cs-magic/react/components/standard-card"
+import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading"
+import { Button, buttonVariants } from "@cs-magic/react/shadcn/ui/button"
 import { columns, DataTable } from "./contacts.table"
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
+import { cn } from "@cs-magic/react/shadcn/utils"
 
 export default function BotPage() {
   const [socketStatus, setSocketStatus] = useState<number>(0)

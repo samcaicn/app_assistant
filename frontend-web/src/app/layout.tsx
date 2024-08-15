@@ -1,11 +1,14 @@
-import { Dev } from "@cs-magic/common-frontend/components/dev"
-import { LoadingAlertDialog } from "@cs-magic/react-ui/components/loading"
-import { Toaster } from "@cs-magic/react-ui/shadcn/ui/sonner"
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
 import { Metadata, type Viewport } from "next"
 import { Inter } from "next/font/google"
+import React, { Suspense } from "react"
 
-import { GlobalProvider } from "./global.provider"
+import { Dev } from "@/components/dev"
+import { LoadingAlertDialog } from "@cs-magic/react/components/loading"
+import { Toaster } from "@cs-magic/react/shadcn/ui/sonner"
+import { cn } from "@cs-magic/react/shadcn/utils"
+
+import { ServerProvider } from "./server.provider"
+import { ClientProvider } from "./client.provider"
 
 import "@cs-magic/common-frontend/dist/styles/globals.css"
 
@@ -42,23 +45,27 @@ export default function RootLayout({
     // html should be at the top, for providing context
     <html lang="zh" suppressHydrationWarning>
       <body className={cn(`font-sans`, inter.variable)}>
-        <GlobalProvider>
-          <main className={cn("relative")}>
-            {children}
+        <Suspense>
+          <ServerProvider>
+            <ClientProvider>
+              <main className={cn("relative")}>
+                {children}
 
-            <Toaster
-              richColors
-              position={"top-right"}
-              duration={3000}
-              closeButton={false}
-            />
+                <Toaster
+                  richColors
+                  position={"top-right"}
+                  duration={3000}
+                  closeButton={false}
+                />
 
-            <LoadingAlertDialog />
+                <LoadingAlertDialog />
 
-            {/*/!* 开发专用 *!/*/}
-            <Dev />
-          </main>
-        </GlobalProvider>
+                {/*/!* 开发专用 *!/*/}
+                <Dev />
+              </main>
+            </ClientProvider>
+          </ServerProvider>
+        </Suspense>
       </body>
     </html>
   )

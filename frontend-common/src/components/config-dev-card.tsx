@@ -1,10 +1,10 @@
 import { useAtom } from "jotai"
 
 import { requestsSlideTextVisibleAtom } from "../store/ui.atom"
-import { StandardCard } from "@cs-magic/react-ui/components/standard-card"
-import { devEnabledAtom } from "@cs-magic/react-hooks/dist/store/dev.atom.js"
-import { LabelLine } from "@cs-magic/react-ui/components/label-line"
-import { Switch } from "@cs-magic/react-ui/shadcn/ui/switch"
+import { StandardCard } from "@cs-magic/react/components/standard-card"
+import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom.js"
+import { LabelLine } from "@cs-magic/react/components/label-line"
+import { Switch } from "@cs-magic/react/shadcn/ui/switch"
 
 export const ConfigDevCard = () => {
   const [devEnabled, setDevEnabled] = useAtom(devEnabledAtom)

@@ -1,11 +1,11 @@
 "use client"
 
-import { FlexContainer } from "@cs-magic/react-ui/dist/components/flex-container.js"
-import { LabelLine } from "@cs-magic/react-ui/dist/components/label-line.js"
-import { Badge } from "@cs-magic/react-ui/dist/shadcn/ui/badge.js"
-import { Button } from "@cs-magic/react-ui/dist/shadcn/ui/button.js"
-import { Input } from "@cs-magic/react-ui/dist/shadcn/ui/input.js"
-import { Label } from "@cs-magic/react-ui/dist/shadcn/ui/label.js"
+import { FlexContainer } from "@cs-magic/react/dist/components/flex-container.js"
+import { LabelLine } from "@cs-magic/react/dist/components/label-line.js"
+import { Badge } from "@cs-magic/react/dist/shadcn/ui/badge.js"
+import { Button } from "@cs-magic/react/dist/shadcn/ui/button.js"
+import { Input } from "@cs-magic/react/dist/shadcn/ui/input.js"
+import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
 import {
   Select,
   SelectContent,
@@ -13,9 +13,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@cs-magic/react-ui/dist/shadcn/ui/select.js"
-import { StandardCard } from "@cs-magic/react-ui/dist/components/standard-card.js"
-import { TextareaAuto } from "@cs-magic/react-ui/dist/components/textarea-auto.js"
+} from "@cs-magic/react/dist/shadcn/ui/select.js"
+import { StandardCard } from "@cs-magic/react/dist/components/standard-card.js"
+import { TextareaAuto } from "@cs-magic/react/dist/components/textarea-auto.js"
 
 import { produce } from "immer"
 import { useAtom } from "jotai"

@@ -6,12 +6,12 @@ import {
   Action2Type,
   GenCardApproach,
   ICardPreview,
-} from "@cs-magic/swot-backend/schema"
+} from "@cs-magic/swot-backend/dist/schema/card.js"
 
 import { CardPreview } from "./card-preview"
-import { PreviewCardAction } from "./card-action-preview"
-import { cardRenderedAtom } from "../store/card.rendered.atom"
-import { cardUserAtom } from "../store/card.user.atom"
+import { PreviewCardAction } from "@cs-magic/common-frontend/dist/components/card-action-preview.js"
+import { cardRenderedAtom } from "@cs-magic/common-frontend/dist/store/card.rendered.atom.js"
+import { cardUserAtom } from "@cs-magic/common-frontend/dist/store/card.user.atom.js"
 
 export const CardPreviewContainer = ({
   preview,

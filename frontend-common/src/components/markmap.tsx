@@ -1,6 +1,5 @@
 "use client"
 
-import { mapLevelsMaxAtom, mapSpacingVerticalAtom } from "@cs-magic/react-hooks"
 import { cardMindmapRenderedAtom } from "../store/card.rendered.atom"
 import { useAtom, useSetAtom } from "jotai"
 import { IPureNode } from "markmap-common"
@@ -8,7 +7,11 @@ import { Transformer } from "markmap-lib"
 import { Markmap } from "markmap-view"
 import { useEffect, useRef, useState } from "react"
 import React from "react"
-import { AspectRatio } from "@cs-magic/react-ui/shadcn/ui/aspect-ratio"
+import { AspectRatio } from "@cs-magic/react/shadcn/ui/aspect-ratio"
+import {
+  mapLevelsMaxAtom,
+  mapSpacingVerticalAtom,
+} from "@cs-magic/react/dist/store/visualization.atom.js"
 
 const transformer = new Transformer()
 

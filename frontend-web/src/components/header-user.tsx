@@ -1,10 +1,11 @@
 "use client"
 
-import { IconContainer } from "@cs-magic/react-ui/dist/components/icon-container.js"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { CircleUser } from "lucide-react"
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
+
+import { IconContainer } from "@cs-magic/react/dist/components/icon-container.js"
+import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
 
 export const UserButton = () => {
   const session = useSession()

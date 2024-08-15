@@ -8,12 +8,12 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogTitle,
-} from "@cs-magic/react-ui/shadcn/ui/alert-dialog"
+} from "@cs-magic/react/dist/shadcn/ui/alert-dialog.js"
 import { useAtom } from "jotai"
 
 import { signIn } from "next-auth/react"
 
-import { checkAuthAlertDialogOpenAtom } from "../store/ui.atom"
+import { checkAuthAlertDialogOpenAtom } from "@cs-magic/common-frontend/dist/store/ui.atom.js"
 
 export const CheckAuthAlertDialog = () => {
   const [open, setOpen] = useAtom(checkAuthAlertDialogOpenAtom)

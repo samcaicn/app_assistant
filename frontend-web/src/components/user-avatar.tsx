@@ -1,13 +1,16 @@
-import { upgradeUrl } from "@cs-magic/common/dist/utils/index.js"
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
+import { upgradeUrl } from "@cs-magic/common/dist/utils/upgrade-url.js"
+import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import { omit } from "lodash-es"
 import { UserIcon } from "lucide-react"
 import { ComponentPropsWithoutRef, HTMLAttributes } from "react"
 import Image from "next/image"
 import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js"
-import { VerticalAspectRatio } from "@cs-magic/react-ui/components/aspect-ratio"
-import { Avatar, AvatarFallback } from "@cs-magic/react-ui/shadcn/ui/avatar"
+import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio.js"
+import {
+  Avatar,
+  AvatarFallback,
+} from "@cs-magic/react/dist/shadcn/ui/avatar.js"
 
 export const UserAvatar = ({
   user,

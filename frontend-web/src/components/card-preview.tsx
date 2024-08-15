@@ -1,26 +1,26 @@
-import { moment } from "@cs-magic/common/dist/datetime/index.js"
+import { moment } from "@cs-magic/common/dist/datetime/moment.js"
 import { useAtom } from "jotai"
 import Image from "next/image"
 import { QRCodeSVG } from "qrcode.react"
 import { forwardRef } from "react"
 
-import { AspectRatio } from "@cs-magic/react-ui/shadcn/ui/aspect-ratio"
-import { ICardPreview } from "@cs-magic/swot-backend/schema"
+import { AspectRatio } from "@cs-magic/react/dist/shadcn/ui/aspect-ratio.js"
+import { ICardPreview } from "@cs-magic/swot-backend/dist/schema/card.js"
 
-import { Tags } from "./card-content-tags"
-import MarkMap from "./markmap"
-import { UserAvatar } from "./user-avatar"
+import { Tags } from "@cs-magic/common-frontend/dist/components/card-content-tags.js"
+import MarkMap from "@cs-magic/common-frontend/dist/components/markmap.js"
+import { UserAvatar } from "@/components/user-avatar"
 import {
   cardAuthorAvatarRenderedAtom,
   cardCoverRenderedAtom,
   cardUserAvatarRenderedAtom,
-} from "../store/card.rendered.atom"
-import { cardWatermarkTextAtom } from "../store/card.request.atom"
-import { getPlatformName } from "../utils/card-platform/get-platform-name"
+} from "@cs-magic/common-frontend/dist/store/card.rendered.atom.js"
+import { cardWatermarkTextAtom } from "@cs-magic/common-frontend/dist/store/card.request.atom.js"
+import { getPlatformName } from "@cs-magic/common-frontend/dist/utils/card-platform/get-platform-name.js"
 import CsMagicBlackLogoSvg from "@/../../../assets/branding/cs-magic_logo_1280.svg"
 import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js"
-import { cn } from "@cs-magic/react-ui/shadcn/utils"
-import { VerticalAspectRatio } from "@cs-magic/react-ui/components/aspect-ratio"
+import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
+import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio.js"
 
 /**
  * null optional nullish

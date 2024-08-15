@@ -11,7 +11,5 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "../common/deps/ui-shadcn/components",
-    "utils": "../common/deps/ui-shadcn/utils"
   }
 }

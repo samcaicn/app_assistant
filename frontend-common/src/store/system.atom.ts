@@ -1,8 +1,8 @@
 import { atom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
-import { uiScreenAtom } from "@cs-magic/react-hooks"
 import { ScenarioType } from "@cs-magic/common/dist/schema/scenario.js"
 import { BEST_VIEWPOINT } from "@cs-magic/common/dist/config.js"
+import { uiScreenAtom } from "@cs-magic/react/dist/store/ui.atom.js"
 
 //////////////////////////////
 // base
