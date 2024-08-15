@@ -13,9 +13,9 @@
   ],
   "references": [
     {"path": "../../packages/common"},
-    {"path": "../react-hooks"},
-    {"path": "../react-ui"},
-    {"path": "../next-hooks"},
-    {"path": "../next-auth"},
+    {"path": "../../packages_frontend/react-hooks"},
+    {"path": "../../packages_frontend/react-ui"},
+    {"path": "../../packages_frontend/next-hooks"},
+    {"path": "../../packages_frontend/next-auth"},
   ]
 }
