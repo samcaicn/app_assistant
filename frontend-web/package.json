@@ -16,7 +16,7 @@
     "@alicloud/dysmsapi20180501": "^1.0.4",
     "@auth/prisma-adapter": "^1.4.0",
     "@cs-magic/common": "workspace:^",
-    "@cs-magic/common-frontend": "workspace:^",
+    "@cs-magic/swot-frontend-common": "workspace:^",
     "@cs-magic/llm": "workspace:^",
     "@cs-magic/next": "workspace:^",
     "@cs-magic/react": "workspace:^",
