@@ -12,6 +12,7 @@
     "./src/**/*.json",
   ],
   "references": [
+    {"path": "../backend"},
     {"path": "../../packages/common"},
     {"path": "../../packages_frontend/react"},
     {"path": "../../packages_frontend/next"},

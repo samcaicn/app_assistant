@@ -12,7 +12,6 @@
     "./*": "./*"
   },
   "scripts": {
-    "postinstall": "yarn build",
     "dev:bot": "DOTENV_CONFIG_PATH=../../.env tsx -r dotenv/config src/bot/main.ts | pino-pretty",
     "dev:api": "DOTENV_CONFIG_PATH=../../.env tsx -r dotenv/config src/api/main.ts | pino-pretty",
     "clean": "rm -rf dist",
