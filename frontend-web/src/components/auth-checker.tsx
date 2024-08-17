@@ -13,7 +13,7 @@ import { useAtom } from "jotai"
 
 import { signIn } from "next-auth/react"
 
-import { checkAuthAlertDialogOpenAtom } from "@cs-magic/common-frontend/dist/store/ui.atom.js"
+import { checkAuthAlertDialogOpenAtom } from "@cs-magic/swot-frontend-common/dist/store/ui.atom.js"
 
 export const CheckAuthAlertDialog = () => {
   const [open, setOpen] = useAtom(checkAuthAlertDialogOpenAtom)

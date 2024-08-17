@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { loggerLink, unstable_httpBatchStreamLink } from "@trpc/client"
 import { useAtom } from "jotai"
 import { useMemo } from "react"
-import { trpcReactLogEnabledAtom } from "@cs-magic/common-frontend/components/config-trpc-log-enabled"
+import { trpcReactLogEnabledAtom } from "@cs-magic/swot-frontend-common/components/config-trpc-log-enabled"
 
 import { api } from "./client"
 import { REFETCH_TRPC_ON_WINDOW_FOCUS_ENABLED } from "./config"

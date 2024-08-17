@@ -19,7 +19,7 @@ import {
 } from "@cs-magic/react/dist/shadcn/ui/sheet.js"
 import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
 
-import { BrandingTitle } from "@cs-magic/common-frontend/dist/components/branding-title.js"
+import { BrandingTitle } from "@cs-magic/swot-frontend-common/dist/components/branding-title.js"
 import { UserButton } from "@/components/header-user"
 
 const menus = [

@@ -7,16 +7,16 @@ import { forwardRef } from "react"
 import { AspectRatio } from "@cs-magic/react/dist/shadcn/ui/aspect-ratio.js"
 import { ICardPreview } from "@cs-magic/swot-backend/dist/schema/card.js"
 
-import { Tags } from "@cs-magic/common-frontend/dist/components/card-content-tags.js"
-import MarkMap from "@cs-magic/common-frontend/dist/components/markmap.js"
+import { Tags } from "@cs-magic/swot-frontend-common/dist/components/card-content-tags.js"
+import MarkMap from "@cs-magic/swot-frontend-common/dist/components/markmap.js"
 import { UserAvatar } from "@/components/user-avatar"
 import {
   cardAuthorAvatarRenderedAtom,
   cardCoverRenderedAtom,
   cardUserAvatarRenderedAtom,
-} from "@cs-magic/common-frontend/dist/store/card.rendered.atom.js"
-import { cardWatermarkTextAtom } from "@cs-magic/common-frontend/dist/store/card.request.atom.js"
-import { getPlatformName } from "@cs-magic/common-frontend/dist/utils/card-platform/get-platform-name.js"
+} from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom.js"
+import { cardWatermarkTextAtom } from "@cs-magic/swot-frontend-common/dist/store/card.request.atom.js"
+import { getPlatformName } from "@cs-magic/swot-frontend-common/dist/utils/card-platform/get-platform-name.js"
 import CsMagicBlackLogoSvg from "@/../../../assets/branding/cs-magic_logo_1280.svg"
 import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js"
 import { cn } from "@cs-magic/react/dist/shadcn/utils.js"

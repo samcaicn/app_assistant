@@ -13,10 +13,10 @@ import { AtomSelector } from "@cs-magic/react/dist/components/atom-switcher.js"
 import { Separator } from "@cs-magic/react/dist/shadcn/ui/separator.js"
 import { useSearchParam } from "@cs-magic/next/dist/hooks/use-search-param.js"
 
-import { cardPreviewAtom } from "@cs-magic/common-frontend/dist/store/card.atom.js"
-import { cardPreviewEngineAtom } from "@cs-magic/common-frontend/dist/store/card.rendered.atom.js"
-import { CardInputBackend } from "@cs-magic/common-frontend/dist/components/card-input-backend.js"
-import { CardInputFrontend } from "@cs-magic/common-frontend/dist/components/card-input-frontend.js"
+import { cardPreviewAtom } from "@cs-magic/swot-frontend-common/dist/store/card.atom.js"
+import { cardPreviewEngineAtom } from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom.js"
+import { CardInputBackend } from "@cs-magic/swot-frontend-common/dist/components/card-input-backend.js"
+import { CardInputFrontend } from "@cs-magic/swot-frontend-common/dist/components/card-input-frontend.js"
 import { CardPreviewContainer } from "@/components/card-preview-container"
 
 export const Card = () => {

@@ -21,9 +21,9 @@ import {
 } from "@cs-magic/react/dist/shadcn/ui/tabs.js"
 import { IconContainer } from "@cs-magic/react/dist/components/icon-container.js"
 
-import { ConfigDevCard } from "@cs-magic/common-frontend/dist/components/config-dev-card.js"
-import { ConfigLogCard } from "@cs-magic/common-frontend/dist/components/config-log-card.js"
-import { ConfigSMSCard } from "@cs-magic/common-frontend/dist/components/config-sms.js"
+import { ConfigDevCard } from "@cs-magic/swot-frontend-common/dist/components/config-dev-card.js"
+import { ConfigLogCard } from "@cs-magic/swot-frontend-common/dist/components/config-log-card.js"
+import { ConfigSMSCard } from "@cs-magic/swot-frontend-common/dist/components/config-sms.js"
 import { UserSignOutButton } from "@/components/user-sign-out-button"
 
 export const DevConfig = () => {

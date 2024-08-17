@@ -1,5 +1,5 @@
 {
-  "name": "@cs-magic/common-frontend",
+  "name": "@cs-magic/swot-frontend-common",
   "type": "module",
   "main": "./dist/index.js",
   "exports": {
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tspc -b && copyfiles -u1 src/**/*.css dist",
+    "build": "tspc -b && copyfiles -u1 src/styles/**/*.css dist",
     "postinstall": "yarn build"
   },
   "dependencies": {
@@ -42,6 +42,7 @@
     "@types/lodash-es": "^4",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
+    "copyfiles": "*",
     "ts-patch": "*"
   }
 }

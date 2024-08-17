@@ -9,9 +9,9 @@ import {
 } from "@cs-magic/swot-backend/dist/schema/card.js"
 
 import { CardPreview } from "./card-preview"
-import { PreviewCardAction } from "@cs-magic/common-frontend/dist/components/card-action-preview.js"
-import { cardRenderedAtom } from "@cs-magic/common-frontend/dist/store/card.rendered.atom.js"
-import { cardUserAtom } from "@cs-magic/common-frontend/dist/store/card.user.atom.js"
+import { PreviewCardAction } from "@cs-magic/swot-frontend-common/dist/components/card-action-preview.js"
+import { cardRenderedAtom } from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom.js"
+import { cardUserAtom } from "@cs-magic/swot-frontend-common/dist/store/card.user.atom.js"
 
 export const CardPreviewContainer = ({
   preview,

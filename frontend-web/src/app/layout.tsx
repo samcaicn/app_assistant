@@ -10,7 +10,7 @@ import { cn } from "@cs-magic/react/shadcn/utils"
 import { ServerProvider } from "./server.provider"
 import { ClientProvider } from "./client.provider"
 
-import "@cs-magic/common-frontend/dist/styles/globals.css"
+import "@cs-magic/swot-frontend-common/dist/styles/globals.css"
 
 const inter = Inter({
   subsets: ["latin"],

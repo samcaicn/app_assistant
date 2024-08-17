@@ -1,4 +1,4 @@
-import MarkMap from "@cs-magic/common-frontend/components/markmap"
+import MarkMap from "@cs-magic/swot-frontend-common/components/markmap"
 
 export default function VisualizationPage() {
   const content =

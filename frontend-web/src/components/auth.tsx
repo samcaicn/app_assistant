@@ -7,7 +7,7 @@ import { SeparatorContainer } from "@cs-magic/react/dist/components/separator-co
 
 import { AuthSmsSignIn } from "./auth-sms-sign-in"
 import { AuthWechatSignIn } from "./auth-wechat-sign-in"
-import { BrandingTitle } from "@cs-magic/common-frontend/dist/components/branding-title.js"
+import { BrandingTitle } from "@cs-magic/swot-frontend-common/dist/components/branding-title.js"
 
 export const Auth = () => {
   const { isWechat } = useEnvironments()
