@@ -35,7 +35,6 @@
     "wechaty-puppet-wechat4u": "workspace:^"
   },
   "devDependencies": {
-    "@types/node-schedule": "^2.1.7",
-    "ts-patch": "*"
+    "@types/node-schedule": "^2.1.7"
   }
 }
