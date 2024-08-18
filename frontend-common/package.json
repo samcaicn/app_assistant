@@ -14,7 +14,8 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tspc -b && copyfiles -u1 src/styles/**/*.css dist"
+    "build": "tspc -b && copyfiles -u1 src/styles/**/*.css dist",
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "@cs-magic/common": "workspace:^",
