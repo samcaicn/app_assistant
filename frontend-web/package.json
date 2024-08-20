@@ -2,9 +2,9 @@
   "name": "@cs-magic/swot-web",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev -p 40326 | pino-pretty",
+    "dev": "next dev -p 40326 ",
     "build": "next build",
-    "start": "next start -p 40326 | pino-pretty",
+    "start": "next start -p 40326",
     "cicd": "DIST=.next-tmp && rm -rf $DIST && DIST=$DIST yarn build && rm -rf .next && mv $DIST .next && DIST=.next yarn start",
     "lint": "next lint",
     "test": "jest",
