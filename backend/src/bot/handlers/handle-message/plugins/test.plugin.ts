@@ -16,6 +16,14 @@ export class TestPlugin extends BasePlugin {
 
     if (!s) return
 
+    if (s === "contact") {
+      const contact = this.message.talker()
+      if (!contact) return logger.warn("no contact")
+      logger.info("sending contact")
+      await this.message.say(contact)
+      return
+    }
+
     if (s.includes("recall-last-one")) await this.testRecallLastOne()
 
     if (s.includes("reply-link")) await this.testReplyLink()
