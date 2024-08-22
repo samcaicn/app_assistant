@@ -16,7 +16,6 @@
     "@auth/prisma-adapter": "^1.4.0",
     "@cs-magic/common": "workspace:^",
     "@cs-magic/llm": "workspace:^",
-    "@cs-magic/next": "workspace:^",
     "@cs-magic/react": "workspace:^",
     "@cs-magic/swot-backend": "workspace:^",
     "@cs-magic/swot-frontend-common": "workspace:^",

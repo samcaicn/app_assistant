@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@cs-magic/common": "workspace:^",
-    "@cs-magic/next": "workspace:^",
     "@cs-magic/react": "workspace:^",
     "@cs-magic/swot-backend": "workspace:^",
     "@tanstack/react-table": "^8.20.1",
