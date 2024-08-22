@@ -4,7 +4,6 @@ import { EditIcon } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 
-// import { useDraftSession } from "@cs-magic/next/hooks/use-user"
 import { UserInputAvatar } from "@/components/user-input-avatar"
 import { UserInputName } from "@/components/user-input-name"
 import { UserSignOutButton } from "@/components/user-sign-out-button"

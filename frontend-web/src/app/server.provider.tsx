@@ -5,7 +5,6 @@ import { ScreenProvider } from "@cs-magic/react/providers/screen.provider"
 import { ThemeProvider } from "@cs-magic/react/providers/theme.provider"
 import { TooltipProvider } from "@cs-magic/react/shadcn/ui/tooltip"
 
-// import { SessionProvider } from "@cs-magic/next/providers/session.provider"
 import { SessionProvider } from "./session.provider"
 
 import { TRPCReactProvider } from "@/trpc/react"

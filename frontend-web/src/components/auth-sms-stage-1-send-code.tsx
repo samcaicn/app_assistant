@@ -18,7 +18,7 @@ import {
   smsCodeCurCountdownSecondsAtom,
   userPhoneAtom,
 } from "@cs-magic/react/dist/store/sms.atom.js"
-import { useSmsSendCode } from "@cs-magic/next/dist/hooks/use-sms-send-code.js"
+import { useSmsSendCode } from "@cs-magic/react/src/hooks/use-sms-send-code"
 
 export const AuthSmsStage1SendCode = () => {
   const [downtime] = useAtom(smsCodeCurCountdownSecondsAtom)

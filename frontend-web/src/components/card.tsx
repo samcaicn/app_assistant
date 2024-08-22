@@ -11,7 +11,7 @@ import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
 import { StandardCard } from "@cs-magic/react/dist/components/standard-card.js"
 import { AtomSelector } from "@cs-magic/react/dist/components/atom-switcher.js"
 import { Separator } from "@cs-magic/react/dist/shadcn/ui/separator.js"
-import { useSearchParam } from "@cs-magic/next/dist/hooks/use-search-param.js"
+import { useSearchParam } from "@cs-magic/react/src/hooks/use-search-param"
 
 import { cardPreviewAtom } from "@cs-magic/swot-frontend-common/dist/store/card.atom.js"
 import { cardPreviewEngineAtom } from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom.js"

@@ -1,6 +1,6 @@
 "use client"
 
-import { useSmsSendCode } from "@cs-magic/next/dist/hooks/use-sms-send-code.js"
+import { useSmsSendCode } from "@cs-magic/react/src/hooks/use-sms-send-code"
 import { smsCodeCurCountdownSecondsAtom } from "@cs-magic/react/dist/store/sms.atom.js"
 import { useAtom } from "jotai"
 
