@@ -1,10 +1,10 @@
 import { Wechaty } from "wechaty"
 import yaml from "js-yaml"
 
-import { formatAction } from "@cs-magic/common/dist/utils/format-action.js"
-import { formatDuration } from "@cs-magic/common/dist/utils/format-duration.js"
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const.js"
-import logger, { LogLevel } from "@cs-magic/common/dist/log/index.js"
+import { formatAction } from "@cs-magic/common/dist/utils/format-action"
+import { formatDuration } from "@cs-magic/common/dist/utils/format-duration"
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
+import logger, { LogLevel } from "@cs-magic/common/dist/log/index"
 
 import { QueueTask } from "../../schema/index.js"
 import { BotData, IBotContext } from "../schema.js"

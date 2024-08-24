@@ -6,17 +6,15 @@ import { signIn } from "next-auth/react"
 import { useEffect, useRef } from "react"
 import { toast } from "sonner"
 
+import { SMS_DIGIT_SIZE } from "@cs-magic/common/dist/config"
+import { SMS_PROVIDER_ID } from "@cs-magic/common/dist/sms.base"
+import { cn } from "@cs-magic/react/dist/shadcn/utils"
+import { smsCodeAtom, smsSignInPayloadAtom } from "@cs-magic/react/dist/store/sms.atom"
+import { uiLoadingAlertDialogAtom } from "@cs-magic/react/dist/store/ui.atom"
+import { Label } from "@cs-magic/shadcn/dist/ui/label"
+
 import { SmsReInputPhone } from "./auth-sms-reinput-phone"
 import { SmsResendCode } from "./auth-sms-resend-code"
-import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
-import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
-import { SMS_DIGIT_SIZE } from "@cs-magic/common/dist/config.js"
-import { SMS_PROVIDER_ID } from "@cs-magic/common/dist/sms.base.js"
-import { uiLoadingAlertDialogAtom } from "@cs-magic/react/dist/store/ui.atom.js"
-import {
-  smsCodeAtom,
-  smsSignInPayloadAtom,
-} from "@cs-magic/react/dist/store/sms.atom.js"
 
 export const AuthSmsStage2InputCode = () => {
   const [digits, setDigits] = useAtom(smsCodeAtom)
@@ -52,11 +50,7 @@ export const AuthSmsStage2InputCode = () => {
   return (
     <div className={"flex w-full flex-col items-center gap-4"}>
       验证您的手机号
-      <div
-        className={
-          "flex flex-col items-center gap-2 text-xs text-muted-foreground"
-        }
-      >
+      <div className={"flex flex-col items-center gap-2 text-xs text-muted-foreground"}>
         <div>请输入发送到您手机的短信验证码</div>
 
         <Label className={"relative h-8 w-full sm:h-12"}>
@@ -91,9 +85,7 @@ export const AuthSmsStage2InputCode = () => {
           />
 
           <div className={"flex items-center justify-center gap-2 "}>
-            <span className={cn("font-black text-primary/75", SMS_DIGIT_SIZE)}>
-              M -{" "}
-            </span>
+            <span className={cn("font-black text-primary/75", SMS_DIGIT_SIZE)}>M - </span>
 
             {[...Array(6)].map((value, index) => (
               <div
@@ -103,13 +95,7 @@ export const AuthSmsStage2InputCode = () => {
                   SMS_DIGIT_SIZE,
                 )}
               >
-                {index < digits.length ? (
-                  digits[index]
-                ) : index === digits.length ? (
-                  <span className={"cursor"} />
-                ) : (
-                  ""
-                )}
+                {index < digits.length ? digits[index] : index === digits.length ? <span className={"cursor"} /> : ""}
               </div>
             ))}
           </div>

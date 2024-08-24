@@ -1,4 +1,4 @@
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js"
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
 import { atom } from "jotai"
 
 export const cardUserIdAtom = atom("")

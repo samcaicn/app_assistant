@@ -17,14 +17,14 @@ import {
 import { InputCardAction } from "./card-action-input"
 import { CardInputUrl } from "./card-input-url"
 import { CardInputUser } from "./card-input-user"
-import { Separator } from "@cs-magic/react/shadcn/ui/separator"
+import { Separator } from "@cs-magic/shadcn/dist/ui/separator"
 import {
   AtomSelector,
   AtomSwitcher,
 } from "@cs-magic/react/components/atom-switcher"
 import { LabelLine } from "@cs-magic/react/components/label-line"
-import { Input } from "@cs-magic/react/shadcn/ui/input"
-import { mapSpacingVerticalAtom } from "@cs-magic/react/dist/store/visualization.atom.js"
+import { Input } from "@cs-magic/shadcn/dist/ui/input"
+import { mapSpacingVerticalAtom } from "@cs-magic/react/dist/store/visualization.atom"
 
 export const CardInputFrontend = () => {
   const [mapSpacingVertical, setMapSpacingVertical] = useAtom(

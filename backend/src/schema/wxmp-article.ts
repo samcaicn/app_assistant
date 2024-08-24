@@ -1,6 +1,6 @@
 import { Card, LlmResponse } from "@prisma/client"
 
-import { sampleWxmpArticleComment } from "@cs-magic/common/dist/sample.js"
+import { sampleWxmpArticleComment } from "@cs-magic/common/dist/sample"
 
 import { ICardPlatform } from "./card.js"
 import { RequestOptions } from "./request.js"

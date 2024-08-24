@@ -10,28 +10,31 @@
     "./utils/*": "./dist/utils/*.js",
     "./assets/*": "./dist/assets/*.js",
     "./src/*": "./src/*.js",
+    "./dist/*": "./dist/*.js",
     "./*": "./*"
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tspc -b && copyfiles -u1 src/styles/**/*.css dist",
+    "build": "tspc -b && copyfiles -u1 ../../assets/styles/**/*.css dist",
     "postinstall": "yarn build"
   },
   "dependencies": {
     "@cs-magic/common": "workspace:^",
     "@cs-magic/react": "workspace:^",
     "@cs-magic/swot-backend": "workspace:^",
+    "@radix-ui/react-select": "^2.1.1",
     "@tanstack/react-table": "^8.20.1",
     "@uiw/react-md-editor": "^4.0.4",
     "ansicolors": "^0.3.2",
-    "jotai": "^2.9.1",
+    "jotai": "*",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.424.0",
     "next": "*",
     "next-auth": "^4.24.7",
     "pusher-js": "^8.4.0-rc2",
+    "qrcode.react": "^3.1.0",
     "react": "*",
-    "react-dom": "^18.3.1",
+    "react-dom": "*",
     "react-use": "^17.5.1",
     "sonner": "^1.5.0",
     "wechaty-puppet": "workspace:^"
@@ -39,8 +42,8 @@
   "devDependencies": {
     "@types/ansicolors": "^0",
     "@types/lodash-es": "^4",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "*",
+    "@types/react-dom": "*",
     "copyfiles": "*",
     "ts-patch": "*"
   }

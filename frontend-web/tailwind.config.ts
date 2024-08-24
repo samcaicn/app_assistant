@@ -4,7 +4,7 @@ const config = {
   darkMode: ["class"],
   content: [
     "./src/**/*.{ts,tsx}",
-    "../../node_modules/@cs-magic/react/dist/**/*.js",
+    "../../node_modules/@cs-magic/react/dist/**/*",
   ],
   prefix: "",
   theme: {

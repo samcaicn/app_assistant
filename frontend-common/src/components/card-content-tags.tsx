@@ -1,4 +1,4 @@
-import { Badge } from "@cs-magic/react/shadcn/ui/badge"
+import { Badge } from "@cs-magic/shadcn/dist/ui/badge"
 import { cn } from "@cs-magic/react/shadcn/utils"
 
 export const Tags = ({ tags }: { tags: string[] | null | undefined }) => {

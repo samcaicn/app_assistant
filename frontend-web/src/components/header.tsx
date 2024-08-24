@@ -4,22 +4,18 @@ import { MenuIcon } from "lucide-react"
 import Link from "next/link"
 import React, { PropsWithChildren } from "react"
 
-import { IconContainer } from "@cs-magic/react/dist/components/icon-container.js"
+import { IconContainer } from "@cs-magic/react/dist/components/icon-container"
+import { cn } from "@cs-magic/react/dist/shadcn/utils"
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@cs-magic/react/dist/shadcn/ui/navigation-menu.js"
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@cs-magic/react/dist/shadcn/ui/sheet.js"
-import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
+} from "@cs-magic/shadcn/dist/ui/navigation-menu"
+import { Sheet, SheetContent, SheetTrigger } from "@cs-magic/shadcn/dist/ui/sheet"
+import { BrandingTitle } from "@cs-magic/swot-frontend-common/dist/components/branding-title"
 
-import { BrandingTitle } from "@cs-magic/swot-frontend-common/dist/components/branding-title.js"
 import { UserButton } from "@/components/header-user"
 
 const menus = [
@@ -49,11 +45,7 @@ const Menus = () => (
 
 export const Header = () => {
   return (
-    <div
-      className={
-        "flex w-full shrink-0 items-center justify-between gap-2 px-6 py-4"
-      }
-    >
+    <div className={"flex w-full shrink-0 items-center justify-between gap-2 px-6 py-4"}>
       <div className={"flex items-center"}>
         <MobileConversations />
         <BrandingTitle withDescription />
@@ -78,9 +70,7 @@ export const Header = () => {
 const MobileConversations = () => (
   <Sheet>
     <SheetTrigger asChild>
-      <IconContainer
-        className={"mr-2 h-8 w-8 text-primary-foreground sm:hidden"}
-      >
+      <IconContainer className={"mr-2 h-8 w-8 text-primary-foreground sm:hidden"}>
         <MenuIcon />
       </IconContainer>
     </SheetTrigger>
@@ -99,9 +89,7 @@ const LinkItem = ({ href, children }: { href: string } & PropsWithChildren) => {
   return (
     <NavigationMenuItem className={"w-full"}>
       <Link href={href} legacyBehavior passHref className={"w-full"}>
-        <NavigationMenuLink
-          className={cn(navigationMenuTriggerStyle(), "w-full text-nowrap")}
-        >
+        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "w-full text-nowrap")}>
           {children}
         </NavigationMenuLink>
       </Link>

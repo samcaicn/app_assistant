@@ -1,8 +1,8 @@
-import { sleep } from "@cs-magic/common/dist/datetime/utils.js"
-import { env } from "@cs-magic/common/dist/env/index.js"
-import logger from "@cs-magic/common/dist/log/index.js"
-import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary.js"
-import { BaseSimulator } from "@cs-magic/common/dist/spider/base-simulator.js"
+import { sleep } from "@cs-magic/common/dist/datetime/utils"
+import { env } from "@cs-magic/common/dist/env/index"
+import logger from "@cs-magic/common/dist/log/index"
+import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary"
+import { BaseSimulator } from "@cs-magic/common/dist/spider/base-simulator"
 import random from "lodash-es/random.js"
 import range from "lodash-es/range.js"
 

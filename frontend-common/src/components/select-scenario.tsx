@@ -4,13 +4,13 @@ import {
   Select,
   SelectContent,
   SelectValue,
-} from "@cs-magic/react/dist/shadcn/ui/select.js"
+} from "@cs-magic/shadcn/dist/ui/select"
 import { SelectTrigger as SelectPrimitiveTrigger } from "@radix-ui/react-select"
 
 import { useAtom } from "jotai"
 import { scenarioTypeAtom } from "../store/system.atom"
 import { SelectModel } from "./_select-model"
-import { ScenarioType } from "@cs-magic/common/dist/schema/scenario.js"
+import { ScenarioType } from "@cs-magic/common/dist/schema/scenario"
 
 export const SelectScenario = () => {
   const [type, setType] = useAtom(scenarioTypeAtom)

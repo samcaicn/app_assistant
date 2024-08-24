@@ -1,7 +1,7 @@
 import qrcodeTerminal from "qrcode-terminal"
 import { ScanStatus, WechatyBuilder } from "wechaty"
 
-import logger from "@cs-magic/common/dist/log/index.js"
+import logger from "@cs-magic/common/dist/log/index"
 
 void WechatyBuilder.build({ name: "default" })
   .on("scan", async (qrcode, status, data) => {

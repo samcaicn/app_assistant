@@ -7,11 +7,11 @@ import { Transformer } from "markmap-lib"
 import { Markmap } from "markmap-view"
 import { useEffect, useRef, useState } from "react"
 import React from "react"
-import { AspectRatio } from "@cs-magic/react/shadcn/ui/aspect-ratio"
+import { AspectRatio } from "@cs-magic/shadcn/dist/ui/aspect-ratio"
 import {
   mapLevelsMaxAtom,
   mapSpacingVerticalAtom,
-} from "@cs-magic/react/dist/store/visualization.atom.js"
+} from "@cs-magic/react/dist/store/visualization.atom"
 
 const transformer = new Transformer()
 

@@ -1,5 +1,5 @@
 import { SwotLogoWhite } from "@/components/assets"
-import { LOGO_SIZE_LG } from "@cs-magic/react/dist/config.js"
+import { LOGO_SIZE_LG } from "@cs-magic/react/dist/config"
 import Image from "next/image"
 
 export const SwotBanner = () => {

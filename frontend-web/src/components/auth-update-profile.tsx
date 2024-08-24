@@ -1,14 +1,13 @@
 "use client"
 
-import { Button } from "@cs-magic/react/dist/shadcn/ui/button.js"
-import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
 import { useAtom } from "jotai"
+
+import { userImageAtom, userNameAtom } from "@cs-magic/react/dist/store/user.atom"
+import { Button } from "@cs-magic/shadcn/dist/ui/button"
+import { Label } from "@cs-magic/shadcn/dist/ui/label"
+
 import { UserInputAvatar } from "@/components/user-input-avatar"
 import { UserInputName } from "@/components/user-input-name"
-import {
-  userNameAtom,
-  userImageAtom,
-} from "@cs-magic/react/dist/store/user.atom.js"
 
 export const AuthUpdateProfile = () => {
   const [name] = useAtom(userNameAtom)
@@ -18,11 +17,7 @@ export const AuthUpdateProfile = () => {
   return (
     <div className={"flex w-full flex-col items-center gap-4"}>
       <Label className={"text-semibold text-lg"}>只差最后一步啦！</Label>
-      <div
-        className={
-          "flex flex-col items-center gap-4 text-xs text-muted-foreground"
-        }
-      >
+      <div className={"flex flex-col items-center gap-4 text-xs text-muted-foreground"}>
         <div>请输入阁下的昵称：</div>
         <UserInputName />
 

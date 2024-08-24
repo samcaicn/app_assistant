@@ -2,7 +2,7 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 
-import { initServer } from '@cs-magic/swot-backend/dist/api/server.js'
+import { initServer } from '@cs-magic/swot-backend/dist/api/server'
 
 import icon from '../../resources/icon.png?asset'
 

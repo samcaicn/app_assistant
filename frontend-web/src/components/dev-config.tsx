@@ -5,25 +5,15 @@ import { useAtom } from "jotai"
 import { SettingsIcon } from "lucide-react"
 import { useState } from "react"
 
-import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom.js"
+import { IconContainer } from "@cs-magic/react/dist/components/icon-container"
+import { cn } from "@cs-magic/react/dist/shadcn/utils"
+import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom"
+import { Sheet, SheetContent, SheetTrigger } from "@cs-magic/shadcn/dist/ui/sheet"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@cs-magic/shadcn/dist/ui/tabs"
+import { ConfigDevCard } from "@cs-magic/swot-frontend-common/dist/components/config-dev-card"
+import { ConfigLogCard } from "@cs-magic/swot-frontend-common/dist/components/config-log-card"
+import { ConfigSMSCard } from "@cs-magic/swot-frontend-common/dist/components/config-sms"
 
-import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@cs-magic/react/dist/shadcn/ui/sheet.js"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@cs-magic/react/dist/shadcn/ui/tabs.js"
-import { IconContainer } from "@cs-magic/react/dist/components/icon-container.js"
-
-import { ConfigDevCard } from "@cs-magic/swot-frontend-common/dist/components/config-dev-card.js"
-import { ConfigLogCard } from "@cs-magic/swot-frontend-common/dist/components/config-log-card.js"
-import { ConfigSMSCard } from "@cs-magic/swot-frontend-common/dist/components/config-sms.js"
 import { UserSignOutButton } from "@/components/user-sign-out-button"
 
 export const DevConfig = () => {
@@ -43,10 +33,7 @@ export const DevConfig = () => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className={cn(
-          "fixed bottom-2 left-2",
-          process.env.NODE_ENV === "production" && !devEnabled && "hidden",
-        )}
+        className={cn("fixed bottom-2 left-2", process.env.NODE_ENV === "production" && !devEnabled && "hidden")}
         asChild
       >
         <IconContainer>

@@ -10,7 +10,7 @@
 import { initTRPC, TRPCError } from "@trpc/server"
 import superjson from "superjson"
 import { ZodError } from "zod"
-import { prisma } from "@cs-magic/common/dist/db/prisma.js"
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 import { Context } from "./context"
 
 /**
@@ -38,7 +38,7 @@ const t = initTRPC.context<Context>().create({
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
  *
  * These are the pieces you use to build your tRPC API. You should import these a lot in the
- * "/dist/server/api/routers.js" directory.
+ * "/dist/server/api/routers" directory.
  */
 
 /**

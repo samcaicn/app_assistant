@@ -1,10 +1,10 @@
 "use server"
 
 import { ILlmRes, LlmModelType } from "@cs-magic/llm"
-import { formatWxmpUrl } from "@cs-magic/common/dist/utils/format-wxmp-article.js"
-import logger from "@cs-magic/common/dist/log/index.js"
-import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json.js"
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js"
+import { formatWxmpUrl } from "@cs-magic/common/dist/utils/format-wxmp-article"
+import logger from "@cs-magic/common/dist/log/index"
+import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json"
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
 
 import { ICardInnerPreview, IMedia } from "../../schema/card.js"
 import { GenWxmpArticleCardFetchOptions } from "../../schema/wxmp-article.js"

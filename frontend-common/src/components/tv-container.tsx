@@ -10,12 +10,12 @@ import { cn } from "@cs-magic/react/shadcn/utils"
 
 import { Controls } from "./tv-controls"
 
-import "../styles/tv.css"
+import "../../../../assets/styles/tv.css"
 import {
   getTvScale,
   tvFullScreenAtom,
   tvScreenOnAtom,
-} from "@cs-magic/react/dist/store/tv.atom.js"
+} from "@cs-magic/react/dist/store/tv.atom"
 
 /**
  * tv, ref: https://codepen.io/manz/pen/MWoRMja

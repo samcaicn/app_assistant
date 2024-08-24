@@ -2,15 +2,15 @@ import { set } from "lodash-es"
 import { Message, Sayable, type Wechaty } from "wechaty"
 import { deserializeMsg, puppetVersion } from "wechaty-puppet"
 
-import logger from "@cs-magic/common/dist/log/index.js"
-import { LogLevel } from "@cs-magic/common/dist/log/schema.js"
-import { prisma } from "@cs-magic/common/dist/db/prisma.js"
+import logger from "@cs-magic/common/dist/log/index"
+import { LogLevel } from "@cs-magic/common/dist/log/schema"
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 import {
   IUserSummaryFilled,
   NotImplementedError,
   wechatMessageDetailSchema,
-} from "@cs-magic/common/dist/schema/index.js"
-import { evalObject, formatString } from "@cs-magic/common/dist/utils/index.js"
+} from "@cs-magic/common/dist/schema/index"
+import { evalObject, formatString } from "@cs-magic/common/dist/utils/index"
 
 import {
   FeatureMap,

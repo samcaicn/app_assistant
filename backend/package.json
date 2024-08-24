@@ -9,6 +9,7 @@
     "./api": "./dist/api/index.js",
     "./schema": "./dist/schema/index.js",
     "./utils": "./dist/utils/index.js",
+    "./dist/*": "./dist/*.js",
     "./*": "./*"
   },
   "scripts": {
@@ -26,7 +27,7 @@
     "@fastify/websocket": "^10.0.1",
     "fastify": "^4.28.1",
     "node-schedule": "^2.1.1",
-    "prisma": "^5.17.0",
+    "prisma": "*",
     "qrcode-terminal": "^0.12.0",
     "wechaty": "workspace:^",
     "wechaty-puppet": "workspace:^",

@@ -1,8 +1,8 @@
 import { useAtom } from "jotai"
 import { AuthSmsStage2InputCode } from "./auth-sms-stage-2-input-code"
 import { AuthSmsStage1SendCode } from "./auth-sms-stage-1-send-code"
-import { UnexpectedError } from "@cs-magic/common/dist/schema/error.js"
-import { smsStageAtom } from "@cs-magic/react/dist/store/sms.atom.js"
+import { UnexpectedError } from "@cs-magic/common/dist/schema/error"
+import { smsStageAtom } from "@cs-magic/react/dist/store/sms.atom"
 
 export const AuthSmsSignIn = () => {
   const [stage] = useAtom(smsStageAtom)

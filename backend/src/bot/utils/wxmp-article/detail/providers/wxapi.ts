@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { api } from "@cs-magic/common/dist/api/index.js"
+import { api } from "@cs-magic/common/dist/api/index"
 
 import {
   IWechatArticleComment,

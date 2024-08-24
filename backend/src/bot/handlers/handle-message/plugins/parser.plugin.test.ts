@@ -1,10 +1,10 @@
 import {
   sampleWxmpArticleUrl,
   sampleWxmpArticleUrls,
-} from "@cs-magic/common/dist/sample.js"
-import { CardSimulator } from "@cs-magic/common/dist/spider/card-simulator.js"
+} from "@cs-magic/common/dist/sample"
+import { CardSimulator } from "@cs-magic/common/dist/spider/card-simulator"
 import { wxmpUrl2preview } from "../../../utils/wxmp-url2preview.js"
-import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary.js"
+import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary"
 
 describe("test parser", () => {
   const parser = new CardSimulator("playwright", { headless: false })

@@ -1,6 +1,6 @@
 import fs, { promises } from "fs"
 
-import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json.js"
+import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json"
 
 import { IWechatData, wechatyDataPath } from "./handle-message.js"
 

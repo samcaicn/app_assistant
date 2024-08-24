@@ -1,7 +1,7 @@
-import { NotImplementedError } from "@cs-magic/common/dist/schema/error.js"
-import { extractFirstUrl } from "@cs-magic/common/dist/utils/extract-first-url.js"
-import { isWxmpArticleUrl } from "@cs-magic/common/dist/utils/is-wxmp-article-url.js"
-import { wxmpUrl2preview } from "@cs-magic/swot-backend/dist/bot/utils/wxmp-url2preview.js"
+import { NotImplementedError } from "@cs-magic/common/dist/schema/error"
+import { extractFirstUrl } from "@cs-magic/common/dist/utils/extract-first-url"
+import { isWxmpArticleUrl } from "@cs-magic/common/dist/utils/is-wxmp-article-url"
+import { wxmpUrl2preview } from "@cs-magic/swot-backend/dist/bot/utils/wxmp-url2preview"
 import {
   GenWxmpArticleCardFetchOptions,
   ICardInnerPreview,

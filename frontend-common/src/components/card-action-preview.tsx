@@ -11,7 +11,7 @@ import { toast } from "sonner"
 import { updateOssUrl } from "../utils/update-oss-url.action"
 import { GeneralCardAction } from "./card-action-general"
 import { Action2Type, ActionType } from "@cs-magic/swot-backend/schema"
-import { uploadFile } from "@cs-magic/common/dist/oss/oss.server.js"
+import { uploadFile } from "@cs-magic/common/dist/oss/oss.server"
 
 const handleDownload = ({
   blob,

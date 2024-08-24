@@ -3,8 +3,8 @@ import { z } from "zod"
 
 import { ISummaryParsed } from "./summary.js"
 import { IWechatArticleComment, IWechatArticleStat } from "./wxmp-article.js"
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js"
-import { LlmModelType } from "@cs-magic/llm/dist/schema/llm.models.js"
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
+import { LlmModelType } from "@cs-magic/llm/dist/schema/llm.models"
 
 export type ICardStat = {
   reads?: number

@@ -1,4 +1,4 @@
-import { authOptions } from "@cs-magic/react/dist/next-auth.options.js"
+import { authOptions } from "@cs-magic/react/dist/next-auth.options"
 import NextAuth from "next-auth"
 
 const handler = NextAuth(authOptions)

@@ -1,17 +1,19 @@
 "use client"
 
+import { useRef } from "react"
 import { useAtom, useAtomValue } from "jotai"
-import { Suspense, useRef } from "react"
+
 import {
   Action2Type,
   GenCardApproach,
   ICardPreview,
-} from "@cs-magic/swot-backend/dist/schema/card.js"
+} from "@cs-magic/swot-backend/dist/schema/card"
+
+import { PreviewCardAction } from "@cs-magic/swot-frontend-common/dist/components/card-action-preview"
+import { cardRenderedAtom } from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom"
+import { cardUserAtom } from "@cs-magic/swot-frontend-common/dist/store/card.user.atom"
 
 import { CardPreview } from "./card-preview"
-import { PreviewCardAction } from "@cs-magic/swot-frontend-common/dist/components/card-action-preview.js"
-import { cardRenderedAtom } from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom.js"
-import { cardUserAtom } from "@cs-magic/swot-frontend-common/dist/store/card.user.atom.js"
 
 export const CardPreviewContainer = ({
   preview,

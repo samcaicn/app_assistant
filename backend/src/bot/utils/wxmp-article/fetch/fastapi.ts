@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client"
 
-import { backendApi } from "@cs-magic/common/dist/api/backend-api.js"
+import { backendApi } from "@cs-magic/common/dist/api/backend-api"
 
 import { SummaryOptions } from "../../../../schema/index.js"
 

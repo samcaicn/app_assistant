@@ -1,24 +1,15 @@
 "use client"
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@cs-magic/react/dist/shadcn/ui/form.js"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useAtom, useSetAtom } from "jotai"
 import { useForm } from "react-hook-form"
-import { ISendSms, sendSmsSchema } from "@cs-magic/common/dist/sms.schema.js"
-import { Input } from "@cs-magic/react/dist/shadcn/ui/input.js"
-import { ButtonWithLoading } from "@cs-magic/react/dist/components/button-with-loading.js"
-import {
-  smsCodeCurCountdownSecondsAtom,
-  userPhoneAtom,
-} from "@cs-magic/react/dist/store/sms.atom.js"
-import { useSmsSendCode } from "@cs-magic/react/dist/hooks/use-sms-send-code.js"
+
+import { ISendSms, sendSmsSchema } from "@cs-magic/common/dist/sms.schema"
+import { ButtonWithLoading } from "@cs-magic/react/dist/components/button-with-loading"
+import { useSmsSendCode } from "@cs-magic/react/dist/hooks/use-sms-send-code"
+import { smsCodeCurCountdownSecondsAtom, userPhoneAtom } from "@cs-magic/react/dist/store/sms.atom"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@cs-magic/shadcn/dist/ui/form"
+import { Input } from "@cs-magic/shadcn/dist/ui/input"
 
 export const AuthSmsStage1SendCode = () => {
   const [downtime] = useAtom(smsCodeCurCountdownSecondsAtom)
@@ -37,10 +28,7 @@ export const AuthSmsStage1SendCode = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(sendCode)}
-        className={"flex w-full flex-col gap-4"}
-      >
+      <form onSubmit={form.handleSubmit(sendCode)} className={"flex w-full flex-col gap-4"}>
         <FormField
           name={"phone"}
           control={form.control}
@@ -62,11 +50,7 @@ export const AuthSmsStage1SendCode = () => {
           )}
         />
 
-        <ButtonWithLoading
-          className={"w-full"}
-          downtime={downtime}
-          type={"submit"}
-        >
+        <ButtonWithLoading className={"w-full"} downtime={downtime} type={"submit"}>
           发送验证码
         </ButtonWithLoading>
       </form>

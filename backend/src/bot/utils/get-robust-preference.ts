@@ -7,7 +7,7 @@ import {
   IWechatData,
   IWechatPreference,
 } from "../../schema/index.js"
-import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json.js"
+import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json"
 
 export const getRobustPreference = (
   row: {

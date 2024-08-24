@@ -6,7 +6,7 @@ import { useState } from "react"
 import { CSVLink } from "react-csv"
 import { toast } from "sonner"
 
-import { useInit } from "@cs-magic/react/dist/hooks/use-init.js"
+import { useInit } from "@cs-magic/react/dist/hooks/use-init"
 
 import { IWechatBotTransfer, ScanStatus } from "@cs-magic/swot-backend/schema"
 
@@ -22,7 +22,7 @@ import {
 import { FlexContainer } from "@cs-magic/react/components/flex-container"
 import { StandardCard } from "@cs-magic/react/components/standard-card"
 import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading"
-import { Button, buttonVariants } from "@cs-magic/react/shadcn/ui/button"
+import { Button, buttonVariants } from "@cs-magic/shadcn/dist/ui/button"
 import { columns, DataTable } from "./contacts.table"
 import { cn } from "@cs-magic/react/shadcn/utils"
 

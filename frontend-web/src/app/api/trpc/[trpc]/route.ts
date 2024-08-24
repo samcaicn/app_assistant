@@ -4,7 +4,7 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
 import { createTRPCContext } from "@/trpc/context"
 
 import { appRouter } from "../index"
-import { env } from "@cs-magic/common/dist/env/index.js"
+import { env } from "@cs-magic/common/dist/env/index"
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when

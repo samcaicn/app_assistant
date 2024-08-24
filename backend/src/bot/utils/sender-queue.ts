@@ -1,7 +1,7 @@
-import logger from "@cs-magic/common/dist/log/index.js"
-import { formatError } from "@cs-magic/common/dist/utils/index.js"
+import logger from "@cs-magic/common/dist/log/index"
+import { formatError } from "@cs-magic/common/dist/utils/index"
 import { QueueTask } from "../../schema/index.js"
-import { sleep } from "@cs-magic/common/dist/datetime/utils.js"
+import { sleep } from "@cs-magic/common/dist/datetime/utils"
 
 export class SenderQueue {
   static queue: QueueTask[]

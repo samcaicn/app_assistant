@@ -1,4 +1,4 @@
-import { IArticleSummaryParsed } from "@cs-magic/common/dist/schema/index.js"
+import { IArticleSummaryParsed } from "@cs-magic/common/dist/schema/index"
 import { ILlmQueryConfig, LlmModelType } from "@cs-magic/llm"
 
 export type ISummaryParsed = {

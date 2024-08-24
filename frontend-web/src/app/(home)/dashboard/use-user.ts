@@ -7,8 +7,8 @@ import { useSession } from "next-auth/react"
 import {
   userImageAtom,
   userNameAtom,
-} from "@cs-magic/react/dist/store/user.atom.js"
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js"
+} from "@cs-magic/react/dist/store/user.atom"
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
 
 export const useUserSummary = () => {
   const user = useSession().data?.user

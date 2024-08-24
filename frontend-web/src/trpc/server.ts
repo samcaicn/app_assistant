@@ -13,7 +13,7 @@ import { createTRPCContext } from "./context"
 import { transformer } from "./shared"
 
 import "server-only"
-import { env } from "@cs-magic/common/dist/env/get-env.js"
+import { env } from "@cs-magic/common/dist/env/get-env"
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when

@@ -3,7 +3,7 @@
 import {
   smsStageAtom,
   userPhoneAtom,
-} from "@cs-magic/react/dist/store/sms.atom.js"
+} from "@cs-magic/react/dist/store/sms.atom"
 import { useAtom, useSetAtom } from "jotai"
 import { EditIcon } from "lucide-react"
 

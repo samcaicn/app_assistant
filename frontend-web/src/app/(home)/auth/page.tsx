@@ -1,16 +1,18 @@
 "use client"
 
-import { useEnvironments } from "@cs-magic/react/dist/hooks/use-environments.js"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
+
+import { UnexpectedError } from "@cs-magic/common/dist/schema/error"
+import { Loading } from "@cs-magic/react/components/loading"
+import { useEnvironments } from "@cs-magic/react/dist/hooks/use-environments"
+import { Label } from "@cs-magic/shadcn/dist/ui/label"
+
 import { Auth } from "@/components/auth"
 import { AuthSmsSignIn } from "@/components/auth-sms-sign-in"
 import { AuthUpdateProfile } from "@/components/auth-update-profile"
 import { AuthWechatSignIn } from "@/components/auth-wechat-sign-in"
-import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
-import { UnexpectedError } from "@cs-magic/common/dist/schema/error.js"
-import { Label } from "@cs-magic/react/shadcn/ui/label"
-import { Loading } from "@cs-magic/react/components/loading"
 
 export default function AuthPage() {
   const session = useSession()
@@ -40,13 +42,9 @@ export default function AuthPage() {
       if (isWechat && !wxidOk)
         return (
           <div className={"flex w-full flex-col gap-4"}>
-            <Label className={"text-xs text-muted-foreground"}>
-              为更好地为阁下提供服务：
-            </Label>
+            <Label className={"text-xs text-muted-foreground"}>为更好地为阁下提供服务：</Label>
 
-            <Label className={"text-xs text-muted-foreground"}>
-              首次登录请额外完成微信认证
-            </Label>
+            <Label className={"text-xs text-muted-foreground"}>首次登录请额外完成微信认证</Label>
 
             <AuthWechatSignIn />
           </div>

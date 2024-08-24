@@ -1,11 +1,11 @@
-import { prisma } from "@cs-magic/common/dist/db/prisma.js"
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 import { Contact, Room, Wechaty } from "wechaty"
 import {
   getRobustData,
   getRobustPreference,
   sendMessageOnRoomJoin,
 } from "../utils/index.js"
-import logger from "@cs-magic/common/dist/log/index.js"
+import logger from "@cs-magic/common/dist/log/index"
 
 /**
  * 小群邀请自己也会触发该 hook

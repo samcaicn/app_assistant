@@ -1,11 +1,21 @@
 "use client"
 
-import { FlexContainer } from "@cs-magic/react/dist/components/flex-container.js"
-import { LabelLine } from "@cs-magic/react/dist/components/label-line.js"
-import { Badge } from "@cs-magic/react/dist/shadcn/ui/badge.js"
-import { Button } from "@cs-magic/react/dist/shadcn/ui/button.js"
-import { Input } from "@cs-magic/react/dist/shadcn/ui/input.js"
-import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
+import { produce } from "immer"
+import { useAtom } from "jotai"
+import { atomWithStorage } from "jotai/utils"
+import { useEffect, useState } from "react"
+import { useCopyToClipboard } from "react-use"
+
+import { ApiMethod } from "@cs-magic/common/dist/api/schema"
+import { sleep } from "@cs-magic/common/dist/datetime/utils"
+import { FlexContainer } from "@cs-magic/react/dist/components/flex-container"
+import { LabelLine } from "@cs-magic/react/dist/components/label-line"
+import { StandardCard } from "@cs-magic/react/dist/components/standard-card"
+import { TextareaAuto } from "@cs-magic/react/dist/components/textarea-auto"
+import { Badge } from "@cs-magic/shadcn/dist/ui/badge"
+import { Button } from "@cs-magic/shadcn/dist/ui/button"
+import { Input } from "@cs-magic/shadcn/dist/ui/input"
+import { Label } from "@cs-magic/shadcn/dist/ui/label"
 import {
   Select,
   SelectContent,
@@ -13,26 +23,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@cs-magic/react/dist/shadcn/ui/select.js"
-import { StandardCard } from "@cs-magic/react/dist/components/standard-card.js"
-import { TextareaAuto } from "@cs-magic/react/dist/components/textarea-auto.js"
-
-import { produce } from "immer"
-import { useAtom } from "jotai"
-import { atomWithStorage } from "jotai/utils"
-import { useEffect, useState } from "react"
-import { useCopyToClipboard } from "react-use"
+} from "@cs-magic/shadcn/dist/ui/select"
 
 import { serverFetch } from "./actions"
 import { cookie2headers } from "./utils"
-import { ApiMethod } from "@cs-magic/common/dist/api/schema.js"
-import { sleep } from "@cs-magic/common/dist/datetime/utils.js"
 
-export type ValidateStatus =
-  | "to-validate"
-  | "validating"
-  | "required"
-  | "optional"
+export type ValidateStatus = "to-validate" | "validating" | "required" | "optional"
 export type ICookie = { key: string; value: string; status: ValidateStatus }
 
 const spiderUrlAtom = atomWithStorage(
@@ -84,8 +80,7 @@ export default function SpiderPage() {
 
       setCookies((cookies) =>
         produce(cookies, (cookies) => {
-          cookies.find((c) => c.key === cookie.key)!.status =
-            data.code === 0 ? "optional" : "required"
+          cookies.find((c) => c.key === cookie.key)!.status = data.code === 0 ? "optional" : "required"
         }),
       )
 
@@ -93,9 +88,7 @@ export default function SpiderPage() {
     }
   }
 
-  const requiredCookie = cookie2headers(
-    cookies.filter((c) => c.status === "required"),
-  )
+  const requiredCookie = cookie2headers(cookies.filter((c) => c.status === "required"))
   const [copiedState, copy] = useCopyToClipboard()
 
   useEffect(() => {
@@ -103,10 +96,7 @@ export default function SpiderPage() {
   }, [copiedState])
 
   return (
-    <FlexContainer
-      orientation={"vertical"}
-      className={"h-full justify-start overflow-auto"}
-    >
+    <FlexContainer orientation={"vertical"} className={"h-full justify-start overflow-auto"}>
       <Label className={"text-2xl"}>自动Cookie分析</Label>
 
       <StandardCard title={"Input"}>
@@ -131,10 +121,7 @@ export default function SpiderPage() {
         </LabelLine>
 
         <LabelLine title={"method"}>
-          <Select
-            value={method}
-            onValueChange={(v) => setMethod(v as ApiMethod)}
-          >
+          <Select value={method} onValueChange={(v) => setMethod(v as ApiMethod)}>
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
@@ -182,13 +169,7 @@ export default function SpiderPage() {
               <span className={"grow truncate"}>{value}</span>
               <Badge
                 className={"shrink-0"}
-                variant={
-                  status === "required"
-                    ? "destructive"
-                    : status === "optional"
-                      ? "outline"
-                      : "default"
-                }
+                variant={status === "required" ? "destructive" : status === "optional" ? "outline" : "default"}
               >
                 {status}
               </Badge>

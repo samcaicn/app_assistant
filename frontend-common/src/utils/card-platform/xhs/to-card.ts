@@ -1,8 +1,8 @@
 "use server"
 
-import { IXiaoHongShuNotePageData } from "@cs-magic/common/dist/xhs/index.js"
+import { IXiaoHongShuNotePageData } from "@cs-magic/common/dist/xhs/index"
 import { Card, Prisma } from "@prisma/client"
-import { prisma } from "@cs-magic/common/dist/db/prisma.js"
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 
 export const xiaohongshu2card = (
   inputData: IXiaoHongShuNotePageData,

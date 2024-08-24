@@ -4,21 +4,15 @@ import { EditIcon } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 
+import { FlexContainer } from "@cs-magic/react/components/flex-container"
+import { Button } from "@cs-magic/shadcn/dist/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@cs-magic/shadcn/dist/ui/card"
+import { Label } from "@cs-magic/shadcn/dist/ui/label"
+
+import { useDraftSession } from "./use-user"
 import { UserInputAvatar } from "@/components/user-input-avatar"
 import { UserInputName } from "@/components/user-input-name"
 import { UserSignOutButton } from "@/components/user-sign-out-button"
-import { FlexContainer } from "@cs-magic/react/components/flex-container"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "@cs-magic/react/shadcn/ui/card"
-import { Label } from "@cs-magic/react/shadcn/ui/label"
-import { Button } from "@cs-magic/react/shadcn/ui/button"
-
-import { useDraftSession } from "./use-user"
 
 export default function DashboardPage() {
   const session = useSession()
@@ -35,10 +29,7 @@ export default function DashboardPage() {
   }, [nameChanged])
 
   return (
-    <FlexContainer
-      orientation={"vertical"}
-      className={"mx-auto w-full max-w-[480px] !gap-8"}
-    >
+    <FlexContainer orientation={"vertical"} className={"mx-auto w-full max-w-[480px] !gap-8"}>
       <Card className={"w-full text-foreground"}>
         <CardHeader>基本信息</CardHeader>
 

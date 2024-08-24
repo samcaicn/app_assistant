@@ -1,4 +1,4 @@
-import { prisma } from "@cs-magic/common/dist/db/prisma.js"
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 import { types } from "wechaty"
 import type { PuppetVersion } from "wechaty-puppet"
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { moment } from "@cs-magic/common/dist/datetime/index.js"
+import { moment } from "@cs-magic/common/dist/datetime/index"
 import { CalendarHeartIcon, MilestoneIcon } from "lucide-react"
 import { CardFooterItem } from "./card-footer-item"
 import { CardOuterPreview } from "@cs-magic/swot-backend/schema"

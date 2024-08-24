@@ -1,16 +1,14 @@
-import { upgradeUrl } from "@cs-magic/common/dist/utils/upgrade-url.js"
-import { cn } from "@cs-magic/react/dist/shadcn/utils.js"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import { omit } from "lodash-es"
 import { UserIcon } from "lucide-react"
-import { ComponentPropsWithoutRef, HTMLAttributes } from "react"
 import Image from "next/image"
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js"
-import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio.js"
-import {
-  Avatar,
-  AvatarFallback,
-} from "@cs-magic/react/dist/shadcn/ui/avatar.js"
+import { ComponentPropsWithoutRef, HTMLAttributes } from "react"
+
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
+import { upgradeUrl } from "@cs-magic/common/dist/utils/upgrade-url"
+import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio"
+import { cn } from "@cs-magic/react/dist/shadcn/utils"
+import { Avatar, AvatarFallback } from "@cs-magic/shadcn/dist/ui/avatar"
 
 export const UserAvatar = ({
   user,
@@ -26,8 +24,7 @@ export const UserAvatar = ({
     imageProps?: ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
     avatarProps?: ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
   }) => {
-  const avatarUrl =
-    imageProps?.src ?? upgradeUrl(user?.image ?? user?.avatar ?? "")
+  const avatarUrl = imageProps?.src ?? upgradeUrl(user?.image ?? user?.avatar ?? "")
 
   return (
     <div className={cn("flex h-full items-center gap-2", className)} {...props}>
@@ -56,11 +53,7 @@ export const UserAvatar = ({
 
           <AvatarFallback>
             {user?.name?.length ? (
-              <div
-                className={
-                  "h-full w-full bg-gray-50 border-none flex items-center justify-center text-xl"
-                }
-              >
+              <div className={"h-full w-full bg-gray-50 border-none flex items-center justify-center text-xl"}>
                 {user.name.slice(0, 2).toUpperCase()}
               </div>
             ) : (

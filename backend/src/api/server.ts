@@ -2,8 +2,8 @@ import Fastify from "fastify"
 import fw from "@fastify/websocket"
 import { remove } from "lodash-es"
 
-import logger from "@cs-magic/common/dist/log/index.js"
-import { genNanoId } from "@cs-magic/common/dist/utils/gen-nano-id.js"
+import logger from "@cs-magic/common/dist/log/index"
+import { genNanoId } from "@cs-magic/common/dist/utils/gen-nano-id"
 
 import { IContext } from "./schema.js"
 import { startBot } from "./utils/start-bot.js"

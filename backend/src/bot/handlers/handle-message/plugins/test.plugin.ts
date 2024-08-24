@@ -3,8 +3,8 @@ import { types } from "wechaty"
 import { FileBox } from "file-box"
 import yargsParser from "yargs-parser"
 
-import logger from "@cs-magic/common/dist/log/index.js"
-import { safeCallLLM } from "@cs-magic/llm/dist/utils/safe-call-llm.js"
+import logger from "@cs-magic/common/dist/log/index"
+import { safeCallLLM } from "@cs-magic/llm/dist/utils/safe-call-llm"
 
 import { BasePlugin } from "./base.plugin.js"
 
@@ -20,7 +20,7 @@ export class TestPlugin extends BasePlugin {
       const contact = this.message.talker()
       if (!contact) return logger.warn("no contact")
       logger.info("sending contact")
-      // todo: Wechaty Puppet Unsupported API Error at PuppetWechat4u.messageSendContact (file:///Users/mark/@cs-magic/coding/codebase/packages/wechaty-puppet-wechat4u/dist/esm/src/puppet-wechat4u.js:665:16)
+      // todo: Wechaty Puppet Unsupported API Error at PuppetWechat4u.messageSendContact (file:///Users/mark/@cs-magic/coding/codebase/packages/wechaty-puppet-wechat4u/dist/esm/src/puppet-wechat4u:665:16)
       await this.message.say(contact)
       return
     }

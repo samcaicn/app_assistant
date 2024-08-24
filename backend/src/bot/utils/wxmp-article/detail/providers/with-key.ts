@@ -1,4 +1,4 @@
-import { api } from "@cs-magic/common/dist/api/api.js"
+import { api } from "@cs-magic/common/dist/api/api"
 import { IFetchWechatArticleStat } from "../../../../../schema/index.js"
 
 /**

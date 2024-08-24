@@ -1,4 +1,4 @@
-import logger from "@cs-magic/common/dist/log/index.js"
+import logger from "@cs-magic/common/dist/log/index"
 
 import { createWechatyBot } from "../../bot/index.js"
 import { IContext } from "../schema.js"

@@ -6,7 +6,7 @@ import React from "react"
 import { cardUserAvatarRenderedAtom } from "../store/card.rendered.atom"
 import { cardUserAvatarAtom, cardUserNameAtom } from "../store/card.user.atom"
 import { LabelLine } from "@cs-magic/react/components/label-line"
-import { Input } from "@cs-magic/react/shadcn/ui/input"
+import { Input } from "@cs-magic/shadcn/dist/ui/input"
 
 export const CardInputUser = () => {
   const [cardUserName, setCardUserName] = useAtom(cardUserNameAtom)

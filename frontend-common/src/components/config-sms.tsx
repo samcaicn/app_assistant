@@ -1,10 +1,10 @@
 "use client"
 
-import { SmsProviderType } from "@cs-magic/common/dist/sms.schema.js"
+import { SmsProviderType } from "@cs-magic/common/dist/sms.schema"
 import {
   smsCodeToCountdownSecondsAtom,
   smsProviderTypeAtom,
-} from "@cs-magic/react/dist/store/sms.atom.js"
+} from "@cs-magic/react/dist/store/sms.atom"
 import { StandardCard } from "@cs-magic/react/components/standard-card"
 
 import {
@@ -14,9 +14,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@cs-magic/react/dist/shadcn/ui/select.js"
-import { Input } from "@cs-magic/react/shadcn/ui/input"
-import { Label } from "@cs-magic/react/shadcn/ui/label"
+} from "@cs-magic/shadcn/dist/ui/select"
+import { Input } from "@cs-magic/shadcn/dist/ui/input"
+import { Label } from "@cs-magic/shadcn/dist/ui/label"
 
 import { useAtom } from "jotai"
 

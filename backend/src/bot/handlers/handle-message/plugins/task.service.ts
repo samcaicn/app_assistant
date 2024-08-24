@@ -7,11 +7,11 @@ import { type TaskStatus } from "@prisma/client"
 import {
   ITaskDetail,
   taskDetailSchema,
-} from "@cs-magic/common/dist/schema/task.js"
-import logger from "@cs-magic/common/dist/log/index.js"
-import { parseFunction } from "@cs-magic/common/dist/utils/parse-function.js"
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const.js"
-import { prisma } from "@cs-magic/common/dist/db/prisma.js"
+} from "@cs-magic/common/dist/schema/task"
+import logger from "@cs-magic/common/dist/log/index"
+import { parseFunction } from "@cs-magic/common/dist/utils/parse-function"
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 
 import { Priority } from "../../../../schema/index.js"
 

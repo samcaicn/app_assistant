@@ -3,10 +3,10 @@ import { z } from "zod"
 import {
   isWxmpArticleUrl,
   parseTitleFromWechatUrlMessage,
-} from "@cs-magic/common/dist/utils/index.js"
-import { CardSimulator } from "@cs-magic/common/dist/spider/card-simulator.js"
-import { parseUrlFromWechatUrlMessage } from "@cs-magic/common/dist/utils/parse-url-from-wechat-url-message.js"
-import logger from "@cs-magic/common/dist/log/index.js"
+} from "@cs-magic/common/dist/utils/index"
+import { CardSimulator } from "@cs-magic/common/dist/spider/card-simulator"
+import { parseUrlFromWechatUrlMessage } from "@cs-magic/common/dist/utils/parse-url-from-wechat-url-message"
+import logger from "@cs-magic/common/dist/log/index"
 
 import { FeatureMap, FeatureType } from "../../../../schema/index.js"
 import { getQuotedMessage, parseText } from "../../../utils/index.js"

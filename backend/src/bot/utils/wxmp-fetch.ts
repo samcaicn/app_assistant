@@ -1,9 +1,9 @@
 "use server"
 
-import { prisma } from "@cs-magic/common/dist/db/prisma.js"
-import { formatString } from "@cs-magic/common/dist/utils/index.js"
-import { cardDetailSchema } from "@cs-magic/common/dist/schema/card.detail.js"
-import logger from "@cs-magic/common/dist/log/index.js"
+import { prisma } from "@cs-magic/common/dist/db/prisma"
+import { formatString } from "@cs-magic/common/dist/utils/index"
+import { cardDetailSchema } from "@cs-magic/common/dist/schema/card.detail"
+import logger from "@cs-magic/common/dist/log/index"
 
 import {
   FetchWxmpArticleRes,

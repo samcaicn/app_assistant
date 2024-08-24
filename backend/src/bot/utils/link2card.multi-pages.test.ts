@@ -1,10 +1,10 @@
 import { random, range } from "lodash-es"
 
-import logger from "@cs-magic/common/dist/log/index.js"
-import { sleep } from "@cs-magic/common/dist/datetime/index.js"
-import { BaseSimulator } from "@cs-magic/common/dist/spider/base-simulator.js"
-import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary.js"
-import { env } from "@cs-magic/common/dist/env/index.js"
+import logger from "@cs-magic/common/dist/log/index"
+import { sleep } from "@cs-magic/common/dist/datetime/index"
+import { BaseSimulator } from "@cs-magic/common/dist/spider/base-simulator"
+import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary"
+import { env } from "@cs-magic/common/dist/env/index"
 
 const simulator = new BaseSimulator("playwright", {
   // headless: false,

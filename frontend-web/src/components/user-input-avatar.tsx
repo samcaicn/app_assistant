@@ -1,10 +1,10 @@
 "use client"
 
-import { uploadFile } from "@cs-magic/common/dist/oss/oss.server.js"
-import { Label } from "@cs-magic/react/dist/shadcn/ui/label.js"
-import { useDraftSession } from "@/hooks/use-user"
+import { uploadFile } from "@cs-magic/common/dist/oss/oss.server"
+import { Label } from "@cs-magic/shadcn/dist/ui/label"
 
 import { UserAvatar } from "./user-avatar"
+import { useDraftSession } from "@/hooks/use-user"
 
 export const UserInputAvatar = () => {
   const { draft, setDraft } = useDraftSession("image")

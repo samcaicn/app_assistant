@@ -1,8 +1,8 @@
 import { type Wechaty, WechatyBuilder } from "wechaty"
 import wechatyPuppetWechat4u from "wechaty-puppet-wechat4u"
 
-import { env, logEnv } from "@cs-magic/common/dist/env/index.js"
-import logger from "@cs-magic/common/dist/log/index.js"
+import { env, logEnv } from "@cs-magic/common/dist/env/index"
+import logger from "@cs-magic/common/dist/log/index"
 
 import { handleWechatyBot } from "./handlers/index.js"
 

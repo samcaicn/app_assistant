@@ -5,7 +5,7 @@ import React from "react"
 
 import { cardArticleUrlAtom } from "../store/card.atom"
 import { LabelLine } from "@cs-magic/react/components/label-line"
-import { Input } from "@cs-magic/react/shadcn/ui/input"
+import { Input } from "@cs-magic/shadcn/dist/ui/input"
 
 export const CardInputUrl = () => {
   const [inputUrl, setInputUrl] = useAtom(cardArticleUrlAtom)

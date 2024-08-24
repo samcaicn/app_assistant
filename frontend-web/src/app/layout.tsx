@@ -1,17 +1,17 @@
-import { GlobalProvider } from "@/app/global-provider"
-import { SwotIcoWhite } from "@/components/assets"
-
-import { Dev } from "@/components/dev"
-import { SwotBanner } from "@/components/swot-banner"
-import { LoadingAlertDialog } from "@cs-magic/react/components/loading"
-import { Navbar } from "@cs-magic/react/components/navbar"
-import { Toaster } from "@cs-magic/react/shadcn/ui/sonner"
-import { cn } from "@cs-magic/react/shadcn/utils"
 import { Metadata, type Viewport } from "next"
 import { Inter } from "next/font/google"
 import React, { Suspense } from "react"
 
-import "@cs-magic/swot-frontend-common/dist/styles/globals.css"
+import { LoadingAlertDialog } from "@cs-magic/react/components/loading"
+import { Navbar } from "@cs-magic/react/components/navbar"
+import { cn } from "@cs-magic/react/shadcn/utils"
+import { Toaster } from "@cs-magic/shadcn/dist/ui/sonner"
+
+import { GlobalProvider } from "@/app/global-provider"
+import { SwotIcoWhite } from "@/components/assets"
+import { Dev } from "@/components/dev"
+import { SwotBanner } from "@/components/swot-banner"
+import "@/styles/globals.css"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,11 +35,7 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   // console.log(ansiColors.red("== RootLayout =="))
 
   return (
@@ -53,12 +49,7 @@ export default function RootLayout({
 
               {children}
 
-              <Toaster
-                richColors
-                position={"top-right"}
-                duration={3000}
-                closeButton={false}
-              />
+              <Toaster richColors position={"top-right"} duration={3000} closeButton={false} />
 
               <LoadingAlertDialog />
 

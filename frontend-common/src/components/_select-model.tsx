@@ -5,7 +5,7 @@ import {
   SelectItemText,
 } from "@radix-ui/react-select"
 import { Check } from "lucide-react"
-import { ScenarioType } from "@cs-magic/common/dist/schema/scenario.js"
+import { ScenarioType } from "@cs-magic/common/dist/schema/scenario"
 
 export const SelectModel = ({
   value,

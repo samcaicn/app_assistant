@@ -14,7 +14,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@cs-magic/react/dist/shadcn/ui/table.js"
+} from "@cs-magic/shadcn/dist/ui/table"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]

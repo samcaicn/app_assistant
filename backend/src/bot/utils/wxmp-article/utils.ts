@@ -1,6 +1,6 @@
-import { api } from "@cs-magic/common/dist/api/api.js"
+import { api } from "@cs-magic/common/dist/api/api"
 
-import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index.js"
+import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index"
 
 import { parse } from "node-html-parser"
 
