@@ -1,13 +1,14 @@
-import { Wechaty } from "wechaty"
 import yaml from "js-yaml"
+import { Wechaty } from "wechaty"
 
-import { formatAction } from "@cs-magic/common/dist/utils/format-action"
-import { formatDuration } from "@cs-magic/common/dist/utils/format-duration"
 import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
 import logger, { LogLevel } from "@cs-magic/common/dist/log/index"
+import { formatAction } from "@cs-magic/common/dist/utils/format-action"
+import { formatDuration } from "@cs-magic/common/dist/utils/format-duration"
 
 import { QueueTask } from "../../schema/index.js"
 import { BotData, IBotContext } from "../schema.js"
+
 import { getConvPreference } from "./get-conv-preference.js"
 import { SenderQueue } from "./sender-queue.js"
 
@@ -22,9 +23,7 @@ export const initBotContext = async (bot: Wechaty): Promise<IBotContext> => {
   const rooms = await bot.Room.findAll()
   await Promise.all(
     rooms.map(async (room, index) => {
-      logger.debug(
-        `[${index + 1}] Room(id=${room.id}, topic=${await room.topic()})`,
-      )
+      logger.debug(`[${index + 1}] Room(id=${room.id}, topic=${await room.topic()})`)
     }),
   )
 
@@ -44,11 +43,7 @@ export const initBotContext = async (bot: Wechaty): Promise<IBotContext> => {
     wxid: bot.currentUser.id,
     puppet: {
       name: puppetName,
-      type: puppetName.includes("padlocal")
-        ? "padlocal"
-        : puppetName.includes("wechat4u")
-          ? "wechat4u"
-          : "unknown",
+      type: puppetName.includes("padlocal") ? "padlocal" : puppetName.includes("wechat4u") ? "wechat4u" : "unknown",
     },
   }
   logger.debug(`bot data: %o`, botData)
@@ -62,8 +57,7 @@ export const initBotContext = async (bot: Wechaty): Promise<IBotContext> => {
         // !important 需要在手机上，手动地把对应的群，保存到通讯录，否则找不到
         ;(await bot.Room.find({ topic: /飞脑通知/i }))?.say(content)
 
-        if (level && level >= LogLevel.error)
-          (await bot.Room.find({ topic: /飞脑报错/i }))?.say(content)
+        if (level && level >= LogLevel.error) (await bot.Room.find({ topic: /飞脑报错/i }))?.say(content)
       })
     },
     getHelp: async () => {
@@ -86,10 +80,9 @@ Basic Commands：
       const convPreference = await getConvPreference({
         convId: message.conversation().id,
       })
-      return [
-        yaml.dump({ Basic: { name, version, aliveTime } }),
-        yaml.dump({ Preference: convPreference }),
-      ].join(SEPARATOR_LINE + "\n")
+      return [yaml.dump({ Basic: { name, version, aliveTime } }), yaml.dump({ Preference: convPreference })].join(
+        SEPARATOR_LINE + "\n",
+      )
     },
   }
 }

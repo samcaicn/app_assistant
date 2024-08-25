@@ -1,8 +1,9 @@
-import { Message, Sayable } from "wechaty"
 import { Job } from "node-schedule"
+import { Message, Sayable } from "wechaty"
+
+import { LogLevel } from "@cs-magic/common/dist/log/schema"
 
 import { LlmScenario, QueueTask } from "../schema/index.js"
-import { LogLevel } from "@cs-magic/common/dist/log/schema"
 
 export type BotData = {
   name: string
@@ -20,11 +21,7 @@ export type BotData = {
 export type IBotContext = BotData & {
   data: BotData
   addSendTask: (task: QueueTask) => Promise<void>
-  notify: (
-    content: Sayable,
-    llmScenario?: LlmScenario,
-    level?: LogLevel,
-  ) => Promise<void>
+  notify: (content: Sayable, llmScenario?: LlmScenario, level?: LogLevel) => Promise<void>
   getHelp: () => Promise<string>
   getStatus: (message: Message) => Promise<string>
 }

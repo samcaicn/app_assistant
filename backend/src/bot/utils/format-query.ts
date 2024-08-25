@@ -1,4 +1,4 @@
-import { SEPARATOR_LINE, SEPARATOR_BOX } from "@cs-magic/common/dist/const"
+import { SEPARATOR_BOX, SEPARATOR_LINE } from "@cs-magic/common/dist/const"
 
 import { CommandStyle } from "../../schema/bot-preference.js"
 
@@ -17,20 +17,17 @@ export const formatQuery = (
 ) => {
   const lines = []
 
-  if (options?.commandStyle === CommandStyle.standard && options?.title)
-    lines.push("  " + options.title)
+  if (options?.commandStyle === CommandStyle.standard && options?.title) lines.push("  " + options.title)
 
   lines.push(content)
 
   if (options?.tips) lines.push(["TIPS: ", options.tips].join("\n"))
 
-  if (options?.commandStyle === CommandStyle.standard && options?.footer)
-    lines.push("  " + options.footer)
+  if (options?.commandStyle === CommandStyle.standard && options?.footer) lines.push("  " + options.footer)
 
   let s = lines.join(`\n${SEPARATOR_LINE}\n`)
 
-  if (options?.commandStyle === CommandStyle.standard)
-    s = [SEPARATOR_BOX, s, SEPARATOR_BOX].join("\n")
+  if (options?.commandStyle === CommandStyle.standard) s = [SEPARATOR_BOX, s, SEPARATOR_BOX].join("\n")
 
   return s
 }

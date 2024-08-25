@@ -1,8 +1,6 @@
-import {
-  tvFullScreenAtom,
-  tvScreenOnAtom,
-} from "@cs-magic/react/dist/store/tv.atom"
 import { useSetAtom } from "jotai"
+
+import { tvFullScreenAtom, tvScreenOnAtom } from "@cs-magic/react/dist/store/tv.atom"
 
 export const Controls = () => {
   const toggleFullscreen = useSetAtom(tvFullScreenAtom)

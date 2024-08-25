@@ -1,17 +1,13 @@
+import { type TaskStatus } from "@prisma/client"
 import { chain, omit, sortBy } from "lodash-es"
 import { Job } from "node-schedule"
 import { Message } from "wechaty-puppet/payloads"
 
-import { type TaskStatus } from "@prisma/client"
-
-import {
-  ITaskDetail,
-  taskDetailSchema,
-} from "@cs-magic/common/dist/schema/task"
-import logger from "@cs-magic/common/dist/log/index"
-import { parseFunction } from "@cs-magic/common/dist/utils/parse-function"
 import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
 import { prisma } from "@cs-magic/common/dist/db/prisma"
+import logger from "@cs-magic/common/dist/log/index"
+import { ITaskDetail, taskDetailSchema } from "@cs-magic/common/dist/schema/task"
+import { parseFunction } from "@cs-magic/common/dist/utils/parse-function"
 
 import { Priority } from "../../../../schema/index.js"
 
@@ -27,12 +23,7 @@ export const taskStatusMap: Record<TaskStatus, string> = {
   discarded: "已取消",
 }
 
-const serializeTaskGroup = (
-  tasks: ITaskWithIndex[],
-  status: TaskStatus,
-  onlyCount = false,
-  showRoom?: boolean,
-) => {
+const serializeTaskGroup = (tasks: ITaskWithIndex[], status: TaskStatus, onlyCount = false, showRoom?: boolean) => {
   const items = sortBy(
     tasks.filter((t) => t.status === status),
     // .map((t) => {
@@ -140,13 +131,7 @@ export class TaskService {
     return s
   }
 
-  async add(
-    title: string,
-    priority?: Priority,
-    timer?: Job,
-    description?: string,
-    status?: TaskStatus,
-  ) {
+  async add(title: string, priority?: Priority, timer?: Job, description?: string, status?: TaskStatus) {
     const s = await prisma.task.create({
       data: {
         conv: this.message.roomId

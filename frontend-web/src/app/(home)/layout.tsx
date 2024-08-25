@@ -1,7 +1,8 @@
 import { PropsWithChildren } from "react"
 
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 import { FlexContainer } from "@cs-magic/react/components/flex-container"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+
 import { Header } from "@/components/header"
 
 export default function SubLayout({ children }: PropsWithChildren) {
@@ -17,9 +18,7 @@ export default function SubLayout({ children }: PropsWithChildren) {
     >
       <Header />
 
-      <div className={"flex w-full grow flex-col overflow-hidden border-t"}>
-        {children}
-      </div>
+      <div className={"flex w-full grow flex-col overflow-hidden border-t"}>{children}</div>
 
       {/*<Footer />*/}
     </FlexContainer>

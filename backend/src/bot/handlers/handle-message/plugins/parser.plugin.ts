@@ -1,16 +1,14 @@
 import { z } from "zod"
 
-import {
-  isWxmpArticleUrl,
-  parseTitleFromWechatUrlMessage,
-} from "@cs-magic/common/dist/utils/index"
-import { CardSimulator } from "@cs-magic/common/dist/spider/card-simulator"
-import { parseUrlFromWechatUrlMessage } from "@cs-magic/common/dist/utils/parse-url-from-wechat-url-message"
 import logger from "@cs-magic/common/dist/log/index"
+import { CardSimulator } from "@cs-magic/common/dist/spider/card-simulator"
+import { isWxmpArticleUrl, parseTitleFromWechatUrlMessage } from "@cs-magic/common/dist/utils/index"
+import { parseUrlFromWechatUrlMessage } from "@cs-magic/common/dist/utils/parse-url-from-wechat-url-message"
 
 import { FeatureMap, FeatureType } from "../../../../schema/index.js"
 import { getQuotedMessage, parseText } from "../../../utils/index.js"
 import { link2card } from "../../../utils/link2card.js"
+
 import { BasePlugin } from "./base.plugin.js"
 
 const commandTypeSchema = z.enum([""])
@@ -19,9 +17,7 @@ const i18n: FeatureMap<CommandType> = {
   en: {
     title: "Super Parser",
     description:
-      "Hello, I am the Super Parser!" +
-      "\nI can parse almost anything!" +
-      "\nSend me one wxmp article, now! 😠",
+      "Hello, I am the Super Parser!" + "\nI can parse almost anything!" + "\nSend me one wxmp article, now! 😠",
     commands: {},
   },
 }
@@ -37,9 +33,7 @@ export class ParserPlugin extends BasePlugin {
     const desc = await this.getDescription()
     await this.standardReply(
       desc,
-      Object.keys(commands).map(
-        (command) => `  ${ParserPlugin.name} ${command}`,
-      ),
+      Object.keys(commands).map((command) => `  ${ParserPlugin.name} ${command}`),
     )
   }
 
@@ -65,9 +59,7 @@ export class ParserPlugin extends BasePlugin {
 
     const v = this.quote.quoted.version
     const message = await getQuotedMessage(
-      v === "mark@2024-04-19" && "id" in this.quote.quoted
-        ? this.quote.quoted.id
-        : undefined,
+      v === "mark@2024-04-19" && "id" in this.quote.quoted ? this.quote.quoted.id : undefined,
       this.quote.quoted.content ?? "",
     )
 
@@ -110,18 +102,14 @@ export class ParserPlugin extends BasePlugin {
     }
 
     const convPreference = await this.getConvPreference()
-    if (!convPreference.features.parser.enabled)
-      return logger.info(`passed since parser disabled`)
+    if (!convPreference.features.parser.enabled) return logger.info(`passed since parser disabled`)
 
     try {
       // initLogWithTimer()
 
       ++ParserPlugin.toParse
       const title = parseTitleFromWechatUrlMessage(text)
-      void this.notify(
-        `🌈 正在解析[${ParserPlugin.toParse}]: ${title}`,
-        "parser",
-      )
+      void this.notify(`🌈 正在解析[${ParserPlugin.toParse}]: ${title}`, "parser")
 
       const file = await link2card({ url, user, convPreference })
 

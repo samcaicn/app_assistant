@@ -1,11 +1,7 @@
 import { SEPARATOR_BOX } from "@cs-magic/common/dist/const"
 import { prisma } from "@cs-magic/common/dist/db/prisma"
 
-export const listMessagesOfSpecificTopic = async (
-  botWxid: string,
-  convId: string,
-  topic: string,
-) => {
+export const listMessagesOfSpecificTopic = async (botWxid: string, convId: string, topic: string) => {
   const firstUserSetCommand = await prisma.wechatMessage.findFirst({
     where: {
       // 三者任一即可
@@ -43,11 +39,7 @@ export const listMessagesOfSpecificTopic = async (
       // AND, ref: https://chat.openai.com/c/895c1452-c3bd-4d5b-ba9f-c23c7750f412
       AND: [
         {
-          OR: [
-            { roomId: convId },
-            { listenerId: convId },
-            { talkerId: convId },
-          ],
+          OR: [{ roomId: convId }, { listenerId: convId }, { talkerId: convId }],
         },
         {
           OR: [

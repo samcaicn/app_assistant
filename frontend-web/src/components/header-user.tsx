@@ -1,8 +1,8 @@
 "use client"
 
+import { CircleUser } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
-import { CircleUser } from "lucide-react"
 
 import { IconContainer } from "@cs-magic/react/dist/components/icon-container"
 import { cn } from "@cs-magic/shadcn/dist/lib/utils"

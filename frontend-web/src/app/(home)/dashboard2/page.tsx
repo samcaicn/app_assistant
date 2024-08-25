@@ -1,14 +1,16 @@
 "use client"
 
+import { useState } from "react"
+
+import { env } from "@cs-magic/common/dist/env/get-env"
+import { socketStatusMap } from "@cs-magic/common/dist/transport/schema"
 import { FlexContainer } from "@cs-magic/react/components/flex-container"
 import { LabelLine } from "@cs-magic/react/components/label-line"
 import { useInit } from "@cs-magic/react/dist/hooks/use-init"
-import { useState } from "react"
-import DDS_lanhupage_0 from "./comp"
 import { IWechatPreference } from "@cs-magic/swot-backend/dist/schema/bot-preference"
 import { IWechatBotTransfer } from "@cs-magic/swot-backend/dist/schema/bot-utils"
-import { env } from "@cs-magic/common/dist/env/get-env"
-import { socketStatusMap } from "@cs-magic/common/dist/transport/schema"
+
+import DDS_lanhupage_0 from "./comp"
 
 export default function SwotDashboardPage() {
   const [preference, setPreference] = useState<IWechatPreference | null>(null)
@@ -51,26 +53,17 @@ export default function SwotDashboardPage() {
   const Basic = () => {
     return (
       <>
-        {socket && (
-          <LabelLine title={"readyState"}>
-            {socketStatusMap[socket.readyState]}
-          </LabelLine>
-        )}
+        {socket && <LabelLine title={"readyState"}>{socketStatusMap[socket.readyState]}</LabelLine>}
 
         <LabelLine title={"preference"}>
-          <div className={"whitespace-pre"}>
-            {JSON.stringify(preference, null, 2)}
-          </div>
+          <div className={"whitespace-pre"}>{JSON.stringify(preference, null, 2)}</div>
         </LabelLine>
       </>
     )
   }
 
   return (
-    <FlexContainer
-      orientation={"vertical"}
-      className={"justify-start overflow-auto"}
-    >
+    <FlexContainer orientation={"vertical"} className={"justify-start overflow-auto"}>
       {/*<Basic/>*/}
 
       <DDS_lanhupage_0 />

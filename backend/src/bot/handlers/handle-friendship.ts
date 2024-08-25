@@ -1,7 +1,8 @@
+import { Friendship, Wechaty, types } from "wechaty"
+
 import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
-import logger from "@cs-magic/common/dist/log/index"
 import { moment } from "@cs-magic/common/dist/datetime/moment"
-import { Friendship, types, Wechaty } from "wechaty"
+import logger from "@cs-magic/common/dist/log/index"
 
 /**
  * 单方面把bot删了后，再添加bot，不会触发 friendship
@@ -9,10 +10,7 @@ import { Friendship, types, Wechaty } from "wechaty"
  * @param bot
  * @param friendship
  */
-export const handleFriendship = async (
-  bot: Wechaty,
-  friendship: Friendship,
-) => {
+export const handleFriendship = async (bot: Wechaty, friendship: Friendship) => {
   logger.info(`onFriendship: %o`, friendship)
 
   if (

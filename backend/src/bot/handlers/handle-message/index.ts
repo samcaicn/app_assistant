@@ -1,17 +1,11 @@
-import {
-  commandsSchema,
-  type CommandType,
-  ManagerType,
-} from "../../../schema/index.js"
 import omit from "lodash/omit.js"
-import { type Message, types, type Wechaty } from "wechaty"
+import { type Message, type Wechaty, types } from "wechaty"
 
-import {
-  formatTalkerFromMessage,
-  parseLimitedCommand,
-  parseText,
-  storageMessage,
-} from "../../utils/index.js"
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
+import logger from "@cs-magic/common/dist/log/index"
+
+import { type CommandType, ManagerType, commandsSchema } from "../../../schema/index.js"
+import { formatTalkerFromMessage, parseLimitedCommand, parseText, storageMessage } from "../../utils/index.js"
 
 import { BasePlugin } from "./plugins/base.plugin.js"
 import { ChatterPlugin } from "./plugins/chatter.plugin.js"
@@ -20,8 +14,6 @@ import { RoomPlugin } from "./plugins/room.plugin.js"
 import { SystemPlugin } from "./plugins/system.plugin.js"
 import { TaskPlugin } from "./plugins/task.plugin.js"
 import { TestPlugin } from "./plugins/test.plugin.js"
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
-import logger from "@cs-magic/common/dist/log/index"
 
 export const handleMessage = async (bot: Wechaty, message: Message) => {
   const tmm = {
@@ -38,12 +30,7 @@ export const handleMessage = async (bot: Wechaty, message: Message) => {
   const text = message.text()
 
   logger.info(
-    [
-      `[onMessage ${types.Message[type]}]: %o`,
-      await formatTalkerFromMessage(message),
-      SEPARATOR_LINE,
-      text,
-    ].join("\n"),
+    [`[onMessage ${types.Message[type]}]: %o`, await formatTalkerFromMessage(message), SEPARATOR_LINE, text].join("\n"),
     omit(message.payload, ["text", "type"]),
   )
 
@@ -109,9 +96,7 @@ export const handleMessage = async (bot: Wechaty, message: Message) => {
 
           // todo: 树洞
           case "love":
-            return await message.say(
-              "你有什么想和我说的吗？（我是你最乖的树洞，我们之间的对话不会告诉任何人哦）",
-            )
+            return await message.say("你有什么想和我说的吗？（我是你最乖的树洞，我们之间的对话不会告诉任何人哦）")
         }
       } else {
         return // 暂时先关闭回复 // todo: 更像真人的AI社交助理

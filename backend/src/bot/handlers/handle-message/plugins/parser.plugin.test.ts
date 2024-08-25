@@ -1,10 +1,8 @@
-import {
-  sampleWxmpArticleUrl,
-  sampleWxmpArticleUrls,
-} from "@cs-magic/common/dist/sample"
-import { CardSimulator } from "@cs-magic/common/dist/spider/card-simulator"
-import { wxmpUrl2preview } from "../../../utils/wxmp-url2preview.js"
+import { sampleWxmpArticleUrl, sampleWxmpArticleUrls } from "@cs-magic/common/dist/sample"
 import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary"
+import { CardSimulator } from "@cs-magic/common/dist/spider/card-simulator"
+
+import { wxmpUrl2preview } from "../../../utils/wxmp-url2preview.js"
 
 describe("test parser", () => {
   const parser = new CardSimulator("playwright", { headless: false })
@@ -14,10 +12,7 @@ describe("test parser", () => {
   }
 
   const parseUrl = async (url: string) => {
-    const { cardUrl } = await parser.genCard(
-      JSON.stringify(await wxmpUrl2preview(url)),
-      user,
-    )
+    const { cardUrl } = await parser.genCard(JSON.stringify(await wxmpUrl2preview(url)), user)
     console.log(cardUrl)
     return cardUrl
   }

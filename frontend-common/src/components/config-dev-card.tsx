@@ -1,16 +1,15 @@
 import { useAtom } from "jotai"
 
-import { requestsSlideTextVisibleAtom } from "../store/ui.atom"
+import { LabelLine } from "@cs-magic/react/components/label-line"
 import { StandardCard } from "@cs-magic/react/components/standard-card"
 import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom"
-import { LabelLine } from "@cs-magic/react/components/label-line"
 import { Switch } from "@cs-magic/shadcn/dist/ui/switch"
+
+import { requestsSlideTextVisibleAtom } from "../store/ui.atom"
 
 export const ConfigDevCard = () => {
   const [devEnabled, setDevEnabled] = useAtom(devEnabledAtom)
-  const [requestsSlideTextDisplay, setRequestsSlideTextDisplay] = useAtom(
-    requestsSlideTextVisibleAtom,
-  )
+  const [requestsSlideTextDisplay, setRequestsSlideTextDisplay] = useAtom(requestsSlideTextVisibleAtom)
 
   return (
     <StandardCard title={"Dev"}>
@@ -19,10 +18,7 @@ export const ConfigDevCard = () => {
       </LabelLine>
 
       <LabelLine title={"Requests Slide Text On"}>
-        <Switch
-          checked={requestsSlideTextDisplay}
-          onCheckedChange={setRequestsSlideTextDisplay}
-        />
+        <Switch checked={requestsSlideTextDisplay} onCheckedChange={setRequestsSlideTextDisplay} />
       </LabelLine>
     </StandardCard>
   )

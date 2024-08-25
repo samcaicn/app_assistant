@@ -1,21 +1,16 @@
 import path from "path"
 
-import logger from "@cs-magic/common/dist/log/index"
 import { dumpFile } from "@cs-magic/common/dist/dump-file"
+import logger from "@cs-magic/common/dist/log/index"
 import { formatError } from "@cs-magic/common/dist/utils/format-error"
 
-import {
-  BotCommandType,
-  botCommandTypeSchema,
-} from "../../schema/api-commands.js"
+import { getConvPreference, parseLimitedCommand } from "../../bot/utils/index.js"
+import { BotCommandType, botCommandTypeSchema } from "../../schema/api-commands.js"
 import { IWechatBotTransfer } from "../../schema/index.js"
 import { IContext } from "../schema.js"
+
 import { startBot } from "./start-bot.js"
 import { syncClients } from "./sync-clients.js"
-import {
-  getConvPreference,
-  parseLimitedCommand,
-} from "../../bot/utils/index.js"
 
 export const wechatyDataPath = path.join(process.cwd(), "wechaty.data.json")
 
@@ -27,20 +22,13 @@ export type IWechatData = {
   }
 }
 
-export const handleMessage = async (
-  context: IContext,
-  messageBuffer: Buffer,
-  socketId: string,
-): Promise<IContext> => {
+export const handleMessage = async (context: IContext, messageBuffer: Buffer, socketId: string): Promise<IContext> => {
   try {
     const socket = context.sockets.find((s) => s.id === socketId)!
 
     const message = messageBuffer.toString()
 
-    const result = parseLimitedCommand<BotCommandType>(
-      messageBuffer.toString(),
-      botCommandTypeSchema,
-    )
+    const result = parseLimitedCommand<BotCommandType>(messageBuffer.toString(), botCommandTypeSchema)
 
     logger.debug({ message, result })
 

@@ -1,6 +1,7 @@
-import { LlmModelType } from "@cs-magic/llm"
-import { GenWxmpArticleCardFetchOptions } from "./wxmp-article.js"
 import { LangType } from "@cs-magic/common/dist/i18n/schema"
+import { LlmModelType } from "@cs-magic/llm"
+
+import { GenWxmpArticleCardFetchOptions } from "./wxmp-article.js"
 
 export enum CommandStyle {
   standard = "standard",

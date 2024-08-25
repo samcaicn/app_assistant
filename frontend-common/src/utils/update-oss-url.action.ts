@@ -1,15 +1,9 @@
 "use server"
 
 import { prisma } from "@cs-magic/common/dist/db/prisma"
-import {
-  cardLlmResponseSchema,
-  ICardLlmResponse,
-} from "@cs-magic/common/dist/schema/card.detail"
+import { ICardLlmResponse, cardLlmResponseSchema } from "@cs-magic/common/dist/schema/card.detail"
 
-export const updateOssUrl = async (
-  llmResponseId: string,
-  ossUrl: string,
-): Promise<ICardLlmResponse> => {
+export const updateOssUrl = async (llmResponseId: string, ossUrl: string): Promise<ICardLlmResponse> => {
   console.log("-- updateOssUrl: ", { llmResponseId, ossUrl })
 
   return prisma.llmResponse.update({

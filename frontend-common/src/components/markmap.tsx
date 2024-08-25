@@ -1,17 +1,16 @@
 "use client"
 
-import { cardMindmapRenderedAtom } from "../store/card.rendered.atom"
 import { useAtom, useSetAtom } from "jotai"
 import { IPureNode } from "markmap-common"
 import { Transformer } from "markmap-lib"
 import { Markmap } from "markmap-view"
 import { useEffect, useRef, useState } from "react"
 import React from "react"
+
+import { mapLevelsMaxAtom, mapSpacingVerticalAtom } from "@cs-magic/react/dist/store/visualization.atom"
 import { AspectRatio } from "@cs-magic/shadcn/dist/ui/aspect-ratio"
-import {
-  mapLevelsMaxAtom,
-  mapSpacingVerticalAtom,
-} from "@cs-magic/react/dist/store/visualization.atom"
+
+import { cardMindmapRenderedAtom } from "../store/card.rendered.atom"
 
 const transformer = new Transformer()
 

@@ -3,10 +3,11 @@
 import { useAtom } from "jotai"
 import React from "react"
 
-import { cardUserAvatarRenderedAtom } from "../store/card.rendered.atom"
-import { cardUserAvatarAtom, cardUserNameAtom } from "../store/card.user.atom"
 import { LabelLine } from "@cs-magic/react/components/label-line"
 import { Input } from "@cs-magic/shadcn/dist/ui/input"
+
+import { cardUserAvatarRenderedAtom } from "../store/card.rendered.atom"
+import { cardUserAvatarAtom, cardUserNameAtom } from "../store/card.user.atom"
 
 export const CardInputUser = () => {
   const [cardUserName, setCardUserName] = useAtom(cardUserNameAtom)

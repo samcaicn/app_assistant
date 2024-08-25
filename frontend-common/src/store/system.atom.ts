@@ -1,7 +1,8 @@
 import { atom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
-import { ScenarioType } from "@cs-magic/common/dist/schema/scenario"
+
 import { BEST_VIEWPOINT } from "@cs-magic/common/dist/config"
+import { ScenarioType } from "@cs-magic/common/dist/schema/scenario"
 import { uiScreenAtom } from "@cs-magic/react/dist/store/ui.atom"
 
 //////////////////////////////
@@ -32,12 +33,7 @@ export const appsPlaceholderCountAtom = atomWithStorage("apps.placeholder.n", 2)
 
 export const maxAppsOnScreenAtom = atom((get) =>
   Math.max(
-    Math.floor(
-      (get(uiScreenAtom).height * get(uiScreenAtom).width) /
-        BEST_VIEWPOINT /
-        BEST_VIEWPOINT /
-        2,
-    ),
+    Math.floor((get(uiScreenAtom).height * get(uiScreenAtom).width) / BEST_VIEWPOINT / BEST_VIEWPOINT / 2),
     2, // se: 375x667
   ),
 )

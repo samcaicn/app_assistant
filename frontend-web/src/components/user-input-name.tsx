@@ -1,13 +1,10 @@
 "use client"
 
-import { useDraftSession } from "@/hooks/use-user"
 import { InputWithEnter } from "@cs-magic/react/dist/components/input"
 
-export const UserInputName = ({
-  onEnter,
-}: {
-  onEnter?: (s: string) => void
-}) => {
+import { useDraftSession } from "@/hooks/use-user"
+
+export const UserInputName = ({ onEnter }: { onEnter?: (s: string) => void }) => {
   const { draft, value, setDraft } = useDraftSession("name")
 
   return (

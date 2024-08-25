@@ -1,10 +1,13 @@
 import { useAtom, useSetAtom } from "jotai"
+
+import { Action1Type } from "@cs-magic/swot-backend/schema"
+
 import { cardArticleUrlAtom, cardInnerInputAtom } from "../store/card.atom"
 import { cardGenOptionsAtom } from "../store/card.gen.atom"
 import { cardUserAvatarAtom, cardUserNameAtom } from "../store/card.user.atom"
 import { genCardFromUrl } from "../utils/gen-card"
+
 import { GeneralCardAction } from "./card-action-general"
-import { Action1Type } from "@cs-magic/swot-backend/schema"
 
 export const InputCardAction = ({ type }: { type: Action1Type }) => {
   const [inputUrl] = useAtom(cardArticleUrlAtom)

@@ -1,23 +1,20 @@
 // import qrcodeTerminal from "qrcode-terminal" // cjs package
-import { LogLevel } from "@cs-magic/common/dist/log/schema"
 import { ScanStatus, Wechaty } from "wechaty"
 
 import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
-import logger from "@cs-magic/common/dist/log/index"
 import { moment } from "@cs-magic/common/dist/datetime/moment"
+import logger from "@cs-magic/common/dist/log/index"
+import { LogLevel } from "@cs-magic/common/dist/log/schema"
 import { formatError, formatString } from "@cs-magic/common/dist/utils/index"
 
 import { formatTalkerFromMessage, initBotContext } from "../utils/index.js"
-import { handleMessage } from "./handle-message/index.js"
+
 import { handleFriendship } from "./handle-friendship.js"
+import { handleMessage } from "./handle-message/index.js"
 import { handleRoomInvite } from "./handle-room-invite.js"
 import { handleRoomJoin } from "./handle-room-join.js"
 
-export const safeHandle = async (
-  bot: Wechaty,
-  p: Promise<unknown>,
-  suffix?: string,
-) => {
+export const safeHandle = async (bot: Wechaty, p: Promise<unknown>, suffix?: string) => {
   try {
     return await p
   } catch (e) {

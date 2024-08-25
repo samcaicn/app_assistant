@@ -6,25 +6,25 @@ import { useState } from "react"
 import { CSVLink } from "react-csv"
 import { toast } from "sonner"
 
+import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading"
+import { FlexContainer } from "@cs-magic/react/components/flex-container"
+import { StandardCard } from "@cs-magic/react/components/standard-card"
 import { useInit } from "@cs-magic/react/dist/hooks/use-init"
-
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+import { Button, buttonVariants } from "@cs-magic/shadcn/dist/ui/button"
 import { IWechatBotTransfer, ScanStatus } from "@cs-magic/swot-backend/schema"
 
 import {
   botContactsAtom,
   botLoggedInAtom,
   botLoggingAtom,
-  botScanningAtom,
   botScanStatusAtom,
   botScanValueAtom,
+  botScanningAtom,
   botUserAtom,
 } from "../../store/bot.atom"
-import { FlexContainer } from "@cs-magic/react/components/flex-container"
-import { StandardCard } from "@cs-magic/react/components/standard-card"
-import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading"
-import { Button, buttonVariants } from "@cs-magic/shadcn/dist/ui/button"
-import { columns, DataTable } from "./contacts.table"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+
+import { DataTable, columns } from "./contacts.table"
 
 export default function BotPage() {
   const [socketStatus, setSocketStatus] = useState<number>(0)
@@ -42,8 +42,7 @@ export default function BotPage() {
   const socket = useInit<WebSocket | null>(() => {
     console.log("-- env: ", process.env)
     console.log("-- initing socket --")
-    const socketUrl =
-      process.env.VITE_SOCKET_URL ?? process.env.NEXT_PUBLIC_SOCKET_URL
+    const socketUrl = process.env.VITE_SOCKET_URL ?? process.env.NEXT_PUBLIC_SOCKET_URL
     console.log({ socketUrl })
 
     if (!socketUrl) {
@@ -111,12 +110,7 @@ export default function BotPage() {
         // "bg-cyan-950"
       }
     >
-      <div
-        className={cn(
-          socket ? "bg-green-700" : "bg-red-700",
-          "w-3 h-3 rounded-full fixed right-4 top-4",
-        )}
-      />
+      <div className={cn(socket ? "bg-green-700" : "bg-red-700", "w-3 h-3 rounded-full fixed right-4 top-4")} />
 
       {botUser ? (
         <>

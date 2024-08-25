@@ -14,7 +14,4 @@ export const selectAppsDialogOpenAtom = atom(false)
 /**
  * 是否显示时间窗上的文字 log （占体积，仅调 bug 需要）
  */
-export const requestsSlideTextVisibleAtom = atomWithStorage(
-  "requests.slide.text.visible",
-  false,
-)
+export const requestsSlideTextVisibleAtom = atomWithStorage("requests.slide.text.visible", false)

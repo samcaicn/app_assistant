@@ -1,13 +1,12 @@
 "use server"
 
 import { Card, Prisma } from "@prisma/client"
-import { prisma } from "@cs-magic/common/dist/db/prisma"
+
 import { IBilibiliVideoDetail } from "@cs-magic/common/dist/bilibili/schema"
 import { getBilibiliIFrameUrl } from "@cs-magic/common/dist/bilibili/utils"
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 
-export const bilibili2card = (
-  inputData: IBilibiliVideoDetail,
-): Promise<Card> => {
+export const bilibili2card = (inputData: IBilibiliVideoDetail): Promise<Card> => {
   const { width, height } = inputData.View.dimension
   const ratio = width / height
 

@@ -1,19 +1,17 @@
-import {
-  createTRPCProxyClient,
-  loggerLink,
-  TRPCClientError,
-} from "@trpc/client"
+import { TRPCClientError, createTRPCProxyClient, loggerLink } from "@trpc/client"
 import { callProcedure } from "@trpc/server"
 import { observable } from "@trpc/server/observable"
 import { type TRPCErrorResponse } from "@trpc/server/rpc"
 import { headers } from "next/headers"
 import { cache } from "react"
+import "server-only"
+
+import { env } from "@cs-magic/common/dist/env/get-env"
+
 import { appRouter } from "../app/api/trpc"
+
 import { createTRPCContext } from "./context"
 import { transformer } from "./shared"
-
-import "server-only"
-import { env } from "@cs-magic/common/dist/env/get-env"
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
@@ -32,9 +30,7 @@ export const api = createTRPCProxyClient<typeof appRouter>({
   transformer,
   links: [
     loggerLink({
-      enabled: (op) =>
-        env.NODE_ENV === "development" ||
-        (op.direction === "down" && op.result instanceof Error),
+      enabled: (op) => env.NODE_ENV === "development" || (op.direction === "down" && op.result instanceof Error),
     }),
     /**
      * Custom RSC link that lets us invoke procedures without using http requests. Since Server

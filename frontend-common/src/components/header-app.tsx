@@ -1,8 +1,9 @@
-import { MSG_TODO } from "@cs-magic/common/dist/const"
-import { AspectRatio } from "@cs-magic/shadcn/dist/ui/aspect-ratio"
 import Image from "next/image"
 import Link from "next/link"
 import { toast } from "sonner"
+
+import { MSG_TODO } from "@cs-magic/common/dist/const"
+import { AspectRatio } from "@cs-magic/shadcn/dist/ui/aspect-ratio"
 
 export interface ISubAppIcon {
   id: string
@@ -17,9 +18,7 @@ export const SubAppIcon = ({ subAppIcon }: { subAppIcon: ISubAppIcon }) => {
   return (
     <Link
       href={`/${subAppIcon.id}`}
-      className={
-        "interactive flex w-24 flex-col items-center gap-1 rounded-lg p-2"
-      }
+      className={"interactive flex w-24 flex-col items-center gap-1 rounded-lg p-2"}
       onClick={(event) => {
         if (!enabled) {
           event.preventDefault()
@@ -30,12 +29,7 @@ export const SubAppIcon = ({ subAppIcon }: { subAppIcon: ISubAppIcon }) => {
       {/*<Text2TextApp className={"w-24 h-24"} />*/}
       <AspectRatio ratio={1}>
         {!Cover || typeof Cover === "string" ? (
-          <Image
-            src={Cover ?? ""}
-            alt={""}
-            fill
-            className={"rounded-lg object-cover"}
-          />
+          <Image src={Cover ?? ""} alt={""} fill className={"rounded-lg object-cover"} />
         ) : (
           <Cover className={"object-cover"} />
         )}

@@ -2,24 +2,19 @@ import { Job, scheduleJob } from "node-schedule"
 import { z } from "zod"
 
 import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
+import { moment } from "@cs-magic/common/dist/datetime/moment"
 import { prisma } from "@cs-magic/common/dist/db/prisma"
+import logger from "@cs-magic/common/dist/log/index"
 import { parseCommand } from "@cs-magic/common/dist/parse-command"
 import { TaskTimer } from "@cs-magic/common/dist/schema/task"
-import logger from "@cs-magic/common/dist/log/index"
-import { moment } from "@cs-magic/common/dist/datetime/moment"
 import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json"
 
 import { FeatureMap, FeatureType } from "../../../../schema/index.js"
+
 import { BasePlugin } from "./base.plugin.js"
 import { TaskService } from "./task.service.js"
 
-const commandTypeSchema = z.enum([
-  "list",
-  "add",
-  "update",
-  "set-timer",
-  "unset-timer",
-])
+const commandTypeSchema = z.enum(["list", "add", "update", "set-timer", "unset-timer"])
 type CommandType = z.infer<typeof commandTypeSchema>
 const i18n: FeatureMap<CommandType> = {
   en: {
@@ -90,11 +85,7 @@ export class TaskPlugin extends BasePlugin {
         break
 
       case "add":
-        const title = z
-          .string()
-          .trim()
-          .min(1)
-          .parse(parsed._.slice(1).join(" "))
+        const title = z.string().trim().min(1).parse(parsed._.slice(1).join(" "))
         await this.service.add(title)
         // todo: better input
         await this.sync()
@@ -142,11 +133,7 @@ export class TaskPlugin extends BasePlugin {
     logger.debug(`setting timer: %o`, { index, timer })
     job = TaskPlugin.jobs[task.id] = scheduleJob(timer, async () => {
       await conv.say(
-        [
-          "⏰ " + task.title + " 开始啦~",
-          SEPARATOR_LINE,
-          `${moment().format("MM-DD HH:mm")} (${timer})`,
-        ].join("\n"),
+        ["⏰ " + task.title + " 开始啦~", SEPARATOR_LINE, `${moment().format("MM-DD HH:mm")} (${timer})`].join("\n"),
       )
     })
     console.log("jobs: ", TaskPlugin.jobs)
@@ -163,11 +150,7 @@ export class TaskPlugin extends BasePlugin {
         }),
       },
     })
-    await conv.say(
-      job
-        ? `设置成功，下一次提醒在：${nextTime.format("MM-DD HH:mm")}`
-        : `设置失败，原因：非法输入`,
-    )
+    await conv.say(job ? `设置成功，下一次提醒在：${nextTime.format("MM-DD HH:mm")}` : `设置失败，原因：非法输入`)
   }
 
   /**

@@ -8,8 +8,7 @@ import fetch from "node-fetch"
 export async function GET(req: NextRequest) {
   const videoUrl = new URL(req.url).searchParams.get("url")
 
-  if (!videoUrl)
-    return new NextResponse("请求失败，原因：没有目标网址", { status: 500 })
+  if (!videoUrl) return new NextResponse("请求失败，原因：没有目标网址", { status: 500 })
 
   try {
     console.log("-- fetching")

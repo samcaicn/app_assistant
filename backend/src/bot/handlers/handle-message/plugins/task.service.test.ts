@@ -1,7 +1,8 @@
 import { types } from "wechaty-puppet"
 
-import { TaskService } from "./task.service.js"
 import { genRandomId } from "@cs-magic/common/dist/utils/gen-random-id"
+
+import { TaskService } from "./task.service.js"
 
 describe("", () => {
   const talkerId = genRandomId()

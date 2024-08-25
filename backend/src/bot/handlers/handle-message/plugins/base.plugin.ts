@@ -2,30 +2,14 @@ import { set } from "lodash-es"
 import { Message, Sayable, type Wechaty } from "wechaty"
 import { deserializeMsg, puppetVersion } from "wechaty-puppet"
 
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 import logger from "@cs-magic/common/dist/log/index"
 import { LogLevel } from "@cs-magic/common/dist/log/schema"
-import { prisma } from "@cs-magic/common/dist/db/prisma"
-import {
-  IUserSummaryFilled,
-  NotImplementedError,
-  wechatMessageDetailSchema,
-} from "@cs-magic/common/dist/schema/index"
+import { IUserSummaryFilled, NotImplementedError, wechatMessageDetailSchema } from "@cs-magic/common/dist/schema/index"
 import { evalObject, formatString } from "@cs-magic/common/dist/utils/index"
 
-import {
-  FeatureMap,
-  FeatureType,
-  IWechatData,
-  IWechatPreference,
-  LlmScenario,
-} from "../../../../schema/index.js"
-import {
-  formatFooter,
-  formatQuery,
-  getConvData,
-  getConvPreference,
-  parseText,
-} from "../../../utils/index.js"
+import { FeatureMap, FeatureType, IWechatData, IWechatPreference, LlmScenario } from "../../../../schema/index.js"
+import { formatFooter, formatQuery, getConvData, getConvPreference, parseText } from "../../../utils/index.js"
 
 export class BasePlugin {
   public message: Message
@@ -199,11 +183,7 @@ export class BasePlugin {
     const N = preference.display.maxLines
     let lines = content.split("\n")
     if (lines.length > N) {
-      lines = [
-        ...lines.slice(0, N / 2),
-        "...",
-        ...lines.slice(lines.length - N / 2),
-      ]
+      lines = [...lines.slice(0, N / 2), "...", ...lines.slice(lines.length - N / 2)]
     }
     content = lines.join("\n")
 
@@ -249,14 +229,10 @@ export class BasePlugin {
     const updatePreference = (preference: IWechatPreference) => {
       const convertedValue = evalObject(value)
 
-      logger.info(
-        `updating preference: path=${path}, value=${value}, preference=${JSON.stringify(preference)}`,
-      )
+      logger.info(`updating preference: path=${path}, value=${value}, preference=${JSON.stringify(preference)}`)
       // migrate v1 --> v2
       set(preference, path, convertedValue)
-      logger.info(
-        `updated preference: path=${path}, value=${value}, preference=${JSON.stringify(preference)}`,
-      )
+      logger.info(`updated preference: path=${path}, value=${value}, preference=${JSON.stringify(preference)}`)
     }
 
     const preference = await this.getConvPreference()

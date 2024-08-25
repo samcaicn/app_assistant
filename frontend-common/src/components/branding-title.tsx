@@ -1,6 +1,7 @@
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 import Link from "next/link"
 import { HTMLAttributes } from "react"
+
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
 export const BrandingTitle = ({
   withDescription,
@@ -27,13 +28,7 @@ export const BrandingTitle = ({
       {/*  className={"h-auto"}*/}
       {/*/>*/}
 
-      <h1
-        className={cn(
-          "primary-gradient flex gap-4 text-lg font-bold sm:text-2xl",
-          className,
-        )}
-        {...props}
-      >
+      <h1 className={cn("primary-gradient flex gap-4 text-lg font-bold sm:text-2xl", className)} {...props}>
         {"飞脑助手"}
       </h1>
 

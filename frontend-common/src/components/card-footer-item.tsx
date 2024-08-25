@@ -1,14 +1,9 @@
-import { FlexContainer } from "@cs-magic/react/components/flex-container"
 import { LucideIcon } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
-export const CardFooterItem = ({
-  Icon,
-  value,
-}: {
-  Icon: LucideIcon
-  value?: string | null
-}) => {
+import { FlexContainer } from "@cs-magic/react/components/flex-container"
+
+export const CardFooterItem = ({ Icon, value }: { Icon: LucideIcon; value?: string | null }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [fontSize, setFontSize] = useState(14)
 
@@ -26,11 +21,7 @@ export const CardFooterItem = ({
   return (
     <FlexContainer orientation={"vertical"} className={"!gap-1 !p-0 "}>
       <Icon />
-      <div
-        style={{ fontSize }}
-        ref={ref}
-        className={"truncate text-nowrap text-center"}
-      >
+      <div style={{ fontSize }} ref={ref} className={"truncate text-nowrap text-center"}>
         {value ?? "-"}
       </div>
     </FlexContainer>

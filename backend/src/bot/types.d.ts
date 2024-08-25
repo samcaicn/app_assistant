@@ -1,5 +1,6 @@
 import { type WechatyBuilder } from "wechaty"
 import { Message as MessagePayload } from "wechaty-puppet/dist/esm/src/mods/payloads"
+
 import { IBotContext } from "./index"
 
 declare module "wechaty-puppet/dist/esm/src/mods/payloads" {

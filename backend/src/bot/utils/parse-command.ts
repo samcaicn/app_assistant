@@ -10,8 +10,7 @@ export const parseLimitedCommand = <T extends string>(
   commands: T[] | ZodEnum<[T, ...T[]]>,
   prefix = "",
 ): IParseCommandRes<T> => {
-  const ms =
-    commands instanceof Array ? commands : commands.options.map((o) => o)
+  const ms = commands instanceof Array ? commands : commands.options.map((o) => o)
 
   // 正则使用 `` 而非 // 的时候要 \s --> \\s
   // - /A, ok

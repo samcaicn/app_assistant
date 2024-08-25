@@ -1,11 +1,9 @@
-import { prisma } from "@cs-magic/common/dist/db/prisma"
 import { Contact, Room, Wechaty } from "wechaty"
-import {
-  getRobustData,
-  getRobustPreference,
-  sendMessageOnRoomJoin,
-} from "../utils/index.js"
+
+import { prisma } from "@cs-magic/common/dist/db/prisma"
 import logger from "@cs-magic/common/dist/log/index"
+
+import { getRobustData, getRobustPreference, sendMessageOnRoomJoin } from "../utils/index.js"
 
 /**
  * 小群邀请自己也会触发该 hook
@@ -30,9 +28,7 @@ export const handleRoomJoin = async (
   })
   if (!roomInDB) return
 
-  const includeSelf = inviteeList.some(
-    (invitee) => invitee.id === bot.context?.wxid,
-  )
+  const includeSelf = inviteeList.some((invitee) => invitee.id === bot.context?.wxid)
   logger.info(
     `inviter(id=${inviter.id}, name=${inviter.name()})\ninvitees %o\nhas self: ${includeSelf}`,
     inviteeList.map((i) => i.payload),

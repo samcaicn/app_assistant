@@ -2,10 +2,7 @@ import axios from "axios"
 
 import { api } from "@cs-magic/common/dist/api/index"
 
-import {
-  IWechatArticleComment,
-  IWechatArticleStat,
-} from "../../../../../schema/index.js"
+import { IWechatArticleComment, IWechatArticleStat } from "../../../../../schema/index.js"
 import { getWechatArticleUrlFromShortId } from "../../utils.js"
 
 const wxapiApi = axios.create({
@@ -48,9 +45,7 @@ export const fetchWechatArticleComments = async (id: string) => {
   const token = process.env.WXAPI_TOKEN
   if (!token) throw new Error("no token")
 
-  const { data: res } = await wxapiApi.postForm<
-    IWxapiResponse<IWechatArticleComment[]>
-  >("/wxapi/wxcoment", {
+  const { data: res } = await wxapiApi.postForm<IWxapiResponse<IWechatArticleComment[]>>("/wxapi/wxcoment", {
     url: getWechatArticleUrlFromShortId(id),
     token,
     comment_id: "",

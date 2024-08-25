@@ -7,13 +7,12 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const useSSE = searchParams.get("useSSE")
   const update = searchParams.get("update")
-    console.log({update, useSSE})
+  console.log({ update, useSSE })
 
   const responseStream = new TransformStream()
   const writer = responseStream.writable.getWriter()
   const encoder = new TextEncoder()
-  const send = (s: string) =>
-    writer.write(encoder.encode(s))
+  const send = (s: string) => writer.write(encoder.encode(s))
 
   const genData = async () =>
     await new Promise((resolve, reject) => {

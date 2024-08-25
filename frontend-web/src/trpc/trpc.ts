@@ -6,11 +6,12 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-
-import { initTRPC, TRPCError } from "@trpc/server"
+import { TRPCError, initTRPC } from "@trpc/server"
 import superjson from "superjson"
 import { ZodError } from "zod"
+
 import { prisma } from "@cs-magic/common/dist/db/prisma"
+
 import { Context } from "./context"
 
 /**
@@ -27,8 +28,7 @@ const t = initTRPC.context<Context>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError:
-          error.cause instanceof ZodError ? error.cause.flatten() : null,
+        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
       },
     }
   },

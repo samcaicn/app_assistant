@@ -1,5 +1,5 @@
-import { Badge } from "@cs-magic/shadcn/dist/ui/badge"
 import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+import { Badge } from "@cs-magic/shadcn/dist/ui/badge"
 
 export const Tags = ({ tags }: { tags: string[] | null | undefined }) => {
   if (!tags?.length) return null

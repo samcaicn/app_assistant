@@ -1,9 +1,11 @@
-import { getOssUrl } from "@cs-magic/common/dist/oss/utils"
-import { ICardInnerPreview, ICardPreview } from "@cs-magic/swot-backend/schema"
 import { atom } from "jotai"
+
+import { getOssUrl } from "@cs-magic/common/dist/oss/utils"
 import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json"
+import { ICardInnerPreview, ICardPreview } from "@cs-magic/swot-backend/schema"
 
 import { getOssKeyWithSuffix } from "../utils/get-oss-key-with-suffix"
+
 import { cardUserAtom } from "./card.user.atom"
 
 export const cardArticleUrlAtom = atom("")

@@ -1,14 +1,11 @@
 "use client"
 
 import { useAtom } from "jotai"
-import { useEffect } from "react"
 import { useSession } from "next-auth/react"
+import { useEffect } from "react"
 
-import {
-  userImageAtom,
-  userNameAtom,
-} from "@cs-magic/react/dist/store/user.atom"
 import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
+import { userImageAtom, userNameAtom } from "@cs-magic/react/dist/store/user.atom"
 
 export const useUserSummary = () => {
   const user = useSession().data?.user

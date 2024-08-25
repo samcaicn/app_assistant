@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { loggerLink, unstable_httpBatchStreamLink } from "@trpc/client"
 import { useAtom } from "jotai"
 import { useMemo } from "react"
+
 import { trpcReactLogEnabledAtom } from "@cs-magic/swot-frontend-common/components/config-trpc-log-enabled"
 
 import { api } from "./client"
@@ -42,8 +43,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
           enabled: (op) =>
             // in client, we cannot directly use env.xxx
             trpcReactLogEnabled &&
-            (process.env.NODE_ENV !== "production" ||
-              (op.direction === "down" && op.result instanceof Error)),
+            (process.env.NODE_ENV !== "production" || (op.direction === "down" && op.result instanceof Error)),
         }),
 
         // 这个必须放log下面才有用

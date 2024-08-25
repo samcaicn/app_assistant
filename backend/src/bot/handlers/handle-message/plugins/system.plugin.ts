@@ -1,10 +1,12 @@
-import { llmModelTypeSchema } from "@cs-magic/llm"
 import { FileBox } from "file-box"
 import { z } from "zod"
+
 import { prisma } from "@cs-magic/common/dist/db/prisma"
+import { llmModelTypeSchema } from "@cs-magic/llm"
 
 import { FeatureMap } from "../../../../schema/index.js"
 import { parseLimitedCommand } from "../../../utils/index.js"
+
 import { BasePlugin } from "./base.plugin.js"
 
 const commandTypeSchema = z.enum([
@@ -56,10 +58,7 @@ export class SystemPlugin extends BasePlugin {
     const commands = this.i18n[await this.getLang()]?.commands
     if (!commands) return
 
-    const parsed = parseLimitedCommand(
-      input,
-      z.enum(Object.keys(commands) as [string, ...string[]]),
-    )
+    const parsed = parseLimitedCommand(input, z.enum(Object.keys(commands) as [string, ...string[]]))
     if (parsed) {
       const commandKeyInInput = parsed.command
       const commandKeyInEnum = commands[commandKeyInInput]?.type
@@ -70,11 +69,7 @@ export class SystemPlugin extends BasePlugin {
           break
 
         case "set-avatar":
-          const avatarUrl = await z
-            .string()
-            .min(1)
-            .startsWith("http")
-            .parseAsync(parsed.args)
+          const avatarUrl = await z.string().min(1).startsWith("http").parseAsync(parsed.args)
           console.log({ avatarUrl })
           await this.bot.currentUser.avatar(FileBox.fromUrl(avatarUrl))
           console.log("-- done set avatar")
@@ -102,9 +97,7 @@ export class SystemPlugin extends BasePlugin {
                   })
             }),
           )
-          await this.reply(
-            `updated: ${result.filter((i) => !!i).length} / ${result.length}`,
-          )
+          await this.reply(`updated: ${result.filter((i) => !!i).length} / ${result.length}`)
           break
         }
 
@@ -122,9 +115,7 @@ export class SystemPlugin extends BasePlugin {
                   })
             }),
           )
-          await this.reply(
-            `updated: ${result.filter((i) => !!i).length} / ${result.length}`,
-          )
+          await this.reply(`updated: ${result.filter((i) => !!i).length} / ${result.length}`)
           break
         }
       }
@@ -132,10 +123,6 @@ export class SystemPlugin extends BasePlugin {
   }
 
   async listModels() {
-    return this.standardReply(
-      [...llmModelTypeSchema.options.map((o, i) => `${i + 1}. ${o}`)].join(
-        "\n",
-      ),
-    )
+    return this.standardReply([...llmModelTypeSchema.options.map((o, i) => `${i + 1}. ${o}`)].join("\n"))
   }
 }

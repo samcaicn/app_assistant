@@ -1,14 +1,9 @@
 "use client"
 
-import { useRef } from "react"
 import { useAtom, useAtomValue } from "jotai"
+import { useRef } from "react"
 
-import {
-  Action2Type,
-  GenCardApproach,
-  ICardPreview,
-} from "@cs-magic/swot-backend/dist/schema/card"
-
+import { Action2Type, GenCardApproach, ICardPreview } from "@cs-magic/swot-backend/dist/schema/card"
 import { PreviewCardAction } from "@cs-magic/swot-frontend-common/dist/components/card-action-preview"
 import { cardRenderedAtom } from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom"
 import { cardUserAtom } from "@cs-magic/swot-frontend-common/dist/store/card.user.atom"
@@ -30,9 +25,7 @@ export const CardPreviewContainer = ({
 
   // console.log("-- preview: ", { rendered })
 
-  const Action = ({ type }: { type: Action2Type }) => (
-    <PreviewCardAction type={type} obj={obj} rendered={rendered} />
-  )
+  const Action = ({ type }: { type: Action2Type }) => <PreviewCardAction type={type} obj={obj} rendered={rendered} />
 
   return (
     <div className={"flex w-full max-w-[375px] flex-col gap-2"}>

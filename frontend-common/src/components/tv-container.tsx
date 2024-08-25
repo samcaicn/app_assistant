@@ -1,21 +1,17 @@
 "use client"
 
 import { useAtom } from "jotai"
-
 import { range } from "lodash-es"
 import { PropsWithChildren, useRef } from "react"
 import { useFullscreen, useMeasure } from "react-use"
+
 import { FlexContainer } from "@cs-magic/react/components/flex-container"
+import { getTvScale, tvFullScreenAtom, tvScreenOnAtom } from "@cs-magic/react/dist/store/tv.atom"
 import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
-import { Controls } from "./tv-controls"
-
 import "../../../../assets/styles/tv.css"
-import {
-  getTvScale,
-  tvFullScreenAtom,
-  tvScreenOnAtom,
-} from "@cs-magic/react/dist/store/tv.atom"
+
+import { Controls } from "./tv-controls"
 
 /**
  * tv, ref: https://codepen.io/manz/pen/MWoRMja
@@ -38,10 +34,7 @@ export const TVContainer = ({ children }: PropsWithChildren) => {
   // console.log({ scale, isScreenOn, isFullScreen })
 
   return (
-    <div
-      className={"flex h-full w-full items-center justify-center"}
-      ref={refViewport}
-    >
+    <div className={"flex h-full w-full items-center justify-center"} ref={refViewport}>
       <div
         className={cn(
           "tv",
@@ -60,9 +53,7 @@ export const TVContainer = ({ children }: PropsWithChildren) => {
           {/*  红色外框，不包含脚部分*/}
           <div className="television  ">
             {/*  不包含红色外框【目标】 */}
-            <div
-              className={cn("television-inner", isFullScreen && "!border-none")}
-            >
+            <div className={cn("television-inner", isFullScreen && "!border-none")}>
               {/*  电视机屏幕容器 */}
               <div className="television-screen-container ">
                 {/*  电视机外屏 */}
@@ -71,9 +62,7 @@ export const TVContainer = ({ children }: PropsWithChildren) => {
                   <div className="television-screen ">
                     <div className="off"></div>
 
-                    <FlexContainer className={"absolute"}>
-                      {children}
-                    </FlexContainer>
+                    <FlexContainer className={"absolute"}>{children}</FlexContainer>
 
                     {/*<div className="logo-container">*/}
                     {/*  <div className="logo">*/}

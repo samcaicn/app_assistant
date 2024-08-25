@@ -1,4 +1,5 @@
 import { Contact } from "wechaty-puppet/payloads"
+
 import { IWechatPreference } from "./bot-preference.js"
 
 export type IWechatBotScan = { value: string; status: number }

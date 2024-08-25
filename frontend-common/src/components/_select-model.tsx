@@ -1,21 +1,11 @@
-import { ElementType } from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
-import {
-  SelectItem as SelectPrimitiveItem,
-  SelectItemText,
-} from "@radix-ui/react-select"
+import { SelectItemText, SelectItem as SelectPrimitiveItem } from "@radix-ui/react-select"
 import { Check } from "lucide-react"
+import { ElementType } from "react"
+
 import { ScenarioType } from "@cs-magic/common/dist/schema/scenario"
 
-export const SelectModel = ({
-  value,
-  Cover,
-  label,
-}: {
-  value: ScenarioType
-  Cover: ElementType
-  label: string
-}) => {
+export const SelectModel = ({ value, Cover, label }: { value: ScenarioType; Cover: ElementType; label: string }) => {
   return (
     <SelectPrimitiveItem
       value={value}

@@ -1,17 +1,13 @@
-import { api } from "@cs-magic/common/dist/api/api"
-
-import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index"
-
 import { parse } from "node-html-parser"
 
-export const getWechatArticleUrlFromShortId = (shortId: string) =>
-  `https://mp.weixin.qq.com/s/${shortId}`
+import { api } from "@cs-magic/common/dist/api/api"
+import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index"
 
-export const parseWxmpArticleShortId = (url: string) =>
-  /mp.weixin.qq.com\/s\/(.*?)$/.exec(url)?.[1]
+export const getWechatArticleUrlFromShortId = (shortId: string) => `https://mp.weixin.qq.com/s/${shortId}`
 
-export const parseWxmpArticleLongId = (url: string) =>
-  /mp.weixin.qq.com.*?sn=(.*?)&/.exec(url)?.[1]
+export const parseWxmpArticleShortId = (url: string) => /mp.weixin.qq.com\/s\/(.*?)$/.exec(url)?.[1]
+
+export const parseWxmpArticleLongId = (url: string) => /mp.weixin.qq.com.*?sn=(.*?)&/.exec(url)?.[1]
 
 /**
  * url-short: https://mp.weixin.qq.com/s/T2DpRlMxTSwYIPJm1ZYU6w

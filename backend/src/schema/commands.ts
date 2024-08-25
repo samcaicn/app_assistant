@@ -1,16 +1,10 @@
-import { LangType } from "@cs-magic/common/dist/i18n/index"
 import { z } from "zod"
+
+import { LangType } from "@cs-magic/common/dist/i18n/index"
 
 import { Priority } from "./common.js"
 
-export const featureTypeSchema = z.enum([
-  "system",
-  "todo",
-  "chatter",
-  "parser",
-  "room",
-  "test",
-])
+export const featureTypeSchema = z.enum(["system", "todo", "chatter", "parser", "room", "test"])
 export type FeatureType = z.infer<typeof featureTypeSchema>
 
 export const managerTypeSchema = z.enum(["base", ...featureTypeSchema.options])
@@ -32,10 +26,7 @@ export type CommandType = z.infer<typeof commandsSchema>
 export type Feature<T> = {
   title: string
   description: string
-  commands: Record<
-    string,
-    { type: T; description?: string; priority?: Priority }
-  >
+  commands: Record<string, { type: T; description?: string; priority?: Priority }>
 }
 
 export type FeatureMap<T extends string> = {

@@ -1,9 +1,13 @@
 "use client"
 
-import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading"
-import { atom, PrimitiveAtom, useAtom } from "jotai"
+import { PrimitiveAtom, atom, useAtom } from "jotai"
 import capitalize from "lodash/capitalize"
 import { HTMLAttributes } from "react"
+
+import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+import { ActionType } from "@cs-magic/swot-backend/schema"
+
 import {
   cardCopyingAtom,
   cardDownloadingAtom,
@@ -11,8 +15,6 @@ import {
   cardResettingAtom,
   cardUploadingAtom,
 } from "../store/card.actions.atom"
-import { ActionType } from "@cs-magic/swot-backend/schema"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
 export const GeneralCardAction = ({
   disabled,

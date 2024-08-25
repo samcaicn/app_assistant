@@ -1,6 +1,12 @@
-import { backendTypeSchema, llmModelTypeSchema } from "@cs-magic/llm"
-
 import { PrimitiveAtom, useAtom } from "jotai"
+
+import { backendTypeSchema, llmModelTypeSchema } from "@cs-magic/llm"
+import { AtomSelector, AtomSwitcher } from "@cs-magic/react/components/atom-switcher"
+import { LabelLine } from "@cs-magic/react/components/label-line"
+import { mapSpacingVerticalAtom } from "@cs-magic/react/dist/store/visualization.atom"
+import { Input } from "@cs-magic/shadcn/dist/ui/input"
+import { Separator } from "@cs-magic/shadcn/dist/ui/separator"
+
 import { cardAuthorWithTitleAtom } from "../store/card.atom"
 import {
   cardFetchCommentsEnabledAtom,
@@ -9,30 +15,15 @@ import {
   cardFetchWithCacheAtom,
   cardWatermarkTextAtom,
 } from "../store/card.request.atom"
-import {
-  cardLlmEnabledAtom,
-  cardLlmModelTypeAtom,
-  cardSummaryWithImageAtom,
-} from "../store/card.summary.atom"
+import { cardLlmEnabledAtom, cardLlmModelTypeAtom, cardSummaryWithImageAtom } from "../store/card.summary.atom"
+
 import { InputCardAction } from "./card-action-input"
 import { CardInputUrl } from "./card-input-url"
 import { CardInputUser } from "./card-input-user"
-import { Separator } from "@cs-magic/shadcn/dist/ui/separator"
-import {
-  AtomSelector,
-  AtomSwitcher,
-} from "@cs-magic/react/components/atom-switcher"
-import { LabelLine } from "@cs-magic/react/components/label-line"
-import { Input } from "@cs-magic/shadcn/dist/ui/input"
-import { mapSpacingVerticalAtom } from "@cs-magic/react/dist/store/visualization.atom"
 
 export const CardInputFrontend = () => {
-  const [mapSpacingVertical, setMapSpacingVertical] = useAtom(
-    mapSpacingVerticalAtom,
-  )
-  const [cardWatermarkText, setCardWatermarkText] = useAtom(
-    cardWatermarkTextAtom,
-  )
+  const [mapSpacingVertical, setMapSpacingVertical] = useAtom(mapSpacingVerticalAtom)
+  const [cardWatermarkText, setCardWatermarkText] = useAtom(cardWatermarkTextAtom)
 
   return (
     <>
@@ -46,26 +37,15 @@ export const CardInputFrontend = () => {
 
       <AtomSwitcher atom={cardLlmEnabledAtom} name={"llm-enabled"} />
 
-      <AtomSelector
-        atom={cardLlmModelTypeAtom}
-        name={"llm-type"}
-        vs={llmModelTypeSchema.options}
-      />
+      <AtomSelector atom={cardLlmModelTypeAtom} name={"llm-type"} vs={llmModelTypeSchema.options} />
 
       <AtomSwitcher atom={cardFetchStatEnabledAtom} name={"refetch-stat"} />
 
-      <AtomSwitcher
-        atom={cardFetchCommentsEnabledAtom}
-        name={"refetch-comments"}
-      />
+      <AtomSwitcher atom={cardFetchCommentsEnabledAtom} name={"refetch-comments"} />
 
       <Separator orientation={"horizontal"} />
 
-      <AtomSelector
-        atom={cardFetchEngineAtom}
-        name={"fetch engine"}
-        vs={backendTypeSchema.options}
-      />
+      <AtomSelector atom={cardFetchEngineAtom} name={"fetch engine"} vs={backendTypeSchema.options} />
 
       <AtomSwitcher atom={cardSummaryWithImageAtom} name={"md-with-img"} />
 

@@ -1,10 +1,11 @@
+import random from "lodash-es/random.js"
+import range from "lodash-es/range.js"
+
 import { sleep } from "@cs-magic/common/dist/datetime/utils"
 import { env } from "@cs-magic/common/dist/env/index"
 import logger from "@cs-magic/common/dist/log/index"
 import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary"
 import { BaseSimulator } from "@cs-magic/common/dist/spider/base-simulator"
-import random from "lodash-es/random.js"
-import range from "lodash-es/range.js"
 
 const simulator = new BaseSimulator("playwright", {
   headless: false,
@@ -15,13 +16,7 @@ const simulator = new BaseSimulator("playwright", {
  * @param url
  * @param user
  */
-export const link2card = async ({
-  url,
-  user,
-}: {
-  url: string
-  user: IUserSummaryFilled
-}) => {
+export const link2card = async ({ url, user }: { url: string; user: IUserSummaryFilled }) => {
   logger.info(`[${user.name}] opening browser`)
   await simulator.initBrowserSafe()
 
@@ -57,8 +52,7 @@ const main = async () => {
         url: "https://mp.weixin.qq.com/s/PewhszexWyjEoAfYpU7XvQ",
         user: {
           name: i.toString(),
-          image:
-            "http://gips0.baidu.com/it/u=3602773692,1512483864&fm=3028&app=3028&f=JPEG&fmt=auto?w=960&h=1280",
+          image: "http://gips0.baidu.com/it/u=3602773692,1512483864&fm=3028&app=3028&f=JPEG&fmt=auto?w=960&h=1280",
         },
       }),
     ),

@@ -1,10 +1,6 @@
 "use server"
 
-export const serverFetch = async (
-  url: string,
-  cookie: string,
-  method = "GET",
-) => {
+export const serverFetch = async (url: string, cookie: string, method = "GET") => {
   console.log({ url, method, cookie })
 
   const res = await fetch(url, {

@@ -5,10 +5,7 @@ import { wechatMessageDetailSchema } from "@cs-magic/common/dist/schema/user.sum
  * 获取最后一次
  * @param convId
  */
-export const listMessagesOfLatestTopic = async (
-  botWxid: string,
-  convId: string,
-) => {
+export const listMessagesOfLatestTopic = async (botWxid: string, convId: string) => {
   const lastUserSetCommand = await prisma.wechatMessage.findFirst({
     where: {
       // todo: 这里是错的， listenerId, talkerId 应该要成对
@@ -51,11 +48,7 @@ export const listMessagesOfLatestTopic = async (
       AND: [
         // 1. filter conv
         {
-          OR: [
-            { roomId: convId },
-            { listenerId: convId },
-            { talkerId: convId },
-          ],
+          OR: [{ roomId: convId }, { listenerId: convId }, { talkerId: convId }],
         },
 
         // todo: 因为基于任意command，所以这里的筛选没有意义了，之后换meta信息吧

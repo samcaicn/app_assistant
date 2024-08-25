@@ -1,7 +1,10 @@
-import { TextareaAuto } from "@cs-magic/react/components/textarea-auto"
 import { useAtom } from "jotai"
 import React from "react"
+
+import { TextareaAuto } from "@cs-magic/react/components/textarea-auto"
+
 import { cardInnerInputAtom } from "../store/card.atom"
+
 import { CardInputUser } from "./card-input-user"
 
 export const CardInputBackend = () => {

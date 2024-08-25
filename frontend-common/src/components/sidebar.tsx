@@ -1,16 +1,12 @@
 "use client"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+
 import { HTMLAttributes } from "react"
 
-export const Sidebar = ({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) => {
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+
+export const Sidebar = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div
-      className={cn("h-full shrink-0 flex-col p-4 sm:flex", className)}
-      {...props}
-    >
+    <div className={cn("h-full shrink-0 flex-col p-4 sm:flex", className)} {...props}>
       <div className={"grow overflow-auto"}></div>
     </div>
   )

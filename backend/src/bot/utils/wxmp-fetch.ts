@@ -1,17 +1,15 @@
 "use server"
 
 import { prisma } from "@cs-magic/common/dist/db/prisma"
-import { formatString } from "@cs-magic/common/dist/utils/index"
-import { cardDetailSchema } from "@cs-magic/common/dist/schema/card.detail"
 import logger from "@cs-magic/common/dist/log/index"
+import { cardDetailSchema } from "@cs-magic/common/dist/schema/card.detail"
+import { formatString } from "@cs-magic/common/dist/utils/index"
 
-import {
-  FetchWxmpArticleRes,
-  GenWxmpArticleCardFetchOptions,
-} from "../../schema/wxmp-article.js"
+import { FetchWxmpArticleRes, GenWxmpArticleCardFetchOptions } from "../../schema/wxmp-article.js"
+
+import { parseWxmpArticleUrl } from "./parse-wxmp-article-url.js"
 import { md2summary } from "./wxmp-article/fetch/md2summary.js"
 import { wxmpRequest } from "./wxmp-request.js"
-import { parseWxmpArticleUrl } from "./parse-wxmp-article-url.js"
 
 export const fetchWxmpArticle = async (
   url: string,
@@ -77,9 +75,7 @@ export const fetchWxmpArticle = async (
     })
   }
 
-  logger.debug(
-    `-- llmResponse: ${formatString(JSON.stringify(llmResponse), 120)}`,
-  )
+  logger.debug(`-- llmResponse: ${formatString(JSON.stringify(llmResponse), 120)}`)
 
   return {
     article,

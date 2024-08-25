@@ -1,12 +1,11 @@
 "use server"
 
-import { IXiaoHongShuNotePageData } from "@cs-magic/common/dist/xhs/index"
 import { Card, Prisma } from "@prisma/client"
-import { prisma } from "@cs-magic/common/dist/db/prisma"
 
-export const xiaohongshu2card = (
-  inputData: IXiaoHongShuNotePageData,
-): Promise<Card> => {
+import { prisma } from "@cs-magic/common/dist/db/prisma"
+import { IXiaoHongShuNotePageData } from "@cs-magic/common/dist/xhs/index"
+
+export const xiaohongshu2card = (inputData: IXiaoHongShuNotePageData): Promise<Card> => {
   const note = inputData.note.noteDetailMap[inputData.note.firstNoteId]?.note
   if (!note) throw new Error("no note")
 

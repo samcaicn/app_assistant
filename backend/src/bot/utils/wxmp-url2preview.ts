@@ -1,22 +1,22 @@
 "use server"
 
-import { ILlmRes, LlmModelType } from "@cs-magic/llm"
-import { formatWxmpUrl } from "@cs-magic/common/dist/utils/format-wxmp-article"
 import logger from "@cs-magic/common/dist/log/index"
-import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json"
 import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
+import { formatWxmpUrl } from "@cs-magic/common/dist/utils/format-wxmp-article"
+import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json"
+import { ILlmRes, LlmModelType } from "@cs-magic/llm"
 
 import { ICardInnerPreview, IMedia } from "../../schema/card.js"
 import { GenWxmpArticleCardFetchOptions } from "../../schema/wxmp-article.js"
 import { parseSummary } from "../../utils/parse-summary.js"
+
 import { fetchWxmpArticle } from "./wxmp-fetch.js"
 
 export const audio2preview = async (
   filePath: string,
-  externalInfo: Pick<
-    ICardInnerPreview,
-    "author" | "id" | "title" | "time" | "cover" | "platformType" | "sourceUrl"
-  > & { model: LlmModelType },
+  externalInfo: Pick<ICardInnerPreview, "author" | "id" | "title" | "time" | "cover" | "platformType" | "sourceUrl"> & {
+    model: LlmModelType
+  },
 ): Promise<ICardInnerPreview> => {
   return {
     ...externalInfo,
@@ -35,10 +35,7 @@ export const audio2preview = async (
   }
 }
 
-export const wxmpUrl2preview = async (
-  url: string,
-  fetchOptions?: GenWxmpArticleCardFetchOptions,
-) => {
+export const wxmpUrl2preview = async (url: string, fetchOptions?: GenWxmpArticleCardFetchOptions) => {
   if (/\/s\?/.test(url)) {
     // logger.debug(`wxmpUrl2preview: url_raw=${url}`)
     const searchParams = new URL(url.replace(/amp;/g, "")).searchParams

@@ -1,24 +1,23 @@
-import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index"
-import { html2md } from "@cs-magic/common/dist/markdown/html2md"
-import { withError } from "@cs-magic/common/dist/utils/index"
-import { api } from "@cs-magic/common/dist/api/api"
 import { Prisma } from "@prisma/client"
 import { parse } from "node-html-parser"
 import { z } from "zod"
 
-import { WxmpArticleSimulator } from "@cs-magic/common/dist/spider/wxmp-article-simulator"
-import { RequestOptions } from "../../schema/request.js"
-import { parseWxmpArticleUrl } from "./parse-wxmp-article-url.js"
+import { api } from "@cs-magic/common/dist/api/api"
+import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index"
+import { html2md } from "@cs-magic/common/dist/markdown/html2md"
 import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
+import { WxmpArticleSimulator } from "@cs-magic/common/dist/spider/wxmp-article-simulator"
+import { withError } from "@cs-magic/common/dist/utils/index"
+
+import { RequestOptions } from "../../schema/request.js"
+
+import { parseWxmpArticleUrl } from "./parse-wxmp-article-url.js"
 
 // import { parseWxmpArticleUrl } from "@cs-magic/swot-web/utils/card-platform/wechat-article/utils"
 
 const wxmpArticleSimulator = new WxmpArticleSimulator()
 
-export const wxmpRequest = async (
-  url: string,
-  options?: RequestOptions,
-): Promise<Prisma.CardUncheckedCreateInput> => {
+export const wxmpRequest = async (url: string, options?: RequestOptions): Promise<Prisma.CardUncheckedCreateInput> => {
   // !important: 不加这个会导致环境异常: <h2 class=\"weui-msg__title\">环境异常</h2>\n        <p class=\"weui-msg__desc\">当前环境异常，完成验证后即可继续访问。</p>
   url = url.replace(/amp;/g, "")
 
@@ -56,9 +55,7 @@ export const wxmpRequest = async (
     z.string().min(1).parseAsync(parseMetaFromHtml(html, "og:image")!),
   )
   const description = await withError("should desc is valid")(
-    z
-      .string()
-      .parseAsync(parseMetaFromHtml(html, "og:description", "property")),
+    z.string().parseAsync(parseMetaFromHtml(html, "og:description", "property")),
   )
   // logger.info(JSON.stringify({ title }))
   // const source = parseMetaFromHtml(html, "og:site_name") // 微信公众平台
@@ -87,10 +84,7 @@ export const wxmpRequest = async (
 
   // 去除作者信息，否则会有干扰, case-id: fq-Bb_v
   html.getElementById("meta_content")?.remove()
-  const contentHtml = await z
-    .string()
-    .min(1)
-    .parseAsync(html.getElementById("img-content")?.innerHTML)
+  const contentHtml = await z.string().min(1).parseAsync(html.getElementById("img-content")?.innerHTML)
 
   const contentMd = html2md(contentHtml)
 

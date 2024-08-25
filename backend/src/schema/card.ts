@@ -1,10 +1,11 @@
-import { PlatformType, Prisma, $Enums } from "@prisma/client"
+import { $Enums, PlatformType, Prisma } from "@prisma/client"
 import { z } from "zod"
+
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
+import { LlmModelType } from "@cs-magic/llm/dist/schema/llm.models"
 
 import { ISummaryParsed } from "./summary.js"
 import { IWechatArticleComment, IWechatArticleStat } from "./wxmp-article.js"
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
-import { LlmModelType } from "@cs-magic/llm/dist/schema/llm.models"
 
 export type ICardStat = {
   reads?: number
@@ -23,11 +24,7 @@ export type ActionType = Action1Type | Action2Type
 
 export type GenCardApproach = "frontend" | "backend"
 
-export const cardPreviewEngineTypeSchema = z.enum([
-  "html2image",
-  "html2canvas",
-  "modern-screenshot",
-])
+export const cardPreviewEngineTypeSchema = z.enum(["html2image", "html2canvas", "modern-screenshot"])
 export type CardPreviewEngineType = z.infer<typeof cardPreviewEngineTypeSchema>
 
 export type ICardInnerPreview = {
@@ -55,15 +52,14 @@ export type ICardPreview = {
 }
 
 export type RequestApproachType = "api" | "simulate"
-export type ICardPlatform<T extends $Enums.PlatformType = any> =
-  T extends typeof $Enums.PlatformType.wxmpArticle
-    ? {
-        sn: string | null // 这个最重要
-        __biz: string | null
-        mid: string | null
-        idx: string | null
-        chksm: string | null
-        stat?: IWechatArticleStat
-        comments?: IWechatArticleComment[]
-      }
-    : object
+export type ICardPlatform<T extends $Enums.PlatformType = any> = T extends typeof $Enums.PlatformType.wxmpArticle
+  ? {
+      sn: string | null // 这个最重要
+      __biz: string | null
+      mid: string | null
+      idx: string | null
+      chksm: string | null
+      stat?: IWechatArticleStat
+      comments?: IWechatArticleComment[]
+    }
+  : object

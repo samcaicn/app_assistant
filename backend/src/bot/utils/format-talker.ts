@@ -1,6 +1,7 @@
 import { Message } from "wechaty"
 
 import { LlmScenario } from "../../schema/index.js"
+
 import { getConvData } from "./get-conv-preference.js"
 
 /**
@@ -9,10 +10,7 @@ import { getConvData } from "./get-conv-preference.js"
  * @param message
  * @param type
  */
-export const formatTalkerFromMessage = async (
-  message: Message,
-  type?: LlmScenario,
-) => {
+export const formatTalkerFromMessage = async (message: Message, type?: LlmScenario) => {
   let s = message.talker().name()
 
   const roomTopic = await message.room()?.topic()

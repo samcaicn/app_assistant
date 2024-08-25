@@ -1,12 +1,9 @@
 import { FileBox } from "file-box"
 
-import logger from "@cs-magic/common/dist/log/index"
-import {
-  BaseSimulator,
-  CardSimulator,
-} from "@cs-magic/common/dist/spider/index"
 import { env } from "@cs-magic/common/dist/env/get-env"
+import logger from "@cs-magic/common/dist/log/index"
 import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary"
+import { BaseSimulator, CardSimulator } from "@cs-magic/common/dist/spider/index"
 
 import { wxmpUrl2preview } from "../../bot/index.js"
 import { IWechatPreference } from "../../schema/index.js"
@@ -34,10 +31,7 @@ export const link2card = async ({
   switch (version) {
     case "v1": {
       // todo: add userIdentity into parser
-      const inner = await wxmpUrl2preview(
-        url,
-        convPreference?.features.parser.options,
-      )
+      const inner = await wxmpUrl2preview(url, convPreference?.features.parser.options)
 
       const { cardUrl } = await uniParser.genCard(JSON.stringify(inner), user)
       logger.info(`-- sending file: ${cardUrl}`)

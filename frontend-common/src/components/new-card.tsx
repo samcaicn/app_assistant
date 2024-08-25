@@ -1,25 +1,22 @@
 "use client"
 
-import clsx from "clsx"
-import { useUploadFiles } from "@cs-magic/react/dist/hooks/use-upload-file"
-import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio"
-import { ButtonWithLoading } from "@cs-magic/react/dist/components/button-with-loading"
-import { FileComp } from "@cs-magic/react/dist/components/file"
-import { FlexContainer } from "@cs-magic/react/dist/components/flex-container"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@cs-magic/shadcn/dist/ui/tooltip"
 import MdEditor from "@uiw/react-md-editor"
+import clsx from "clsx"
 import { produce } from "immer"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import { useDrop } from "react-use"
 import { toast } from "sonner"
-import { IUploadFile } from "@cs-magic/common/dist/oss/schema"
-// import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
+import { IUploadFile } from "@cs-magic/common/dist/oss/schema"
+import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio"
+import { ButtonWithLoading } from "@cs-magic/react/dist/components/button-with-loading"
+import { FileComp } from "@cs-magic/react/dist/components/file"
+import { FlexContainer } from "@cs-magic/react/dist/components/flex-container"
+import { useUploadFiles } from "@cs-magic/react/dist/hooks/use-upload-file"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@cs-magic/shadcn/dist/ui/tooltip"
+
+// import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 import { cardNewContentAtom } from "../store/card.atom"
 
 export function NewCard() {
@@ -47,13 +44,9 @@ export function NewCard() {
     onFiles: async (files) => {
       console.log("files", files)
 
-      if (isUploading)
-        return toast.error("please waiting last uploading finished")
+      if (isUploading) return toast.error("please waiting last uploading finished")
 
-      setUploadFiles((uploadFiles) => [
-        ...uploadFiles,
-        ...files.map((f) => ({ status: "idle" }) as IUploadFile),
-      ])
+      setUploadFiles((uploadFiles) => [...uploadFiles, ...files.map((f) => ({ status: "idle" }) as IUploadFile)])
       await upload(files)
     },
     onUri: (uri) => console.log("uri", uri),
@@ -71,11 +64,7 @@ export function NewCard() {
       }
     >
       <FlexContainer orientation={"vertical"}>
-        <MdEditor
-          className={"w-full grow overflow-auto"}
-          value={v}
-          onChange={(v) => setV(v ?? "")}
-        />
+        <MdEditor className={"w-full grow overflow-auto"} value={v} onChange={(v) => setV(v ?? "")} />
 
         <div className={"flex h-12 w-full items-center gap-2"}>
           <div className={"flex h-full grow items-center gap-2 overflow-auto"}>
@@ -83,16 +72,8 @@ export function NewCard() {
               uploadFiles.map((item, index) => (
                 <Tooltip key={index}>
                   <TooltipTrigger asChild>
-                    <VerticalAspectRatio
-                      ratio={1}
-                      key={index}
-                      className={"shrink-0"}
-                    >
-                      <FileComp
-                        key={index}
-                        file={item}
-                        className={"overflow-hidden rounded-xl border"}
-                      />
+                    <VerticalAspectRatio ratio={1} key={index} className={"shrink-0"}>
+                      <FileComp key={index} file={item} className={"overflow-hidden rounded-xl border"} />
                     </VerticalAspectRatio>
                   </TooltipTrigger>
 

@@ -1,6 +1,6 @@
+import { FileBox } from "file-box"
 import { last } from "lodash-es"
 import { types } from "wechaty"
-import { FileBox } from "file-box"
 import yargsParser from "yargs-parser"
 
 import logger from "@cs-magic/common/dist/log/index"
@@ -38,9 +38,7 @@ export class TestPlugin extends BasePlugin {
 
   async testDescribeLastImage() {
     const messages = await this.getLatestMessages()
-    const lastImageInDB = last(
-      messages.filter((m) => m.type === Number(types.Message.Image)),
-    )
+    const lastImageInDB = last(messages.filter((m) => m.type === Number(types.Message.Image)))
     if (!lastImageInDB) return logger.debug("no lastImageInDB")
 
     const lastImageInContext = await this.bot.Message.find({
@@ -81,8 +79,7 @@ export class TestPlugin extends BasePlugin {
         description:
           "自定义摘要 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890",
         url: "https://swot.cs-magic.cn",
-        thumbnailUrl:
-          "https://avatars.githubusercontent.com/u/33591398?s=80&v=4",
+        thumbnailUrl: "https://avatars.githubusercontent.com/u/33591398?s=80&v=4",
       }),
     )
   }
@@ -97,8 +94,7 @@ export class TestPlugin extends BasePlugin {
     const lastBotMessageInContext = await this.bot.Message.find({
       id: lastBotMessageInDB.id,
     })
-    if (!lastBotMessageInContext)
-      return logger.debug("no lastBotMessageInContext")
+    if (!lastBotMessageInContext) return logger.debug("no lastBotMessageInContext")
 
     await lastBotMessageInContext.recall()
   }

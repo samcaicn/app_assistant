@@ -1,14 +1,15 @@
 import { types } from "wechaty"
 import { z } from "zod"
 
-import logger from "@cs-magic/common/dist/log/index"
 import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
+import logger from "@cs-magic/common/dist/log/index"
 import { ILlmMessage } from "@cs-magic/common/dist/schema/message"
 import { safeCallLLM } from "@cs-magic/llm/dist/utils/safe-call-llm"
 import { trimMessages } from "@cs-magic/llm/dist/utils/trim-messages"
 
 import { FeatureMap, FeatureType } from "../../../../schema/index.js"
 import { listMessagesOfLatestTopic } from "../../../utils/index.js"
+
 import { BasePlugin } from "./base.plugin.js"
 
 const commandTypeSchema = z.enum([
@@ -61,9 +62,7 @@ export class ChatterPlugin extends BasePlugin {
         `  - enabled: ${preference.features.chatter.enabled}`,
         `  - model: ${preference.features.chatter.model}`,
       ].join("\n"),
-      Object.keys(commands).map(
-        (command) => `  ${ChatterPlugin.name} ${command}`,
-      ),
+      Object.keys(commands).map((command) => `  ${ChatterPlugin.name} ${command}`),
     )
   }
 
@@ -129,10 +128,7 @@ export class ChatterPlugin extends BasePlugin {
     const messages: ILlmMessage[] = filteredMessages
       .filter((m) => !!m.text)
       .map((m) => ({
-        role:
-          m.talkerId === this.bot.context?.wxid
-            ? ("assistant" as const)
-            : ("user" as const),
+        role: m.talkerId === this.bot.context?.wxid ? ("assistant" as const) : ("user" as const),
         // todo: merge chats
         content: `[${m.talker.name}]: ${m.text}`,
       }))
@@ -153,15 +149,9 @@ export class ChatterPlugin extends BasePlugin {
     if (res.error) throw new Error(res.error)
 
     const content = res.response?.choices[0]?.message.content
-    if (!content)
-      throw new Error(
-        `invalid response content, please check Query(id=${res.query.id})`,
-      )
+    if (!content) throw new Error(`invalid response content, please check Query(id=${res.query.id})`)
 
     void this.reply(content)
-    void this.notify(
-      [`✅ called LLM`, SEPARATOR_LINE, content].join("\n"),
-      "chatter",
-    )
+    void this.notify([`✅ called LLM`, SEPARATOR_LINE, content].join("\n"), "chatter")
   }
 }

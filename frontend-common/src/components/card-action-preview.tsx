@@ -1,25 +1,22 @@
 "use client"
 
-import { cardOssAtom, cardPreviewAtom } from "../store/card.atom"
-import { cardPreviewEngineAtom } from "../store/card.rendered.atom"
-import * as html2image from "html-to-image"
 import html2canvas from "html2canvas"
+import * as html2image from "html-to-image"
 import { useAtom } from "jotai"
 import { domToBlob, domToJpeg } from "modern-screenshot"
 import { RefObject } from "react"
 import { toast } from "sonner"
-import { updateOssUrl } from "../utils/update-oss-url.action"
-import { GeneralCardAction } from "./card-action-general"
-import { Action2Type, ActionType } from "@cs-magic/swot-backend/schema"
-import { uploadFile } from "@cs-magic/common/dist/oss/oss.server"
 
-const handleDownload = ({
-  blob,
-  fileName = `${Date.now()}.jpg`,
-}: {
-  blob: Blob
-  fileName?: string
-}) => {
+import { uploadFile } from "@cs-magic/common/dist/oss/oss.server"
+import { Action2Type, ActionType } from "@cs-magic/swot-backend/schema"
+
+import { cardOssAtom, cardPreviewAtom } from "../store/card.atom"
+import { cardPreviewEngineAtom } from "../store/card.rendered.atom"
+import { updateOssUrl } from "../utils/update-oss-url.action"
+
+import { GeneralCardAction } from "./card-action-general"
+
+const handleDownload = ({ blob, fileName = `${Date.now()}.jpg` }: { blob: Blob; fileName?: string }) => {
   // 创建一个URL
   const url = window.URL.createObjectURL(blob)
 

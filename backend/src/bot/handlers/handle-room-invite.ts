@@ -8,10 +8,7 @@ import logger from "@cs-magic/common/dist/log/index"
  * @param bot
  * @param roomInvitation
  */
-export const handleRoomInvite = async (
-  bot: Wechaty,
-  roomInvitation: RoomInvitation,
-) => {
+export const handleRoomInvite = async (bot: Wechaty, roomInvitation: RoomInvitation) => {
   logger.info(`onRoomInvite`)
 
   // todo: is the id of roomInvitation is the id of room (being accepted)?
@@ -31,9 +28,7 @@ export const handleRoomInvite = async (
     logger.debug(`accepted`)
   } else {
     // todo: wechat4u 不支持获取topic，不支持自动同意
-    logger.debug(
-      `skipped auto-accepting room-invitation since Protocol(type=${puppetProtocol}) not supports`,
-    )
+    logger.debug(`skipped auto-accepting room-invitation since Protocol(type=${puppetProtocol}) not supports`)
   }
 
   // 不要在 room-invite 里发起群加入通知，而是在room-join里发，否则小群加入不会触发
