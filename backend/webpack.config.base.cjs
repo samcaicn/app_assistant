@@ -1,19 +1,14 @@
-const path = require('path');
+const path = require("path")
 
 module.exports = {
-  entry: './dist/api/main.js',
+  target: "node", // ref: https://chatgpt.com/c/0bb5bb00-68a9-4c82-b396-0d1f4224215d
+  entry: "./dist/api/main.js",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   externals: {
-    "playwright-core": "commonjs playwright-core"
+    // playwright: "commonjs playwright",
+    "playwright-core": "commonjs playwright-core",
   },
-  resolve: {
-    fallback: {
-      fs: require.resolve("fs-browserify"),
-      path: require.resolve("path-browserify"),
-      stream: require.resolve("stream-browserify"),
-    },
-  },
-};
+}
