@@ -15,7 +15,7 @@
   "scripts": {
     "dev:bot": "DOTENV_CONFIG_PATH=../../.env tsx -r dotenv/config src/bot/main.ts | pino-pretty",
     "dev:api": "DOTENV_CONFIG_PATH=../../.env tsx -r dotenv/config src/api/main.ts | pino-pretty",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "build": "tspc -b",
     "start:bot": "node ./dist/bot/main.js | pino-pretty",
     "start:api": "node ./dist/api/main.js | pino-pretty",
