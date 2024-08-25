@@ -2,9 +2,9 @@
   "name": "@cs-magic/swot-backend",
   "version": "0.1.0",
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/api/index.js",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/api/index.js",
     "./bot": "./dist/bot/index.js",
     "./api": "./dist/api/index.js",
     "./schema": "./dist/schema/index.js",
@@ -19,7 +19,8 @@
     "build": "tspc -b",
     "start:bot": "node ./dist/bot/main.js | pino-pretty",
     "start:api": "node ./dist/api/main.js | pino-pretty",
-    "test": "jest"
+    "test": "jest",
+    "bundle": "webpack ."
   },
   "dependencies": {
     "@cs-magic/common": "workspace:^",

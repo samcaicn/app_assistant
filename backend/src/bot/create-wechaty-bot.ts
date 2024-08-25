@@ -1,12 +1,16 @@
-import { type Wechaty, WechatyBuilder } from "wechaty"
-import wechatyPuppetWechat4u from "wechaty-puppet-wechat4u"
-
 import { env, logEnv } from "@cs-magic/common/dist/env/index"
 import logger from "@cs-magic/common/dist/log/index"
+import { type Wechaty, WechatyBuilder } from "wechaty"
 
 import { handleWechatyBot } from "./handlers/index.js"
 
-console.log({ wechatyPuppetWechat4u })
+// in case not loaded
+// import("wechaty-puppet-wechat4u")
+// import("wechaty-puppet-service")
+import w1 from 'wechaty-puppet-wechat4u'
+import w2 from 'wechaty-puppet-service'
+
+console.log({w1, w2})
 
 /**
  * 这是一个 wrapper， 请在其他地方 start

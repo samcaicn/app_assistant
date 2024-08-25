@@ -1,19 +1,20 @@
 {
-  "name": "swot-pc",
-  "version": "0.5.0",
+  "name": "@cs-magic/swot-pc",
+  "version": "0.5.3",
   "description": "SWOT Wechat Helper",
-  "author": "cs-magic.com",
-  "homepage": "https://cs-magic.com",
+  "author": "Mark <mark@cs-magic.com>",
+  "homepage": "https://cs-magic.cn",
   "type": "module",
   "main": "./out/main/index.js",
   "scripts": {
     "post-install": "electron-builder install-app-deps",
     "dev": "electron-vite dev | pino-pretty",
-    "build": "npm run typecheck && electron-vite build",
-    "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
-    "build:mac": "electron-vite build && electron-builder --mac",
-    "build:linux": "electron-vite build && electron-builder --linux",
+    "p": "yarn workspace @cs-magic/swot-pc version patch",
+    "build": "npm run typecheck && electron-vite build && yarn p",
+    "build:mac": "electron-vite build && electron-builder --mac && yarn p",
+    "build:unpack": "npm run build && electron-builder --dir ",
+    "build:win": "npm run build && electron-builder --win ",
+    "build:linux": "electron-vite build && electron-builder --linux && yarn patch",
     "start": "electron-vite preview | pino-pretty",
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
@@ -63,6 +64,9 @@
     "vite-plugin-wasm": "^3.3.0"
   },
   "build": {
+    "extraMetadata": {
+      "name": "SWOT"
+    },
     "mac": {
       "notarize": {
         "teamId": "758SN987H4"

@@ -1,5 +1,5 @@
 appId: com.cs-magic.swot-pc
-productName: 飞脑微信助手
+productName: 飞脑助手
 directories:
   buildResources: build
 files:
@@ -35,8 +35,8 @@ mac:
     - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
     - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
     - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
-#dmg:
-#  artifactName: ${name}-${version}.${ext}
+dmg:
+  artifactName: ${productName}-${version}.${ext}
 linux:
   target:
     - AppImage

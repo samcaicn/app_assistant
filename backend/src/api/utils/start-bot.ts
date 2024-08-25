@@ -5,6 +5,7 @@ import { IContext } from "../schema.js"
 import { syncClients } from "./sync-clients.js"
 import { transferMessage } from "./transfer-message.js"
 
+
 export const startBot = async (context: IContext) => {
   // 避免重复登录，会导致 padLocal 报错
   if (!context.bot) {

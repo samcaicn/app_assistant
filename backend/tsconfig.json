@@ -8,7 +8,9 @@
     "rootDir": "src"
   },
 
-  "include": ["src/**/*"],
+  "include": ["src/**/*",
+    "webpack.config.cjs"
+  ],
   "references": [
     {
       "path": "../../packages/llm"
