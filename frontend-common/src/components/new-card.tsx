@@ -18,7 +18,7 @@ import { useState } from "react"
 import { useDrop } from "react-use"
 import { toast } from "sonner"
 import { IUploadFile } from "@cs-magic/common/dist/oss/schema"
-// import { cn } from "@cs-magic/react/shadcn/utils"
+// import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
 import { cardNewContentAtom } from "../store/card.atom"
 

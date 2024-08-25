@@ -4,7 +4,7 @@ import React, { Suspense } from "react"
 
 import { LoadingAlertDialog } from "@cs-magic/react/components/loading"
 import { Navbar } from "@cs-magic/react/components/navbar"
-import { cn } from "@cs-magic/react/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 import { Toaster } from "@cs-magic/shadcn/dist/ui/sonner"
 
 import { GlobalProvider } from "@/app/global-provider"

@@ -3,7 +3,7 @@
 import { useAtom } from "jotai"
 import { BarChart } from "lucide-react"
 
-import { cn } from "@cs-magic/react/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
 import { pusherLatencyAtom } from "@cs-magic/react/dist/store/pusher.atom"
 import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom"

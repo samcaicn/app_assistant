@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react"
 
-import { cn } from "@cs-magic/react/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 import { FlexContainer } from "@cs-magic/react/components/flex-container"
 import { Header } from "@/components/header"
 

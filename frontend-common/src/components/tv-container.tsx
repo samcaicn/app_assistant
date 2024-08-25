@@ -6,7 +6,7 @@ import { range } from "lodash-es"
 import { PropsWithChildren, useRef } from "react"
 import { useFullscreen, useMeasure } from "react-use"
 import { FlexContainer } from "@cs-magic/react/components/flex-container"
-import { cn } from "@cs-magic/react/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
 import { Controls } from "./tv-controls"
 

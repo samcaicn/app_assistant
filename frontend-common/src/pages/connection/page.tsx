@@ -24,7 +24,7 @@ import { StandardCard } from "@cs-magic/react/components/standard-card"
 import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading"
 import { Button, buttonVariants } from "@cs-magic/shadcn/dist/ui/button"
 import { columns, DataTable } from "./contacts.table"
-import { cn } from "@cs-magic/react/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
 export default function BotPage() {
   const [socketStatus, setSocketStatus] = useState<number>(0)

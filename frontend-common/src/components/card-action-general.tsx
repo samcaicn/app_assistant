@@ -12,7 +12,7 @@ import {
   cardUploadingAtom,
 } from "../store/card.actions.atom"
 import { ActionType } from "@cs-magic/swot-backend/schema"
-import { cn } from "@cs-magic/react/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 
 export const GeneralCardAction = ({
   disabled,
