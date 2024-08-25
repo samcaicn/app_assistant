@@ -7,7 +7,7 @@ import { ComponentPropsWithoutRef, HTMLAttributes } from "react"
 import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
 import { upgradeUrl } from "@cs-magic/common/dist/utils/upgrade-url"
 import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio"
-import { cn } from "@cs-magic/react/dist/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 import { Avatar, AvatarFallback } from "@cs-magic/shadcn/dist/ui/avatar"
 
 export const UserAvatar = ({

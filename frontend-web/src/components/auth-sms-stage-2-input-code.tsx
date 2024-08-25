@@ -8,7 +8,7 @@ import { toast } from "sonner"
 
 import { SMS_DIGIT_SIZE } from "@cs-magic/common/dist/config"
 import { SMS_PROVIDER_ID } from "@cs-magic/common/dist/sms.base"
-import { cn } from "@cs-magic/react/dist/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 import { smsCodeAtom, smsSignInPayloadAtom } from "@cs-magic/react/dist/store/sms.atom"
 import { uiLoadingAlertDialogAtom } from "@cs-magic/react/dist/store/ui.atom"
 import { Label } from "@cs-magic/shadcn/dist/ui/label"

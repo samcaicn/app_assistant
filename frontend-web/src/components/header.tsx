@@ -5,7 +5,7 @@ import Link from "next/link"
 import React, { PropsWithChildren } from "react"
 
 import { IconContainer } from "@cs-magic/react/dist/components/icon-container"
-import { cn } from "@cs-magic/react/dist/shadcn/utils"
+import { cn } from "@cs-magic/shadcn/dist/lib/utils"
 import {
   NavigationMenu,
   NavigationMenuItem,
