@@ -1,10 +1,9 @@
 {
   "name": "@cs-magic/swot-pc",
-  "version": "0.5.3",
-  "description": "SWOT Wechat Helper",
+  "version": "0.5.4",
+  "description": "飞脑科技是国内领先的社交助手解决方案服务商，致力于创建有用、有趣、有爱的产品。飞脑科技基于RPA+LLM技术自研了可以分布式、跨平台、自动安全智能地处理用户消息的飞脑引擎，有效解决用户的信息过载、阅读堆积、私域运营等问题，基于独创的个性化社交建模框架，最终打破信息孤岛，实现用户数字永生。",
   "author": "Mark <mark@cs-magic.com>",
   "homepage": "https://cs-magic.cn",
-  "type": "module",
   "main": "./out/main/index.js",
   "scripts": {
     "post-install": "electron-builder install-app-deps",
