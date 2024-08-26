@@ -82,23 +82,23 @@
     "asarUnpack": [
       "node_modules/node-gyp-build"
     ],
-    "asar": false,
+    "asar": true,
     "extraResources": [
       {
         "from": "../../.env",
-        "to": "app/.env"
+        "to": ".env"
       },
       {
         "from": "../../node_modules/.prisma",
-        "to": "app/node_modules/.prisma"
+        "to": "node_modules/.prisma"
       },
       {
         "from": "../../node_modules/@prisma/client",
-        "to": "app/node_modules/@prisma/client"
+        "to": "node_modules/@prisma/client"
       },
       {
         "from": "../../node_modules/playwright-core",
-        "to": "app/node_modules/playwright-core"
+        "to": "node_modules/playwright-core"
       }
     ]
   }
