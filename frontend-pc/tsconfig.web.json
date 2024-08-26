@@ -11,6 +11,8 @@
     "src/preload/*.d.ts"
   ],
   "compilerOptions": {
+    "esModuleInterop": true,
+
     "noUnusedLocals": false,
     "composite": true,
     "noEmit": true,
@@ -36,7 +38,7 @@
       "@renderer/*": [
         "src/renderer/src/*"
       ]
-    },
+    }
 
   }
 }

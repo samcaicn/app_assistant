@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 
 import { initServer } from '@cs-magic/swot-backend/dist/api/server'
+// import initServer from '@cs-magic/swot-backend/dist/bundle'
 
 import icon from '../../resources/icon.png?asset'
 

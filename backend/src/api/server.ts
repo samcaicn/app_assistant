@@ -1,3 +1,6 @@
+// o.w. pack not found
+import 'wechaty-puppet-service'
+
 import fw from "@fastify/websocket"
 import Fastify from "fastify"
 import { remove } from "lodash-es"

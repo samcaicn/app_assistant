@@ -6,7 +6,8 @@
   "include": [
     "electron.vite.config.ts",
     "src/main/**/*",
-    "src/preload/**/*"
+    "src/preload/**/*",
+    "src/assets.d.ts"
   ],
   "compilerOptions": {
     "composite": true,
@@ -17,6 +18,8 @@
     ],
 
     "noUnusedLocals": false,
+//    "module": "CommonJS",
+//    "target": "ES5"
 
     // 要用 esm
 //    "module": "NodeNext",

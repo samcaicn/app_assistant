@@ -7,14 +7,20 @@ module.exports = {
 
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve("/tmp", "dist"),
   },
 
   externals: {
     "playwright-core": "commonjs playwright-core",
-    "wechaty-grpc": "commonjs wechaty-grpc", // dynamic import error: ../../out
-    "wechaty-puppet-service": "commonjs wechaty-puppet-service", // native module error: level
+    // "wechaty-grpc": "commonjs wechaty-grpc", // dynamic import error: ../../out
+    // "wechaty-puppet-service": "commonjs wechaty-puppet-service", // native module error: level
     // "wechaty-puppet-wechat4u": "commonjs wechaty-puppet-wechat4u", // o.w. Failed to import Wechaty Puppet Provider (WPP) NPM module: "wechaty-puppet-wechat4u"
+  },
+
+  resolve: {
+    alias: {
+      '../../out': path.resolve(__dirname, '../../node_modules/wechaty-grpc/out')
+    },
   },
 
 }
