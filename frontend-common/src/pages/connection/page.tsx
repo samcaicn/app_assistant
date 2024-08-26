@@ -26,6 +26,9 @@ import {
 
 import { DataTable, columns } from "./contacts.table"
 
+console.log("-- env (process): ", process.env)
+console.log("-- env (vite): ", import.meta.env)
+
 export default function BotPage() {
   const [socketStatus, setSocketStatus] = useState<number>(0)
   const [botScanning, setBotScanning] = useAtom(botScanningAtom)
@@ -40,10 +43,8 @@ export default function BotPage() {
   const isInited = useInit(() => true)
 
   const socket = useInit<WebSocket | null>(() => {
-    console.log("-- env: ", process.env)
-    console.log("-- initing socket --")
-    const socketUrl = process.env.VITE_SOCKET_URL ?? process.env.NEXT_PUBLIC_SOCKET_URL
-    console.log({ socketUrl })
+    const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL ?? import.meta.env.VITE_SOCKET_URL
+    console.log(`inited socket(url=${socketUrl})`)
 
     if (!socketUrl) {
       console.warn("no socket url")

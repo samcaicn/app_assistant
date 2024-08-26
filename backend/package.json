@@ -2,6 +2,7 @@
   "name": "@cs-magic/swot-backend",
   "version": "0.1.0",
   "main": "./dist/api/index.js",
+  "type": "module",
   "exports": {
     ".": "./dist/api/index.js",
     "./bot": "./dist/bot/index.js",

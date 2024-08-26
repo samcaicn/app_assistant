@@ -1,8 +1,7 @@
+import react from '@vitejs/plugin-react'
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import { resolve } from 'path'
-import react from '@vitejs/plugin-react'
 import wasm from 'vite-plugin-wasm'
-import commonjs from 'vite-plugin-commonjs'
 
 const envDir = resolve('../..')
 
@@ -11,19 +10,9 @@ export default defineConfig({
     envDir,
     plugins: [
       externalizeDepsPlugin({
-        // exclude: ['playwright-core', 'wechaty-grpc', 'wechaty-puppet-service'],
+        exclude: ['playwright-core'],
       }),
-      commonjs(),
     ],
-    build: {
-      rollupOptions: {
-        external: [
-          'playwright-core',
-          // 'wechaty-grpc',
-          // 'wechaty-puppet-service',
-        ],
-      },
-    },
   },
 
   preload: {
