@@ -32,7 +32,7 @@ export const safeHandle = async (bot: Wechaty, p: Promise<unknown>, suffix?: str
 
     // !WARNING: 这是个 ANY EXCEPTION 机制，有可能导致无限循环，导致封号！！！
     // void botNotify(bot, await formatBotQuery(context, "哎呀出错啦", s))
-    void bot.context?.notify(`❌ ${s}`, undefined, LogLevel.error)
+    void bot.context?.notify(`❌消息处理有误 ${s}`, undefined, LogLevel.error)
   }
 }
 
@@ -70,6 +70,7 @@ export const handleWechatyBot = (bot: Wechaty) => {
 
     .on("error", async (err) => {
       // 只要handle 一次
+      // Error: NOPUPPET
       formatError(err)
     })
 

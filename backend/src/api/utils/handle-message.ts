@@ -12,7 +12,7 @@ import { IContext } from "../schema.js"
 import { startBot } from "./start-bot.js"
 import { syncClients } from "./sync-clients.js"
 
-export const wechatyDataPath = path.join(process.cwd(), "wechaty.data.json")
+export const wechatyDataPath = process.env.WECHATY_DATA_PATH ?? path.join(process.cwd(), "wechaty.data.json")
 
 export type IWechatData = {
   puppet?: {
