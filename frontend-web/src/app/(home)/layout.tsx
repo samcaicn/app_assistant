@@ -18,7 +18,7 @@ export default function SubLayout({ children }: PropsWithChildren) {
     >
       <Header />
 
-      <div className={"flex w-full grow flex-col overflow-hidden border-t"}>{children}</div>
+      <div className={"flex w-full grow flex-col overflow-hidden"}>{children}</div>
 
       {/*<Footer />*/}
     </FlexContainer>
