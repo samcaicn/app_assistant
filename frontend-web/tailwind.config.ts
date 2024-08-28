@@ -1,9 +1,10 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
     "./src/**/*.{ts,tsx}",
+    "../../node_modules/@cs-magic/swot-frontend-common/dist/**/*",
     "../../node_modules/@cs-magic/react/dist/**/*",
   ],
   prefix: "",
@@ -113,10 +114,10 @@ const config = {
           backgroundImage:
             "repeating-linear-gradient(to right, transparent, transparent 10px, black 10px, black 40px)", // Adjust the spacing here
         },
-      }
-      addUtilities(newUtilities, ["responsive"])
+      };
+      addUtilities(newUtilities, ["responsive"]);
     },
   ],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
