@@ -1,39 +1,51 @@
-"use client"
+"use client";
 
-import { useHotkeys } from "@mantine/hooks"
-import { useAtom } from "jotai"
-import { SettingsIcon } from "lucide-react"
-import { useState } from "react"
+import { useHotkeys } from "@mantine/hooks";
+import { useAtom } from "jotai";
+import { SettingsIcon } from "lucide-react";
+import { useState } from "react";
 
-import { IconContainer } from "@cs-magic/react/dist/components/icon-container"
-import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
-import { Sheet, SheetContent, SheetTrigger } from "@cs-magic/shadcn/dist/ui/sheet"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@cs-magic/shadcn/dist/ui/tabs"
-import { ConfigDevCard } from "@cs-magic/swot-frontend-common/dist/components/config-dev-card"
-import { ConfigLogCard } from "@cs-magic/swot-frontend-common/dist/components/config-log-card"
-import { ConfigSMSCard } from "@cs-magic/swot-frontend-common/dist/components/config-sms"
+import { IconContainer } from "@cs-magic/react/dist/components/icon-container";
+import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom";
+import { cn } from "@cs-magic/shadcn/dist/lib/utils";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@cs-magic/shadcn/dist/ui/sheet";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@cs-magic/shadcn/dist/ui/tabs";
+import { ConfigDevCard } from "@cs-magic/swot-frontend-common/dist/components/config-dev-card";
+import { ConfigLogCard } from "@cs-magic/swot-frontend-common/dist/components/config-log-card";
+import { ConfigSMSCard } from "@cs-magic/swot-frontend-common/dist/components/config-sms";
 
-import { UserSignOutButton } from "@/components/user-sign-out-button"
+import { UserSignOutButton } from "@/components/user-sign-out-button";
 
 export const DevConfig = () => {
-  const [devEnabled] = useAtom(devEnabledAtom)
+  const [devEnabled] = useAtom(devEnabledAtom);
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   useHotkeys([
     [
       "shift+mod+P",
       () => {
-        setOpen(true)
+        setOpen(true);
       },
     ],
-  ])
+  ]);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className={cn("fixed bottom-2 left-2", process.env.NODE_ENV === "production" && !devEnabled && "hidden")}
+        className={cn(
+          "fixed bottom-2 left-2",
+          process.env.NODE_ENV === "production" && !devEnabled && "hidden",
+        )}
         asChild
       >
         <IconContainer>
@@ -74,5 +86,5 @@ export const DevConfig = () => {
         </Tabs>
       </SheetContent>
     </Sheet>
-  )
-}
+  );
+};

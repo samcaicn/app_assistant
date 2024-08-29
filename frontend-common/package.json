@@ -28,7 +28,7 @@
     "ansicolors": "^0.3.2",
     "jotai": "*",
     "lodash-es": "^4.17.21",
-    "lucide-react": "^0.424.0",
+    "lucide-react": "*",
     "next": "*",
     "next-auth": "^4.24.7",
     "pusher-js": "^8.4.0-rc2",

@@ -14,7 +14,7 @@ export const SwotBanner = () => {
         alt={"swot-logo"}
         className={"h-auto"}
       />
-      <p className={"text-xl font-semibold"}>Swift Bot</p>
+      <p className={"text-xl font-semibold uppercase"}>Neurora</p>
     </div>
   );
 };
