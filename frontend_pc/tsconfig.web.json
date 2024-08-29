@@ -37,6 +37,12 @@
     "paths": {
       "@renderer/*": [
         "src/renderer/src/*"
+      ],
+      "@/*": [
+        "src/*",
+        "resources/*",
+        "../../assets/*",
+        "../../*"
       ]
     }
 

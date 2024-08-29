@@ -1,5 +1,37 @@
-const path = require("path")
-const CopyPlugin = require("copy-webpack-plugin")
+const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
+
+const nodeExternals = [
+  "playwright-core",
+
+  // wechaty-grpc relative
+  "wechaty-grpc",
+  "@grpc/grpc-js",
+  "@js-sdsl/ordered-map",
+  "google-protobuf",
+  "stronger-typed-streams",
+  "level",
+  "level-packager",
+  "levelup",
+  "deferred-leveldown",
+  "abstract-leveldown",
+  "level-supports",
+  "is-buffer",
+  "catering",
+  "inherits",
+  "level-iterator-stream",
+  "readable-stream",
+  "util-deprecate",
+  "level-errors",
+  "encoding-down",
+  "level-codec",
+  "leveldown",
+
+  ".prisma",
+  "@prisma/client",
+
+  // "node-gyp-build",
+];
 
 module.exports = {
   target: "node", // ref: https://chatgpt.com/c/0bb5bb00-68a9-4c82-b396-0d1f4224215d
@@ -18,18 +50,23 @@ module.exports = {
     // global: true, // 本项目可不需要
   },
 
-  externals: {
-    "playwright-core": "commonjs playwright-core",
-  },
+  externals: nodeExternals.reduce(
+    (prev, key) => ({ ...prev, [key]: `commonjs ${key}` }),
+    {},
+  ),
 
   plugins: [
     new CopyPlugin({
       patterns: [
+        ...nodeExternals.map((k) => ({
+          from: `../../node_modules/${k}`,
+          to: `node_modules/${k}`,
+        })),
         {
-          from: "../../node_modules/playwright-core",
-          to: "node_modules/playwright-core",
+          from: "../../.env",
+          to: ".",
         },
       ],
     }),
   ],
-}
+};

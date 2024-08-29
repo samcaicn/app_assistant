@@ -13,6 +13,12 @@ export default defineConfig({
         exclude: ['playwright-core'],
       }),
     ],
+    resolve: {
+      alias: {
+        '@': resolve('resources'),
+        // '.prisma/client/index-browser': '../../node_modules/.prisma/client/index-browser.js', // ref: https://github.com/prisma/prisma/issues/12504#issuecomment-1285883083
+      },
+    },
   },
 
   preload: {
@@ -25,6 +31,7 @@ export default defineConfig({
     resolve: {
       alias: {
         '@renderer': resolve('src/renderer/src'),
+        '@': resolve('../../assets'),
         // '.prisma/client/index-browser': '../../node_modules/.prisma/client/index-browser.js', // ref: https://github.com/prisma/prisma/issues/12504#issuecomment-1285883083
       },
     },

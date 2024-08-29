@@ -26,6 +26,7 @@
     "@cs-magic/common": "workspace:^",
     "@cs-magic/llm": "workspace:^",
     "@fastify/websocket": "^10.0.1",
+    "@grpc/grpc-js": "^1.11.1",
     "bufferutil": "^4.0.8",
     "fastify": "^4.28.1",
     "node-schedule": "^2.1.1",
@@ -35,8 +36,9 @@
     "utf-8-validate": "^6.0.4",
     "wechat4u": "workspace:^",
     "wechaty": "workspace:^",
+    "wechaty-grpc": "workspace:^",
     "wechaty-puppet": "workspace:^",
-    "wechaty-puppet-service": "1.18.2",
+    "wechaty-puppet-service": "workspace:^",
     "wechaty-puppet-wechat4u": "workspace:^"
   },
   "devDependencies": {

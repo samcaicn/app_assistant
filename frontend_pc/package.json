@@ -32,12 +32,13 @@
     "@electron-toolkit/utils": "^3.0.0",
     "@prisma/client": "^5.18.0",
     "electron-updater": "^6.1.7",
-    "wechaty-puppet-service": "1.18.2"
+    "wechaty-puppet-service": "workspace:^"
   },
   "devDependencies": {
     "@babel/core": "^7.24.8",
     "@babel/preset-env": "^7.24.8",
     "@babel/register": "^7.24.6",
+    "@cs-magic/eslint": "workspace:^",
     "@cs-magic/swot-frontend-common": "workspace:^",
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
     "@electron-toolkit/eslint-config-ts": "^2.0.0",
@@ -65,7 +66,8 @@
     "typescript": "*",
     "vite": "^5.3.1",
     "vite-plugin-commonjs": "^0.10.1",
-    "vite-plugin-wasm": "^3.3.0"
+    "vite-plugin-wasm": "^3.3.0",
+    "wechaty-puppet": "workspace:^"
   },
   "build": {
     "extraMetadata": {

@@ -61,6 +61,6 @@
   "references": [
     {"path":  "../../packages/common"},
     {"path":  "../backend"},
-    {"path":  "../frontend-common"},
+    {"path": "../frontend_common"},
   ]
 }

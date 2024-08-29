@@ -24,5 +24,14 @@
     // 要用 esm
 //    "module": "NodeNext",
 //    "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*",
+        "resources/*",
+        "../../assets/*",
+        "../../*"
+      ]
+    }
   }
 }
