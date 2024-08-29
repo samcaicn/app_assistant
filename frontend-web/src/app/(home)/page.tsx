@@ -6,17 +6,17 @@ import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <FlexContainer orientation={"vertical"}>
+    <FlexContainer orientation={"vertical"} className={"!gap-8"}>
       <div className={"grid grid-cols-[10] grid-rows-[120]"} />
       <h2 className={"text-[96px] gradient-1"}>Make Your Mind Great</h2>
-      <p
+      <div
         className={
           "text-[24px] text-center w-full sm:w-[720px] text-[rgb(161,161,161)]"
         }
       >
-        SWOT is the new-gen AI-Native solution of helping users archive and
-        digest the daily info, powered by RSS + RPA + LLM.
-      </p>
+        <p>SWOT is the AI-Native solution of User Knowledge Base, </p>
+        <p>powered by LLM + RPA + RSS.</p>
+      </div>
 
       <div>
         <Button className={"py-6 px-8 text-2xl rounded-2xl"}>Kick Start</Button>
