@@ -11,6 +11,10 @@
     "src/preload/*.d.ts"
   ],
   "compilerOptions": {
+    // ref: https://vitejs.dev/guide/features.html#client-types
+    "types": [
+      "vite/client"
+    ],
     "esModuleInterop": true,
 
     "noUnusedLocals": false,
