@@ -42,8 +42,6 @@
     "@types/ansicolors": "^0",
     "@types/lodash-es": "^4",
     "@types/react": "*",
-    "@types/react-dom": "*",
-    "copyfiles": "*",
-    "ts-patch": "*"
+    "@types/react-dom": "*"
   }
 }
