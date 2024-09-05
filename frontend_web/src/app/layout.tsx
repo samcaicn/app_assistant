@@ -1,3 +1,4 @@
+import { FlexContainer } from "@/packages_frontend/react/src/components/flex-container";
 import { Metadata, type Viewport } from "next";
 import { Inter } from "next/font/google";
 import React, { Suspense } from "react";
@@ -8,9 +9,8 @@ import { cn } from "@cs-magic/shadcn/dist/lib/utils";
 import { Toaster } from "@cs-magic/shadcn/dist/ui/sonner";
 
 import { GlobalProvider } from "@/app/global-provider";
-import { SwotIcoWhite } from "@/components/assets";
-import { Dev } from "@/components/dev";
-import { SwotBanner } from "@/components/swot-banner";
+import { SwotIcoWhite } from "@cs-magic/swot-frontend-common/dist/components/assets";
+import { SwotBanner } from "@cs-magic/swot-frontend-common/dist/components/swot-banner";
 import "@/styles/main.css";
 
 const inter = Inter({
@@ -51,7 +51,21 @@ export default function RootLayout({
             <main className={cn("relative")}>
               <Navbar productBanner={<SwotBanner />} />
 
-              {children}
+              <FlexContainer
+                orientation={"vertical"}
+                className={cn(
+                  "mx-auto h-full w-full sm:max-w-[1080px] !gap-0 overflow-hidden !p-0 ",
+                  // "bg-cyan-800"
+                )}
+              >
+                {/*<Header />*/}
+
+                <div className={"flex w-full grow flex-col overflow-hidden"}>
+                  {children}
+                </div>
+
+                {/*<Footer />*/}
+              </FlexContainer>
 
               <Toaster
                 richColors
@@ -63,7 +77,7 @@ export default function RootLayout({
               <LoadingAlertDialog />
 
               {/*/!* 开发专用 *!/*/}
-              <Dev />
+              {/*<Dev />*/}
             </main>
           </GlobalProvider>
         </Suspense>

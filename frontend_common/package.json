@@ -8,14 +8,13 @@
     "./components/*": "./dist/components/*.js",
     "./store/*": "./dist/store/*.js",
     "./utils/*": "./dist/utils/*.js",
-    "./assets/*": "./dist/assets/*.js",
     "./src/*": "./src/*.js",
     "./dist/*": "./dist/*.js",
     "./*": "./*"
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tspc -b && copyfiles -u1 ../../assets/styles/**/*.css dist"
+    "build": "tspc -b"
   },
   "dependencies": {
     "@cs-magic/common": "workspace:^",
@@ -39,6 +38,7 @@
     "wechaty-puppet": "workspace:^"
   },
   "devDependencies": {
+    "@cs-magic/tools": "workspace:^",
     "@types/ansicolors": "^0",
     "@types/lodash-es": "^4",
     "@types/react": "*",

@@ -9,6 +9,8 @@ import icon from '@/icon.png?asset'
 
 // console.log('envs: ', process.env)
 
+// const asyncStartNeuroraGenCard = () =
+
 function createWindow(): void {
   void initServer()
 
