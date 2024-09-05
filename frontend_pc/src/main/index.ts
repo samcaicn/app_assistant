@@ -7,7 +7,7 @@ import { initServer } from '@cs-magic/swot-backend/dist/api/server'
 
 import icon from '@/icon.png?asset'
 
-console.log('envs: ', process.env)
+// console.log('envs: ', process.env)
 
 function createWindow(): void {
   void initServer()

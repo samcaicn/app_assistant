@@ -63,7 +63,7 @@ export const handleWechatyBot = (bot: Wechaty) => {
 
       const contacts = await bot.Contact.findAll();
       const contact = contacts[0];
-      console.log(`getting contact avatar(id=${contact?.id})`);
+      logger.info(`getting contact avatar(id=${contact?.id})`);
       if (!contact) return;
       const avatar = await contact.avatar();
     })

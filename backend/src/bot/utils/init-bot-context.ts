@@ -1,40 +1,46 @@
-import yaml from "js-yaml"
-import { Wechaty } from "wechaty"
+import yaml from "js-yaml";
+import { Wechaty } from "wechaty";
 
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
-import logger, { LogLevel } from "@cs-magic/common/dist/log/index"
-import { formatAction } from "@cs-magic/common/dist/utils/format-action"
-import { formatDuration } from "@cs-magic/common/dist/utils/format-duration"
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const";
+import logger, { LogLevel } from "@cs-magic/common/dist/log/index";
+import { formatAction } from "@cs-magic/common/dist/utils/format-action";
+import { formatDuration } from "@cs-magic/common/dist/utils/format-duration";
 
-import { QueueTask } from "../../schema/index.js"
-import { BotData, IBotContext } from "../schema.js"
+import { QueueTask } from "../../schema/index.js";
+import { BotData, IBotContext } from "../schema.js";
 
-import { getConvPreference } from "./get-conv-preference.js"
-import { SenderQueue } from "./sender-queue.js"
+import { getConvPreference } from "./get-conv-preference.js";
+import { SenderQueue } from "./sender-queue.js";
 
 export const initBotContext = async (bot: Wechaty): Promise<IBotContext> => {
-  const name = "飞脑"
-  const version = process.env.npm_package_version ?? "0.1.0"
-  const startTime = Date.now()
+  const name = "飞脑";
+  const version = process.env.npm_package_version ?? "0.1.0";
+  const startTime = Date.now();
 
   // web protocol needs, o.w. rooms/contacts are loaded PARTIALLY
-  await formatAction(bot.ready, "waiting bot ready")
+  try {
+    await formatAction(bot.ready, "waiting bot ready");
+  } catch (e) {
+    logger.warn("failed to execute `await bot.ready()`");
+  }
 
-  const rooms = await bot.Room.findAll()
+  const rooms = await bot.Room.findAll();
   await Promise.all(
     rooms.map(async (room, index) => {
-      logger.debug(`[${index + 1}] Room(id=${room.id}, topic=${await room.topic()})`)
+      logger.debug(
+        `[${index + 1}] Room(id=${room.id}, topic=${await room.topic()})`,
+      );
     }),
-  )
+  );
 
   // wrap
-  const senderQueue = new SenderQueue(10)
+  const senderQueue = new SenderQueue(10);
 
   // expose
-  const addSendTask = async (task: QueueTask) => senderQueue.addTask(task)
+  const addSendTask = async (task: QueueTask) => senderQueue.addTask(task);
 
-  const puppet = bot.puppet
-  const puppetName = puppet.name()
+  const puppet = bot.puppet;
+  const puppetName = puppet.name();
   const botData: BotData = {
     name,
     version,
@@ -43,10 +49,14 @@ export const initBotContext = async (bot: Wechaty): Promise<IBotContext> => {
     wxid: bot.currentUser.id,
     puppet: {
       name: puppetName,
-      type: puppetName.includes("padlocal") ? "padlocal" : puppetName.includes("wechat4u") ? "wechat4u" : "unknown",
+      type: puppetName.includes("padlocal")
+        ? "padlocal"
+        : puppetName.includes("wechat4u")
+          ? "wechat4u"
+          : "unknown",
     },
-  }
-  logger.debug(`bot data: %o`, botData)
+  };
+  logger.debug(`bot data: %o`, botData);
 
   return {
     ...botData,
@@ -55,10 +65,11 @@ export const initBotContext = async (bot: Wechaty): Promise<IBotContext> => {
     notify: async (content, llmScenario, level) => {
       void addSendTask(async () => {
         // !important 需要在手机上，手动地把对应的群，保存到通讯录，否则找不到
-        ;(await bot.Room.find({ topic: /飞脑通知/i }))?.say(content)
+        (await bot.Room.find({ topic: /飞脑通知/i }))?.say(content);
 
-        if (level && level >= LogLevel.error) (await bot.Room.find({ topic: /飞脑报错/i }))?.say(content)
-      })
+        if (level && level >= LogLevel.error)
+          (await bot.Room.find({ topic: /飞脑报错/i }))?.say(content);
+      });
     },
     getHelp: async () => {
       return `
@@ -73,16 +84,17 @@ Feats：
 Basic Commands：
   status: (show preference)
   help: (show usage)
-`
+`;
     },
     getStatus: async (message) => {
-      const aliveTime = formatDuration((Date.now() - botData.startTime) / 1e3)
+      const aliveTime = formatDuration((Date.now() - botData.startTime) / 1e3);
       const convPreference = await getConvPreference({
         convId: message.conversation().id,
-      })
-      return [yaml.dump({ Basic: { name, version, aliveTime } }), yaml.dump({ Preference: convPreference })].join(
-        SEPARATOR_LINE + "\n",
-      )
+      });
+      return [
+        yaml.dump({ Basic: { name, version, aliveTime } }),
+        yaml.dump({ Preference: convPreference }),
+      ].join(SEPARATOR_LINE + "\n");
     },
-  }
-}
+  };
+};

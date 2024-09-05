@@ -1,26 +1,26 @@
-import { useAtom } from "jotai"
-import Image from "next/image"
-import { QRCodeSVG } from "qrcode.react"
-import { forwardRef } from "react"
+import { useAtom } from "jotai";
+import Image from "next/image";
+import { QRCodeSVG } from "qrcode.react";
+import { forwardRef } from "react";
 
-import { moment } from "@cs-magic/common/dist/datetime/moment"
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
-import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
-import { AspectRatio } from "@cs-magic/shadcn/dist/ui/aspect-ratio"
-import { ICardPreview } from "@cs-magic/swot-backend/dist/schema/card"
-import { Tags } from "@cs-magic/swot-frontend-common/dist/components/card-content-tags"
-import MarkMap from "@cs-magic/swot-frontend-common/dist/components/markmap"
+import { moment } from "@cs-magic/common/dist/datetime/moment";
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary";
+import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio";
+import { cn } from "@cs-magic/shadcn/dist/lib/utils";
+import { AspectRatio } from "@cs-magic/shadcn/dist/ui/aspect-ratio";
+import { ICardPreview } from "@cs-magic/swot-backend/dist/schema/card";
+import { Tags } from "@cs-magic/swot-frontend-common/dist/components/card-content-tags";
+import MarkMap from "@cs-magic/swot-frontend-common/dist/components/markmap";
 import {
   cardAuthorAvatarRenderedAtom,
   cardCoverRenderedAtom,
   cardUserAvatarRenderedAtom,
-} from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom"
-import { cardWatermarkTextAtom } from "@cs-magic/swot-frontend-common/dist/store/card.request.atom"
-import { getPlatformName } from "@cs-magic/swot-frontend-common/dist/utils/card-platform/get-platform-name"
+} from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom";
+import { cardWatermarkTextAtom } from "@cs-magic/swot-frontend-common/dist/store/card.request.atom";
+import { getPlatformName } from "@cs-magic/swot-frontend-common/dist/utils/card-platform/get-platform-name";
 
-import CsMagicBlackLogoSvg from "@/branding/cs-magic/cs-magic_logo_1280.svg"
-import { UserAvatar } from "@/components/user-avatar"
+import CsMagicBlackLogoSvg from "@/branding/cs-magic/cs-magic_logo_1280.svg";
+import { UserAvatar } from "@/components/user-avatar";
 
 /**
  * null optional nullish
@@ -29,22 +29,33 @@ import { UserAvatar } from "@/components/user-avatar"
 export const CardPreview = forwardRef<
   HTMLDivElement,
   {
-    user?: IUserSummary | null
-    preview?: ICardPreview | null
+    user?: IUserSummary | null;
+    preview?: ICardPreview | null;
   }
 >(({ preview, user }, ref) => {
-  console.log({ user, preview })
+  console.log({ user, preview });
 
-  const [cardUserAvatarRendered, setCardUserAvatarRendered] = useAtom(cardUserAvatarRenderedAtom)
-  const [, setCardCoverRendered] = useAtom(cardCoverRenderedAtom)
-  const [cardAuthorAvatarRendered, setCardAuthorAvatarRendered] = useAtom(cardAuthorAvatarRenderedAtom)
-  const [cardWatermarkText] = useAtom(cardWatermarkTextAtom)
+  const [cardUserAvatarRendered, setCardUserAvatarRendered] = useAtom(
+    cardUserAvatarRenderedAtom,
+  );
+  const [, setCardCoverRendered] = useAtom(cardCoverRenderedAtom);
+  const [cardAuthorAvatarRendered, setCardAuthorAvatarRendered] = useAtom(
+    cardAuthorAvatarRenderedAtom,
+  );
+  const [cardWatermarkText] = useAtom(cardWatermarkTextAtom);
 
   return (
-    <div ref={ref} id={"card-preview"} className={cn("font-songti", " card-bg p-4 text-primary2 text-[12px]")}>
+    <div
+      ref={ref}
+      id={"card-preview"}
+      className={cn("font-songti", " card-bg p-4 text-primary2 text-[12px]")}
+    >
       <div
         id={"card-preview-outer-header"}
-        className={cn("font-pingfang", "flex flex-col items-center font-light text-primary2 p-4 gap-2")}
+        className={cn(
+          "font-pingfang",
+          "flex flex-col items-center font-light text-primary2 p-4 gap-2",
+        )}
       >
         <div className={"flex items-center font-normal"}>
           <CsMagicBlackLogoSvg className={"w-8 h-8"} />
@@ -52,7 +63,7 @@ export const CardPreview = forwardRef<
         </div>
 
         <div className={"flex text-primary2"}>
-          —— 飞脑摘要：你的时间很重要 ——
+          —— 飞脑助手：你的时间很重要 ——
           {/*—— 飞脑：你的下一代个人助理 ——*/}
           {/*—— 飞脑：回归人的价值 ——*/}
         </div>
@@ -60,14 +71,19 @@ export const CardPreview = forwardRef<
 
       <div
         id={"card-preview-inner-1"}
-        className={cn("flex flex-col gap-4 bg-white p-4 relative rounded-tl-[23px] rounded-tr-[10px]")}
+        className={cn(
+          "flex flex-col gap-4 bg-white p-4 relative rounded-tl-[23px] rounded-tr-[10px]",
+        )}
       >
-        <div id={"card-preview-inner-header"} className={"flex items-center gap-2 h-10"}>
+        <div
+          id={"card-preview-inner-header"}
+          className={"flex items-center gap-2 h-10"}
+        >
           <UserAvatar
             user={user ?? null}
             imageProps={{
               onLoad: () => {
-                setCardUserAvatarRendered(true)
+                setCardUserAvatarRendered(true);
               },
               onChange: () => setCardUserAvatarRendered(false),
             }}
@@ -104,7 +120,10 @@ export const CardPreview = forwardRef<
           </AspectRatio>
         </div>
 
-        <div id={"card-preview-inner-title"} className={"text-[16px] font-black text-justify"}>
+        <div
+          id={"card-preview-inner-title"}
+          className={"text-[16px] font-black text-justify"}
+        >
           {preview?.inner?.title}
         </div>
 
@@ -112,7 +131,10 @@ export const CardPreview = forwardRef<
           {preview?.inner?.summary?.parsed.description}
         </div>
 
-        <div className={"bg-gray-50 rounded-lg p-2 bg-dots relative"} id={"card-preview-mindmap"}>
+        <div
+          className={"bg-gray-50 rounded-lg p-2 bg-dots relative"}
+          id={"card-preview-mindmap"}
+        >
           <MarkMap content={preview?.inner?.summary?.parsed.mindmap} />
           {cardWatermarkText && (
             <div
@@ -158,7 +180,7 @@ export const CardPreview = forwardRef<
               onLoad: () => {
                 // 如果不加这个限制的话，可能在没有数据时置true
                 // if (preview?.inner?.author)
-                setCardAuthorAvatarRendered(true)
+                setCardAuthorAvatarRendered(true);
               },
               // onChange 有时候是不够的，比如是hidden状态，导致直接跳过
               onChange: () => setCardAuthorAvatarRendered(false),
@@ -169,7 +191,9 @@ export const CardPreview = forwardRef<
           <div className={"text-[10px] text-gray-500 font-light"}>
             <div>{preview?.inner?.author?.name}</div>
             <div>
-              <span>{moment(preview?.inner?.time).fromNow().replace(/\s+/g, "")}</span>
+              <span>
+                {moment(preview?.inner?.time).fromNow().replace(/\s+/g, "")}
+              </span>
               <span>发表于</span>
               <span>{getPlatformName(preview?.inner?.platformType)}</span>
             </div>
@@ -178,7 +202,10 @@ export const CardPreview = forwardRef<
           <div className={"ml-auto flex h-full shrink-0 items-center"}>
             {/*<div className={"w-8 text-xs text-muted-foreground"}>查看原文</div>*/}
             <VerticalAspectRatio ratio={1}>
-              <QRCodeSVG value={preview?.inner?.sourceUrl ?? ""} className={"h-full w-full"} />
+              <QRCodeSVG
+                value={preview?.inner?.sourceUrl ?? ""}
+                className={"h-full w-full"}
+              />
             </VerticalAspectRatio>
           </div>
         </div>
@@ -191,6 +218,6 @@ export const CardPreview = forwardRef<
         {/*<div></div>*/}
       </div>
     </div>
-  )
-})
-CardPreview.displayName = "CardPreview"
+  );
+});
+CardPreview.displayName = "CardPreview";

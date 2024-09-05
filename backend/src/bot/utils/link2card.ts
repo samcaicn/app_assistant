@@ -1,18 +1,21 @@
-import { FileBox } from "file-box"
+import { FileBox } from "file-box";
 
-import { env } from "@cs-magic/common/dist/env/get-env"
-import logger from "@cs-magic/common/dist/log/index"
-import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary"
-import { BaseSimulator, CardSimulator } from "@cs-magic/common/dist/spider/index"
+import { env } from "@cs-magic/common/dist/env/get-env";
+import logger from "@cs-magic/common/dist/log/index";
+import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary";
+import {
+  BaseSimulator,
+  CardSimulator,
+} from "@cs-magic/common/dist/spider/index";
 
-import { wxmpUrl2preview } from "../../bot/index.js"
-import { IWechatPreference } from "../../schema/index.js"
+import { wxmpUrl2preview } from "../../bot/index.js";
+import { IWechatPreference } from "../../schema/index.js";
 
-const uniParser = new CardSimulator()
+const uniParser = new CardSimulator();
 const simulator = new BaseSimulator("playwright", {
   // headless: false
   headless: true,
-})
+});
 
 export const link2card = async ({
   url,
@@ -20,53 +23,58 @@ export const link2card = async ({
   convPreference,
   version = "v2",
 }: {
-  url: string
-  user: IUserSummaryFilled
-  convPreference?: IWechatPreference
+  url: string;
+  user: IUserSummaryFilled;
+  convPreference?: IWechatPreference;
 
-  version?: "v1" | "v2"
+  version?: "v1" | "v2";
 }) => {
-  logger.info(`[link2card] url=${url}, user.name=${user.name}`)
+  logger.info(`[link2card] url=${url}, user.name=${user.name}`);
 
   switch (version) {
     case "v1": {
       // todo: add userIdentity into parser
-      const inner = await wxmpUrl2preview(url, convPreference?.features.parser.options)
+      const inner = await wxmpUrl2preview(
+        url,
+        convPreference?.features.parser.options,
+      );
 
-      const { cardUrl } = await uniParser.genCard(JSON.stringify(inner), user)
-      logger.info(`-- sending file: ${cardUrl}`)
+      const { cardUrl } = await uniParser.genCard(JSON.stringify(inner), user);
+      logger.info(`-- sending file: ${cardUrl}`);
 
-      return FileBox.fromUrl(cardUrl)
+      return FileBox.fromUrl(cardUrl);
     }
 
     case "v2": {
-      const browser = await simulator.initBrowserSafe()
+      const browser = await simulator.initBrowserSafe();
       const page = await browser.newPage({
         screen: { width: 1280, height: 720 },
-      })
+      });
 
-      await page.goto(`${env.NEXT_PUBLIC_APP_URL}/card/gen`)
+      const cardGenUrl = `${env.NEXT_PUBLIC_APP_URL}/card/gen`;
+      logger.debug(`visiting card gen url: ${cardGenUrl}`);
+      await page.goto(cardGenUrl);
 
-      await page.locator("#card-input-url").fill(url)
-      await page.locator("#card-user-name").fill(user.name)
-      if (user.image) await page.locator("#card-user-avatar").fill(user.image)
+      await page.locator("#card-input-url").fill(url);
+      await page.locator("#card-user-name").fill(user.name);
+      if (user.image) await page.locator("#card-user-avatar").fill(user.image);
 
-      await page.locator("#generate-card").click()
+      await page.locator("#generate-card").click();
 
       // Start waiting for download before clicking. Note no await.
-      const downloadPromise = page.waitForEvent("download")
-      await page.locator("#download-card:not([disabled])").click()
-      const download = await downloadPromise
+      const downloadPromise = page.waitForEvent("download");
+      await page.locator("#download-card:not([disabled])").click();
+      const download = await downloadPromise;
       // Wait for the download process to complete and save the downloaded file somewhere.
-      const fp = ".generated/" + download.suggestedFilename()
-      logger.info(`[link2card] fp=${fp}`)
-      await download.saveAs(fp)
+      const fp = ".generated/" + download.suggestedFilename();
+      logger.info(`[link2card] fp=${fp}`);
+      await download.saveAs(fp);
 
-      await page.close()
-      return FileBox.fromFile(fp)
+      await page.close();
+      return FileBox.fromFile(fp);
     }
   }
-}
+};
 
 // void link2card({
 //   url: "https://mp.weixin.qq.com/s/PewhszexWyjEoAfYpU7XvQ",
