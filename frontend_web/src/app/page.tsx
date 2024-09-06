@@ -44,7 +44,7 @@ export default function HomePage() {
 
       <Image src={SwotLogoWhite} alt={"swot"} width={256} height={256} />
 
-      <div className={"bg-indigo-500 w-full h-20"} />
+      {/*<div className={"bg-indigo-500 w-full h-20"} />*/}
     </FlexContainer>
     // </BackgroundLines>
   );

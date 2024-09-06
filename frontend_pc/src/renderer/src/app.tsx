@@ -1,5 +1,5 @@
 import React from 'react'
-// BrowserRouter 不可以用于electron 程序内部（但不影响express路由）
+// todo: BrowserRouter 不可以用于electron 程序内部（但不影响express路由）
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './home'

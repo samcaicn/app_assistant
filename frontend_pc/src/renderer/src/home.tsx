@@ -13,8 +13,7 @@ export default function HomePage() {
       <img src={swotLogo} className={'w-32 h-32 logo mt-8'} />
 
       <div className="text">
-        <span className="gradient-1">飞脑</span>：一款更像真人的
-        <span className="gradient-2">AI社交助理</span>
+        <span className="gradient-1">Neurora</span>：Your AI Knowledge Companion
       </div>
 
       <div className={'grow overflow-hidden w-full'}>
