@@ -32,7 +32,7 @@ export default defineConfig({
       react(),
       wasm(), // for tiktoken@llm
     ],
-    base: './',
+    // base: './',
     resolve: {
       alias: {
         '@': resolve('../../assets'),

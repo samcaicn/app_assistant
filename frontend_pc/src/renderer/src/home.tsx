@@ -4,7 +4,9 @@ import ConnectionPage from '@cs-magic/swot-frontend-common/pages/connection/page
 import { default as swotLogo } from '@/branding/swot/swot_logo_white.png'
 
 export default function HomePage() {
-  const [versions] = useState(window.electron.process.versions)
+  console.log('[HomePage] loaded')
+
+  const [versions] = useState(window?.electron?.process?.versions)
 
   return (
     <div className={'w-screen h-screen overflow-hidden flex flex-col items-center p-4 gap-4'}>
@@ -24,10 +26,12 @@ export default function HomePage() {
         {/*  <code>V0.4.0</code> 支持你本地化地登录<span>Web端</span>微信，并导出自己的通讯录*/}
         {/*</p>*/}
 
-        <div className="creator !text-xs">
-          Powered by electron-vite (Electron v{versions.electron}, Chromium v{versions.chrome}, Node
-          v{versions.node})
-        </div>
+        {versions && (
+          <div className="creator !text-xs">
+            Powered by electron-vite (Electron v{versions.electron}, Chromium v{versions.chrome},
+            Node v{versions.node})
+          </div>
+        )}
       </div>
     </div>
   )

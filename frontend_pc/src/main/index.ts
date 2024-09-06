@@ -1,18 +1,34 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
-import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-
-import { initServer } from '@cs-magic/swot-backend/dist/api/server'
-// import initServer from '@cs-magic/swot-backend/dist/bundle'
-
 import icon from '@/icon.png?asset'
 
-// console.log('envs: ', process.env)
+import { initServer } from '@cs-magic/swot-backend/dist/api/server'
+import { electronApp, is, optimizer } from '@electron-toolkit/utils'
+import { app, BrowserWindow, ipcMain, shell } from 'electron'
 
-// const asyncStartNeuroraGenCard = () =
+import express from 'express'
+import path, { join } from 'path'
+
+let server
+
+function startServer() {
+  const expressApp = express()
+  const port = 3000 // 你可以选择任何可用的端口
+
+  // 提供静态文件
+  expressApp.use(express.static(path.join(__dirname, '../renderer')))
+
+  // 处理所有路由
+  expressApp.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../renderer/index.html'))
+  })
+
+  server = expressApp.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`)
+  })
+}
 
 function createWindow(): void {
   void initServer()
+  void startServer()
 
   // Create the browser window.
   const mainWindow = new BrowserWindow({
