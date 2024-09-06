@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import swotLogo from './assets/swot.png'
 import ConnectionPage from '@cs-magic/swot-frontend-common/pages/connection/page'
+
+import { default as swotLogo } from '@/branding/swot/swot_logo_white.png'
 
 export default function HomePage() {
   const [versions] = useState(window.electron.process.versions)
