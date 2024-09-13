@@ -11,7 +11,8 @@ import { Toaster } from "@cs-magic/shadcn/dist/ui/sonner";
 import { GlobalProvider } from "@/app/global-provider";
 import { SwotIcoWhite } from "@cs-magic/swot-frontend-common/dist/components/assets";
 import { SwotBanner } from "@cs-magic/swot-frontend-common/dist/components/swot-banner";
-import "@/styles/main.css";
+
+import "@cs-magic/css/main.out.css";
 
 const inter = Inter({
   subsets: ["latin"],
