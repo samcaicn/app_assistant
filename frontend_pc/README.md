@@ -2,6 +2,9 @@
 
 An Electron application with React and TypeScript
 
+## TODO
+- [ ] server function split for swot-pc
+
 ## Project Setup
 
 ### Install
