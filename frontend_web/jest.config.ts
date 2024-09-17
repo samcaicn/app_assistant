@@ -3,13 +3,13 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from "@jest/types"
-import nextJest from "next/jest.js"
+import type { Config } from "@jest/types";
+import nextJest from "next/jest.js";
 
 const createJestConfig = nextJest({
-  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  // Provide the path to your Next.js app to load next.config.ts and .env files in your test environment
   dir: "./",
-})
+});
 
 // ref: https://chatgpt.com/c/6bfd578c-2355-4cd3-9848-e4e622eb0ec1
 const config: Config.InitialOptions = {
@@ -201,6 +201,6 @@ const config: Config.InitialOptions = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-}
+};
 
-export default createJestConfig(config)
+export default createJestConfig(config);

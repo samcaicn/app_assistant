@@ -36,7 +36,7 @@ const nodeExternals = [
 module.exports = {
   target: "node", // ref: https://chatgpt.com/c/0bb5bb00-68a9-4c82-b396-0d1f4224215d
 
-  entry: "./dist/api/main.js",
+  entry: "./dist/api/main.ts",
 
   output: {
     filename: "bundle.js",
