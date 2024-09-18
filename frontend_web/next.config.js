@@ -1,13 +1,13 @@
-const path = require("path")
-const webpack = require("webpack")
-const dotenv = require("dotenv")
+const path = require("path");
+const webpack = require("webpack");
+const dotenv = require("dotenv");
 
 // Load environment variables from the custom .env path
-dotenv.config({ path: path.resolve(__dirname, "../../.env") })
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
-const DIST = process.env.DIST
-const distDir = DIST ?? ".next"
-console.log({ DIST, distDir })
+const DIST = process.env.DIST;
+const distDir = DIST ?? ".next";
+console.log({ DIST, distDir });
 
 /** @type {import("next").NextConfig} */
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
       config.externals = {
         ...config.externals,
         // "@cs-magic/llm": "@cs-magic/llm", // Treat 'some-package' as external
-      }
+      };
     }
 
     // 以下是gpt给的，为了解决wechaty的问题，但没用，无法启动
@@ -39,7 +39,7 @@ module.exports = {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg"),
-    )
+    );
 
     config.module.rules.push(
       // Reapply the existing rule, but only for svg imports ending in ?url
@@ -55,13 +55,29 @@ module.exports = {
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
         use: ["@svgr/webpack"],
       },
-    )
+
+      // for playwright
+      {
+        test: /\.(woff|woff2|eot|ttf|otf|html)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash].[ext]",
+              outputPath: "static/fonts/",
+              publicPath: "/_next/static/fonts/",
+              emitFile: !isServer,
+            },
+          },
+        ],
+      },
+    );
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i
+    fileLoaderRule.exclude = /\.svg$/i;
 
     // ref: https://stackoverflow.com/a/70573610/9422455
-    config.experiments.asyncWebAssembly = true
+    config.experiments.asyncWebAssembly = true;
 
     // ref:
     config.plugins.push(
@@ -69,9 +85,9 @@ module.exports = {
         /any-promise/,
         /node_modules\/any-promise\/register\.js$/,
       ),
-    )
+    );
 
-    return config
+    return config;
   },
 
   // ref: https://nextjs.org/docs/api-reference/next/image#remote-patterns
@@ -97,6 +113,6 @@ module.exports = {
       //   destination: "/tt",
       //   permanent: false,
       // },
-    ]
+    ];
   },
-}
+};

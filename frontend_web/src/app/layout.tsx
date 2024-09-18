@@ -12,7 +12,7 @@ import { GlobalProvider } from "@/app/global-provider";
 import { SwotIcoWhite } from "@cs-magic/swot-frontend-common/dist/components/assets";
 import { SwotBanner } from "@cs-magic/swot-frontend-common/dist/components/swot-banner";
 
-import "@cs-magic/css/main.out.css";
+import "@/styles/main.css";
 
 const inter = Inter({
   subsets: ["latin"],
