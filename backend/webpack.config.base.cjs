@@ -63,7 +63,7 @@ module.exports = {
           to: `node_modules/${k}`,
         })),
         {
-          from: "../../.env",
+          from: "../../.env.local",
           to: ".",
         },
       ],

@@ -2,8 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const dotenv = require("dotenv");
 
-// Load environment variables from the custom .env path
-dotenv.config({ path: path.resolve(__dirname, "../../.env") });
+// Load environment variables from the custom .env.local path
+dotenv.config({ path: path.resolve(__dirname, "../../.env.local") });
 
 const DIST = process.env.DIST;
 const distDir = DIST ?? ".next";
