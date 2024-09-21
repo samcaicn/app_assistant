@@ -65,7 +65,7 @@
     "jotai-scope": "^0.5.1",
     "js-sha1": "^0.7.0",
     "js-yaml": "^4.1.0",
-    "langchain": "^0.1.21",
+    "langchain": "^0.3.2",
     "lodash": "^4.17.21",
     "lucide-react": "*",
     "markmap-common": "^0.16.0",

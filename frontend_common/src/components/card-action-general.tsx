@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { PrimitiveAtom, atom, useAtom } from "jotai"
-import capitalize from "lodash/capitalize"
-import { HTMLAttributes } from "react"
+import { PrimitiveAtom, atom, useAtom } from "jotai";
+import capitalize from "lodash/capitalize";
+import { HTMLAttributes } from "react";
 
-import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
-import { ActionType } from "@cs-magic/swot-backend/schema"
+import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading";
+import { cn } from "@cs-magic/shadcn/dist/lib/utils";
+import { ActionType } from "@cs-magic/swot-backend/schema";
 
 import {
   cardCopyingAtom,
@@ -14,7 +14,7 @@ import {
   cardGeneratingAtom,
   cardResettingAtom,
   cardUploadingAtom,
-} from "../store/card.actions.atom"
+} from "../store/card.actions.atom";
 
 export const GeneralCardAction = ({
   disabled,
@@ -24,19 +24,19 @@ export const GeneralCardAction = ({
   onClick,
   ...props
 }: {
-  action: (type: ActionType) => Promise<void>
-  disabled?: boolean
-  type: ActionType
+  action: (type: ActionType) => Promise<void>;
+  disabled?: boolean;
+  type: ActionType;
 } & HTMLAttributes<HTMLButtonElement>) => {
   const atomMap: Record<ActionType, PrimitiveAtom<boolean>> = {
-    generate: cardGeneratingAtom,
+    startGeneration: cardGeneratingAtom,
     copy: cardCopyingAtom,
     download: cardDownloadingAtom,
     upload: cardUploadingAtom,
     reset: cardResettingAtom,
-  }
+  };
 
-  const [v, setV] = useAtom(atomMap[type])
+  const [v, setV] = useAtom(atomMap[type]);
 
   return (
     <ButtonWithLoading
@@ -46,15 +46,15 @@ export const GeneralCardAction = ({
       loading={v}
       disabled={disabled}
       onClick={async () => {
-        setV(true)
+        setV(true);
         // await sleep(3000)
         await action(type).finally(() => {
-          setV(false)
-        })
+          setV(false);
+        });
       }}
       {...props}
     >
       {capitalize(type)}
     </ButtonWithLoading>
-  )
-}
+  );
+};
