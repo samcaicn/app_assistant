@@ -34,8 +34,12 @@
     "@prisma/client": "^5.18.0",
     "electron-updater": "^6.1.7",
     "express": "^4.19.2",
+    "wechat4u": "workspace:^",
+    "wechaty": "workspace:^",
+    "wechaty-grpc": "workspace:^",
     "wechaty-puppet": "workspace:^",
-    "wechaty-puppet-service": "workspace:^"
+    "wechaty-puppet-service": "workspace:^",
+    "wechaty-puppet-wechat4u": "workspace:^"
   },
   "devDependencies": {
     "@babel/core": "^7.24.8",

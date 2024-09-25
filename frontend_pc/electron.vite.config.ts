@@ -37,6 +37,7 @@ export default defineConfig({
       alias: {
         '@': resolve('../../assets'),
         '@renderer': resolve('src/renderer/src'),
+        '@assets': resolve('../../assets'),
         // '.prisma/client/index-browser': '../../node_modules/.prisma/client/index-browser.js', // ref: https://github.com/prisma/prisma/issues/12504#issuecomment-1285883083
       },
     },
