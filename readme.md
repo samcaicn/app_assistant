@@ -75,7 +75,7 @@ subgraph backend
 link2card@app_assistant/backend/src/bot/handlers/handle-message/plugins/parser.plugin.ts
 
 [simulator]
-app_assistant/frontend-web/src/app/(home)/card/gen/page.tsx
+app_assistant/frontend-web/src/app/(home2)/card/gen/page.tsx
 packages_frontend/common/src/components/card.tsx:Card (js)
 packages_frontend/common/src/components/card-input-frontend.tsx:CardInputFrontend
 packages_frontend/common/src/components/card-action-input.tsx:InputCardAction
