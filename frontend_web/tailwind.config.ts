@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config = {
   darkMode: ["class"],
@@ -118,6 +119,21 @@ const config = {
       };
       addUtilities(newUtilities, ["responsive"]);
     },
+
+    // ref: https://github.com/pacocoursey/next-themes/issues/254#issuecomment-1951349710
+    // eslint-disable-next-line @typescript-eslint/unbound-method
+    plugin(function ({ addUtilities }) {
+      const utilities = {
+        // light, dark color scheme
+        ".light": {
+          "color-scheme": "light",
+        },
+        ".dark": {
+          "color-scheme": "dark",
+        },
+      };
+      addUtilities(utilities);
+    }),
   ],
 } satisfies Config;
 

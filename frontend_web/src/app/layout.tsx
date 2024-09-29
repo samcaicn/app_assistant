@@ -1,4 +1,5 @@
 import { Footer } from "@cs-magic/react/components/footer";
+import { Main } from "@cs-magic/react/components/main";
 import BaseLayout from "@cs-magic/react/layouts/base";
 import { Navbar } from "@cs-magic/react/components/navbar";
 import { cn } from "@cs-magic/shadcn/lib/utils";
@@ -35,7 +36,7 @@ export default function RootLayout({
     <BaseLayout>
       <Navbar productBanner={<SwotBanner />} />
 
-      <main className={cn("relative flex-grow")}>{children}</main>
+      <Main>{children}</Main>
 
       <Footer />
     </BaseLayout>
