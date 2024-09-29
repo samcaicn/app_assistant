@@ -1,11 +1,14 @@
-import { prisma } from "@cs-magic/common/dist/db/prisma"
-import { wechatMessageDetailSchema } from "@cs-magic/common/dist/schema/user.summary"
+import { prisma } from "@cs-magic/common/dist/db/prisma.js";
+import { wechatMessageDetailSchema } from "@cs-magic/common/dist/schema/user.summary.js";
 
 /**
  * 获取最后一次
  * @param convId
  */
-export const listMessagesOfLatestTopic = async (botWxid: string, convId: string) => {
+export const listMessagesOfLatestTopic = async (
+  botWxid: string,
+  convId: string,
+) => {
   const lastUserSetCommand = await prisma.wechatMessage.findFirst({
     where: {
       // todo: 这里是错的， listenerId, talkerId 应该要成对
@@ -20,7 +23,7 @@ export const listMessagesOfLatestTopic = async (botWxid: string, convId: string)
     orderBy: {
       createdAt: "desc",
     },
-  })
+  });
   // if (!lastUserSetCommand) throw new Error("no lastUserSetCommand")
 
   const lastUserStartChat = await prisma.wechatMessage.findFirst({
@@ -38,7 +41,7 @@ export const listMessagesOfLatestTopic = async (botWxid: string, convId: string)
     orderBy: {
       createdAt: "asc",
     },
-  })
+  });
   // if (!lastUserStartChat) throw new Error("no lastUserStartChat")
 
   const messages = await prisma.wechatMessage.findMany({
@@ -48,7 +51,11 @@ export const listMessagesOfLatestTopic = async (botWxid: string, convId: string)
       AND: [
         // 1. filter conv
         {
-          OR: [{ roomId: convId }, { listenerId: convId }, { talkerId: convId }],
+          OR: [
+            { roomId: convId },
+            { listenerId: convId },
+            { talkerId: convId },
+          ],
         },
 
         // todo: 因为基于任意command，所以这里的筛选没有意义了，之后换meta信息吧
@@ -121,12 +128,12 @@ export const listMessagesOfLatestTopic = async (botWxid: string, convId: string)
     // 微信内一般一条文本200字左右，取20条就是4k，比较合适
     // todo: 根据模型同进行控制
     take: -20,
-  })
+  });
 
   while (messages.length) {
     // ensure first message is from user
-    if (messages[0]!.talkerId === botWxid) messages.splice(0, 1)
-    else break
+    if (messages[0]!.talkerId === botWxid) messages.splice(0, 1);
+    else break;
   }
 
   // logger.info({
@@ -136,5 +143,5 @@ export const listMessagesOfLatestTopic = async (botWxid: string, convId: string)
   // })
   // logger.info("context: " + formatString(JSON.stringify(messages)))
 
-  return messages
-}
+  return messages;
+};

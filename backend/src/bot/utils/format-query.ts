@@ -1,6 +1,6 @@
-import { SEPARATOR_BOX, SEPARATOR_LINE } from "@cs-magic/common/dist/const"
+import { SEPARATOR_BOX, SEPARATOR_LINE } from "@cs-magic/common/dist/const.js";
 
-import { CommandStyle } from "../../schema/bot-preference.js"
+import { CommandStyle } from "../../schema/bot-preference.js";
 
 /**
  * 可用于微信的回复
@@ -9,25 +9,28 @@ import { CommandStyle } from "../../schema/bot-preference.js"
 export const formatQuery = (
   content: string,
   options?: {
-    title?: string
-    footer?: string
-    tips?: string
-    commandStyle?: CommandStyle
+    title?: string;
+    footer?: string;
+    tips?: string;
+    commandStyle?: CommandStyle;
   },
 ) => {
-  const lines = []
+  const lines = [];
 
-  if (options?.commandStyle === CommandStyle.standard && options?.title) lines.push("  " + options.title)
+  if (options?.commandStyle === CommandStyle.standard && options?.title)
+    lines.push("  " + options.title);
 
-  lines.push(content)
+  lines.push(content);
 
-  if (options?.tips) lines.push(["TIPS: ", options.tips].join("\n"))
+  if (options?.tips) lines.push(["TIPS: ", options.tips].join("\n"));
 
-  if (options?.commandStyle === CommandStyle.standard && options?.footer) lines.push("  " + options.footer)
+  if (options?.commandStyle === CommandStyle.standard && options?.footer)
+    lines.push("  " + options.footer);
 
-  let s = lines.join(`\n${SEPARATOR_LINE}\n`)
+  let s = lines.join(`\n${SEPARATOR_LINE}\n`);
 
-  if (options?.commandStyle === CommandStyle.standard) s = [SEPARATOR_BOX, s, SEPARATOR_BOX].join("\n")
+  if (options?.commandStyle === CommandStyle.standard)
+    s = [SEPARATOR_BOX, s, SEPARATOR_BOX].join("\n");
 
-  return s
-}
+  return s;
+};

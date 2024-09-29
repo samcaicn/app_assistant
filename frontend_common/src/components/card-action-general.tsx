@@ -5,8 +5,8 @@ import capitalize from "lodash/capitalize";
 import { HTMLAttributes } from "react";
 
 import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading";
-import { cn } from "@cs-magic/shadcn/dist/lib/utils";
-import { ActionType } from "@cs-magic/swot-backend/schema";
+import { cn } from "@cs-magic/shadcn/lib/utils";
+import { ActionType } from "@cs-magic/swot-backend/schema/index";
 
 import {
   cardCopyingAtom,
@@ -29,7 +29,7 @@ export const GeneralCardAction = ({
   type: ActionType;
 } & HTMLAttributes<HTMLButtonElement>) => {
   const atomMap: Record<ActionType, PrimitiveAtom<boolean>> = {
-    startGeneration: cardGeneratingAtom,
+    generate: cardGeneratingAtom,
     copy: cardCopyingAtom,
     download: cardDownloadingAtom,
     upload: cardUploadingAtom,

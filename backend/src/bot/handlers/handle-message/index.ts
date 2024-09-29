@@ -1,8 +1,8 @@
 import omit from "lodash/omit.js";
 import { type Message, type Wechaty, types } from "wechaty";
 
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const";
-import logger from "@cs-magic/common/dist/log/index";
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const.js";
+import logger from "@cs-magic/common/dist/log/index.js";
 
 import {
   type CommandType,

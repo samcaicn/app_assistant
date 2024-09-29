@@ -1,19 +1,22 @@
-import { type TaskStatus } from "@prisma/client"
-import { chain, omit, sortBy } from "lodash-es"
-import { Job } from "node-schedule"
-import { Message } from "wechaty-puppet/payloads"
+import { type TaskStatus } from "@prisma/client";
+import { chain, omit, sortBy } from "lodash-es";
+import { Job } from "node-schedule";
+import { Message } from "wechaty-puppet/payloads";
 
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
-import { prisma } from "@cs-magic/common/dist/db/prisma"
-import logger from "@cs-magic/common/dist/log/index"
-import { ITaskDetail, taskDetailSchema } from "@cs-magic/common/dist/schema/task"
-import { parseFunction } from "@cs-magic/common/dist/utils/parse-function"
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const.js";
+import { prisma } from "@cs-magic/common/dist/db/prisma.js";
+import logger from "@cs-magic/common/dist/log/index.js";
+import {
+  ITaskDetail,
+  taskDetailSchema,
+} from "@cs-magic/common/dist/schema/task.js";
+import { parseFunction } from "@cs-magic/common/dist/utils/parse-function.js";
 
-import { Priority } from "../../../../schema/index.js"
+import { Priority } from "../../../../schema/index.js";
 
 export type ITaskWithIndex = ITaskDetail & {
-  index: number
-}
+  index: number;
+};
 
 export const taskStatusMap: Record<TaskStatus, string> = {
   done: "已完成",
@@ -21,9 +24,14 @@ export const taskStatusMap: Record<TaskStatus, string> = {
   pending: "待开始",
   running: "进行中",
   discarded: "已取消",
-}
+};
 
-const serializeTaskGroup = (tasks: ITaskWithIndex[], status: TaskStatus, onlyCount = false, showRoom?: boolean) => {
+const serializeTaskGroup = (
+  tasks: ITaskWithIndex[],
+  status: TaskStatus,
+  onlyCount = false,
+  showRoom?: boolean,
+) => {
   const items = sortBy(
     tasks.filter((t) => t.status === status),
     // .map((t) => {
@@ -31,8 +39,8 @@ const serializeTaskGroup = (tasks: ITaskWithIndex[], status: TaskStatus, onlyCou
     //   return t
     // })
     "priority",
-  )
-  const ans = [`${taskStatusMap[status]}（数量：${items.length}）`]
+  );
+  const ans = [`${taskStatusMap[status]}（数量：${items.length}）`];
 
   if (!onlyCount) {
     const arr = chain(items)
@@ -41,17 +49,17 @@ const serializeTaskGroup = (tasks: ITaskWithIndex[], status: TaskStatus, onlyCou
       .map(([priority, items]) => [
         `-- P${priority}`,
         ...items.map((t) => {
-          const roomName = t.conv?.topic
-          return `${t.index}) ${t.title} ${showRoom && roomName ? `(${roomName})` : ""}`
+          const roomName = t.conv?.topic;
+          return `${t.index}) ${t.title} ${showRoom && roomName ? `(${roomName})` : ""}`;
         }),
       ])
       // !important
       .value()
-      .flat()
-    ans.push(...arr)
+      .flat();
+    ans.push(...arr);
   }
-  return ans
-}
+  return ans;
+};
 
 /**
  * task 插件 用于辅助个人进行备忘管理，支持：
@@ -70,10 +78,10 @@ const serializeTaskGroup = (tasks: ITaskWithIndex[], status: TaskStatus, onlyCou
  *
  */
 export class TaskService {
-  private message: Message
+  private message: Message;
 
   constructor(message: Message) {
-    this.message = message
+    this.message = message;
   }
 
   async list(): Promise<ITaskWithIndex[]> {
@@ -102,18 +110,18 @@ export class TaskService {
               ],
             },
           },
-    })
+    });
 
-    const tasks = tasksInDB.map((t, index) => ({ ...t, index }))
+    const tasks = tasksInDB.map((t, index) => ({ ...t, index }));
     // todo: bug if turns on
     // console.log("tasks: ", tasks)
-    logger.debug("tasks: \n%o", tasks)
-    return tasks
+    logger.debug("tasks: \n%o", tasks);
+    return tasks;
   }
 
   async format() {
-    const tasks = await this.list()
-    const showRoom = !this.message.roomId
+    const tasks = await this.list();
+    const showRoom = !this.message.roomId;
     const s = [
       `任务列表（数量：${tasks.length}）`,
       SEPARATOR_LINE,
@@ -126,12 +134,18 @@ export class TaskService {
       ...serializeTaskGroup(tasks, "done", true, showRoom),
       SEPARATOR_LINE,
       ...serializeTaskGroup(tasks, "discarded", true, showRoom),
-    ].join("\n")
-    logger.debug(`list: ${s}`)
-    return s
+    ].join("\n");
+    logger.debug(`list: ${s}`);
+    return s;
   }
 
-  async add(title: string, priority?: Priority, timer?: Job, description?: string, status?: TaskStatus) {
+  async add(
+    title: string,
+    priority?: Priority,
+    timer?: Job,
+    description?: string,
+    status?: TaskStatus,
+  ) {
     const s = await prisma.task.create({
       data: {
         conv: this.message.roomId
@@ -158,19 +172,19 @@ export class TaskService {
         description,
         status,
       },
-    })
-    logger.debug(`added: %o`, s)
-    return s
+    });
+    logger.debug(`added: %o`, s);
+    return s;
   }
 
   async update(index: number, func: string) {
-    const tasks = await this.list()
-    const task = tasks[index]
-    if (!task) return
-    logger.debug(`func: %o`, func)
-    logger.debug(`task before: \n%o`, task)
-    parseFunction(func).bind(task)()
-    logger.debug(`task after: \n%o`, task)
+    const tasks = await this.list();
+    const task = tasks[index];
+    if (!task) return;
+    logger.debug(`func: %o`, func);
+    logger.debug(`task before: \n%o`, task);
+    parseFunction(func).bind(task)();
+    logger.debug(`task after: \n%o`, task);
 
     const s = await prisma.task.update({
       where: { id: task.id },
@@ -180,8 +194,8 @@ export class TaskService {
         "timer",
         "conv",
       ]),
-    })
-    logger.debug("updated: %o", s)
-    return s
+    });
+    logger.debug("updated: %o", s);
+    return s;
   }
 }

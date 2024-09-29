@@ -1,7 +1,7 @@
-import { LangType } from "@cs-magic/common/dist/i18n/schema"
-import { LlmModelType } from "@cs-magic/llm"
+import { LangType } from "@cs-magic/common/dist/i18n/schema.js";
+import { LlmModelType } from "@cs-magic/llm";
 
-import { GenWxmpArticleCardFetchOptions } from "./wxmp-article.js"
+import { GenWxmpArticleCardFetchOptions } from "./wxmp-article.js";
 
 export enum CommandStyle {
   standard = "standard",
@@ -16,42 +16,42 @@ export enum CommandStyle {
  */
 export type IWechatPreference = {
   display: {
-    lang: LangType
-    maxLines: number
-    style: CommandStyle
-  }
+    lang: LangType;
+    maxLines: number;
+    style: CommandStyle;
+  };
 
   on: {
     roomJoin: {
       sayAnnounce: {
-        enabled: boolean
-        n: number
-      }
-    }
+        enabled: boolean;
+        n: number;
+      };
+    };
     message: {
       image: {
         describe: {
-          enabled: boolean
-        }
-      }
-    }
-  }
+          enabled: boolean;
+        };
+      };
+    };
+  };
 
   features: {
     chatter: {
-      enabled: boolean
-      model: LlmModelType
-    }
+      enabled: boolean;
+      model: LlmModelType;
+    };
     parser: {
-      enabled: boolean
-      options?: GenWxmpArticleCardFetchOptions
-    }
+      enabled: boolean;
+      options?: GenWxmpArticleCardFetchOptions;
+    };
     todo: {
-      enabled: boolean
-      filter?: string
-    }
-  }
-}
+      enabled: boolean;
+      filter?: string;
+    };
+  };
+};
 
 export const defaultWechatPreference: IWechatPreference = {
   display: {
@@ -112,32 +112,32 @@ export const defaultWechatPreference: IWechatPreference = {
       filter: undefined,
     },
   },
-}
+};
 
 /**
  * 用户数据（不可用户手动修改）
  */
 export type IWechatData = {
   room: {
-    newInvitees: string[]
+    newInvitees: string[];
     welcome: {
-      sent: boolean
-    }
-  }
-  vipLevel: number
-  balance: number
+      sent: boolean;
+    };
+  };
+  vipLevel: number;
+  balance: number;
   plugin: {
     chatter: {
-      turnOnReminded: boolean
-      called: number
-      success: number
-    }
+      turnOnReminded: boolean;
+      called: number;
+      success: number;
+    };
     parser: {
-      called: number
-      success: number
-    }
-  }
-}
+      called: number;
+      success: number;
+    };
+  };
+};
 
 export const defaultWechatData: IWechatData = {
   room: {
@@ -160,4 +160,4 @@ export const defaultWechatData: IWechatData = {
       success: 0,
     },
   },
-}
+};

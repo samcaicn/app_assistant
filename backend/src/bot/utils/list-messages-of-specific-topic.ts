@@ -1,7 +1,11 @@
-import { SEPARATOR_BOX } from "@cs-magic/common/dist/const"
-import { prisma } from "@cs-magic/common/dist/db/prisma"
+import { SEPARATOR_BOX } from "@cs-magic/common/dist/const.js";
+import { prisma } from "@cs-magic/common/dist/db/prisma.js";
 
-export const listMessagesOfSpecificTopic = async (botWxid: string, convId: string, topic: string) => {
+export const listMessagesOfSpecificTopic = async (
+  botWxid: string,
+  convId: string,
+  topic: string,
+) => {
   const firstUserSetCommand = await prisma.wechatMessage.findFirst({
     where: {
       // 三者任一即可
@@ -14,8 +18,8 @@ export const listMessagesOfSpecificTopic = async (botWxid: string, convId: strin
     orderBy: {
       createdAt: "asc",
     },
-  })
-  if (!firstUserSetCommand) throw new Error("no lastUserSetCommand")
+  });
+  if (!firstUserSetCommand) throw new Error("no lastUserSetCommand");
 
   const nextUserSetCommand = await prisma.wechatMessage.findFirst({
     where: {
@@ -31,15 +35,19 @@ export const listMessagesOfSpecificTopic = async (botWxid: string, convId: strin
     orderBy: {
       createdAt: "asc",
     },
-  })
-  if (!nextUserSetCommand) throw new Error("no nextUserSetCommand")
+  });
+  if (!nextUserSetCommand) throw new Error("no nextUserSetCommand");
 
   const messages = await prisma.wechatMessage.findMany({
     where: {
       // AND, ref: https://chat.openai.com/c/895c1452-c3bd-4d5b-ba9f-c23c7750f412
       AND: [
         {
-          OR: [{ roomId: convId }, { listenerId: convId }, { talkerId: convId }],
+          OR: [
+            { roomId: convId },
+            { listenerId: convId },
+            { talkerId: convId },
+          ],
         },
         {
           OR: [
@@ -68,7 +76,7 @@ export const listMessagesOfSpecificTopic = async (botWxid: string, convId: strin
     include: {
       talker: true,
     },
-  })
+  });
 
   // logger.info({
   //   lastUserSetCommand,
@@ -76,5 +84,5 @@ export const listMessagesOfSpecificTopic = async (botWxid: string, convId: strin
   //   messagesLen: messages.length,
   // })
 
-  return messages
-}
+  return messages;
+};

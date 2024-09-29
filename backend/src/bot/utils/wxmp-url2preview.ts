@@ -1,21 +1,24 @@
-"use server"
+"use server";
 
-import logger from "@cs-magic/common/dist/log/index"
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
-import { formatWxmpUrl } from "@cs-magic/common/dist/utils/format-wxmp-article"
-import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json"
-import { ILlmRes, LlmModelType } from "@cs-magic/llm"
+import logger from "@cs-magic/common/dist/log/index.js";
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js";
+import { formatWxmpUrl } from "@cs-magic/common/dist/utils/format-wxmp-article.js";
+import { parseJsonSafe } from "@cs-magic/common/dist/utils/parse-json.js";
+import { ILlmRes, LlmModelType } from "@cs-magic/llm";
 
-import { ICardInnerPreview, IMedia } from "../../schema/card.js"
-import { GenWxmpArticleCardFetchOptions } from "../../schema/wxmp-article.js"
-import { parseSummary } from "../../utils/parse-summary.js"
+import { ICardInnerPreview, IMedia } from "../../schema/card.js";
+import { GenWxmpArticleCardFetchOptions } from "../../schema/wxmp-article.js";
+import { parseSummary } from "../../utils/parse-summary.js";
 
-import { fetchWxmpArticle } from "./wxmp-fetch.js"
+import { fetchWxmpArticle } from "./wxmp-fetch.js";
 
 export const audio2preview = async (
   filePath: string,
-  externalInfo: Pick<ICardInnerPreview, "author" | "id" | "title" | "time" | "cover" | "platformType" | "sourceUrl"> & {
-    model: LlmModelType
+  externalInfo: Pick<
+    ICardInnerPreview,
+    "author" | "id" | "title" | "time" | "cover" | "platformType" | "sourceUrl"
+  > & {
+    model: LlmModelType;
   },
 ): Promise<ICardInnerPreview> => {
   return {
@@ -32,27 +35,30 @@ export const audio2preview = async (
         tags: undefined,
       },
     },
-  }
-}
+  };
+};
 
-export const wxmpUrl2preview = async (url: string, fetchOptions?: GenWxmpArticleCardFetchOptions) => {
+export const wxmpUrl2preview = async (
+  url: string,
+  fetchOptions?: GenWxmpArticleCardFetchOptions,
+) => {
   if (/\/s\?/.test(url)) {
     // logger.debug(`wxmpUrl2preview: url_raw=${url}`)
-    const searchParams = new URL(url.replace(/amp;/g, "")).searchParams
+    const searchParams = new URL(url.replace(/amp;/g, "")).searchParams;
     url = formatWxmpUrl({
       __biz: searchParams.get("__biz")!,
       mid: searchParams.get("mid")!,
       idx: searchParams.get("idx")!,
       sn: searchParams.get("sn")!,
       chksm: searchParams.get("chksm")!,
-    })
+    });
   }
 
-  logger.info(`wxmpUrl2preview: url=${url}`)
-  const result = await fetchWxmpArticle(url, fetchOptions)
-  const llmResponse = parseJsonSafe<ILlmRes>(result.llmResponse.response)
-  const response = llmResponse?.response
-  if (!response) throw new Error("llm no response")
+  logger.info(`wxmpUrl2preview: url=${url}`);
+  const result = await fetchWxmpArticle(url, fetchOptions);
+  const llmResponse = parseJsonSafe<ILlmRes>(result.llmResponse.response);
+  const response = llmResponse?.response;
+  if (!response) throw new Error("llm no response");
 
   const inner: ICardInnerPreview = {
     id: result.llmResponse.id,
@@ -72,9 +78,9 @@ export const wxmpUrl2preview = async (url: string, fetchOptions?: GenWxmpArticle
       parsed: parseSummary(response.choices[0]?.message.content),
       model: llmResponse.options.model,
     },
-  }
+  };
 
-  logger.info(`-- inputting inner: %o`, inner)
+  logger.info(`-- inputting inner: %o`, inner);
 
-  return inner
-}
+  return inner;
+};

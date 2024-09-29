@@ -1,4 +1,4 @@
-import { getServerAuthSession } from "@cs-magic/react/dist/get-server-auth-session"
+import { getServerAuthSession } from "@cs-magic/react/get-server-auth-session";
 
 /**
  * 1. CONTEXT
@@ -13,12 +13,12 @@ import { getServerAuthSession } from "@cs-magic/react/dist/get-server-auth-sessi
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  const session = await getServerAuthSession()
+  const session = await getServerAuthSession();
 
   return {
     session,
     ...opts,
-  }
-}
+  };
+};
 
-export type Context = Awaited<ReturnType<typeof createTRPCContext>>
+export type Context = Awaited<ReturnType<typeof createTRPCContext>>;

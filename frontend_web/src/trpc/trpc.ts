@@ -6,13 +6,13 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-import { TRPCError, initTRPC } from "@trpc/server"
-import superjson from "superjson"
-import { ZodError } from "zod"
+import { TRPCError, initTRPC } from "@trpc/server";
+import superjson from "superjson";
+import { ZodError } from "zod";
 
-import { prisma } from "@cs-magic/common/dist/db/prisma"
+import { prisma } from "@cs-magic/common/db/prisma";
 
-import { Context } from "./context"
+import { Context } from "./context";
 
 /**
  * 2. INITIALIZATION
@@ -28,17 +28,18 @@ const t = initTRPC.context<Context>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
+        zodError:
+          error.cause instanceof ZodError ? error.cause.flatten() : null,
       },
-    }
+    };
   },
-})
+});
 
 /**
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
  *
  * These are the pieces you use to build your tRPC API. You should import these a lot in the
- * "/dist/server/api/routers" directory.
+ * "/server/api/routers" directory.
  */
 
 /**
@@ -46,7 +47,7 @@ const t = initTRPC.context<Context>().create({
  *
  * @see https://trpc.io/docs/router
  */
-export const createTRPCRouter = t.router
+export const createTRPCRouter = t.router;
 
 /**
  * Public (unauthenticated) procedure
@@ -55,7 +56,7 @@ export const createTRPCRouter = t.router
  * guarantee that a user querying is authorized, but you can still access user session data if they
  * are logged in.
  */
-export const publicProcedure = t.procedure
+export const publicProcedure = t.procedure;
 
 /**
  * Protected (authenticated) procedure
@@ -67,7 +68,7 @@ export const publicProcedure = t.procedure
  */
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.session?.user) {
-    throw new TRPCError({ code: "UNAUTHORIZED" })
+    throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
     ctx: {
@@ -76,5 +77,5 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
       session: { ...ctx.session, user: ctx.session.user },
       user: ctx.session.user,
     },
-  })
-})
+  });
+});

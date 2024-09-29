@@ -1,10 +1,13 @@
-import { useSetAtom } from "jotai"
+import { useSetAtom } from "jotai";
 
-import { tvFullScreenAtom, tvScreenOnAtom } from "@cs-magic/react/dist/store/tv.atom"
+import {
+  tvFullScreenAtom,
+  tvScreenOnAtom,
+} from "@cs-magic/react/store/tv.atom";
 
 export const Controls = () => {
-  const toggleFullscreen = useSetAtom(tvFullScreenAtom)
-  const toggleScreenOn = useSetAtom(tvScreenOnAtom)
+  const toggleFullscreen = useSetAtom(tvFullScreenAtom);
+  const toggleScreenOn = useSetAtom(tvScreenOnAtom);
 
   return (
     <div className="buttons">
@@ -12,7 +15,7 @@ export const Controls = () => {
       <div
         className="button-container"
         onClick={() => {
-          toggleFullscreen((v) => !v)
+          toggleFullscreen((v) => !v);
         }}
       >
         <div className="button"></div>
@@ -22,11 +25,11 @@ export const Controls = () => {
       <div
         className="button-container"
         onClick={() => {
-          toggleScreenOn((v) => !v)
+          toggleScreenOn((v) => !v);
         }}
       >
         <div className="button"></div>
       </div>
     </div>
-  )
-}
+  );
+};

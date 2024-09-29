@@ -1,19 +1,19 @@
-import { IArticleSummaryParsed } from "@cs-magic/common/dist/schema/index"
-import { ILlmQueryConfig, LlmModelType } from "@cs-magic/llm"
+import { IArticleSummaryParsed } from "@cs-magic/common/dist/schema/index.js";
+import { ILlmQueryConfig, LlmModelType } from "@cs-magic/llm";
 
 export type ISummaryParsed = {
-  result?: IArticleSummaryParsed
-  title?: string
-  description?: string
-  mindmap?: string
-  tags?: string[]
-  comment?: string
-}
+  result?: IArticleSummaryParsed;
+  title?: string;
+  description?: string;
+  mindmap?: string;
+  tags?: string[];
+  comment?: string;
+};
 
 export type SummaryOptions = {
-  enabled?: boolean
-  model?: LlmModelType
-  withImage?: boolean
+  enabled?: boolean;
+  model?: LlmModelType;
+  withImage?: boolean;
 
-  llmOptions?: ILlmQueryConfig
-}
+  llmOptions?: ILlmQueryConfig;
+};

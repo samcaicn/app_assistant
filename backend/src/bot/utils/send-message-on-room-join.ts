@@ -1,12 +1,12 @@
-import { Wechaty } from "wechaty"
+import { Wechaty } from "wechaty";
 
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
-import { moment } from "@cs-magic/common/dist/datetime/moment"
-import logger from "@cs-magic/common/dist/log/index"
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const.js";
+import { moment } from "@cs-magic/common/dist/datetime/moment.js";
+import logger from "@cs-magic/common/dist/log/index.js";
 
 export const sendMessageOnRoomJoin = async (bot: Wechaty, roomId: string) => {
-  const room = await bot.Room.find({ id: roomId })
-  if (!room) return logger.warn(`not found room(id=${roomId})`)
+  const room = await bot.Room.find({ id: roomId });
+  if (!room) return logger.warn(`not found room(id=${roomId})`);
 
   void bot.context?.addSendTask(async () => {
     await room.say(`大家好！我是好用到哭的 AI 助理「飞脑」！
@@ -21,6 +21,6 @@ ${SEPARATOR_LINE}
 - 飞脑十分注重用户隐私，当前会话内的聊天记录不会共享于他人
 - 当前版本：${bot.context?.version}
 - 当前时间：${moment().format("YYYY/MM/DD HH:mm")}
-`)
-  })
-}
+`);
+  });
+};

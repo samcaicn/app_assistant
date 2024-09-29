@@ -1,20 +1,20 @@
-import { type WechatyBuilder } from "wechaty"
-import { Message as MessagePayload } from "wechaty-puppet/dist/esm/src/mods/payloads"
+import { type WechatyBuilder } from "wechaty";
+import { Message as MessagePayload } from "wechaty-puppet/esm/src/mods/payloads";
 
-import { IBotContext } from "./index"
+import { IBotContext } from "./index";
 
-declare module "wechaty-puppet/dist/esm/src/mods/payloads" {
+declare module "wechaty-puppet/esm/src/mods/payloads" {
   /**
    * todo: extend not works, @see: https://chat.openai.com/c/3360abde-c640-4e31-878a-a5be82e2ce07
    */
   type Message = MessagePayload & {
-    isRoom: boolean
-  }
+    isRoom: boolean;
+  };
 }
 
 declare module "wechaty" {
   interface Wechaty extends ReturnType<typeof WechatyBuilder.build> {
-    context?: IBotContext
+    context?: IBotContext;
   }
 
   // class Message extends BaseMessage {

@@ -5,20 +5,20 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 import { FlexContainer } from "@cs-magic/react/components/flex-container";
-import { Button } from "@cs-magic/shadcn/dist/ui/button";
+import { Button } from "@cs-magic/shadcn/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-} from "@cs-magic/shadcn/dist/ui/card";
-import { Label } from "@cs-magic/shadcn/dist/ui/label";
+} from "@cs-magic/shadcn/ui/card";
+import { Label } from "@cs-magic/shadcn/ui/label";
 
 import { useDraftSession } from "./use-user";
-import { UserInputAvatar } from "@cs-magic/swot-frontend-common/dist/components/user-input-avatar";
-import { UserInputName } from "@cs-magic/swot-frontend-common/dist/components/user-input-name";
-import { UserSignOutButton } from "@cs-magic/swot-frontend-common/dist/components/user-sign-out-button";
+import { UserInputAvatar } from "@cs-magic/swot-frontend-common/components/user-input-avatar";
+import { UserInputName } from "@cs-magic/swot-frontend-common/components/user-input-name";
+import { UserSignOutButton } from "@cs-magic/swot-frontend-common/components/user-sign-out-button";
 
 export default function DashboardPage() {
   const session = useSession();

@@ -1,8 +1,8 @@
-import { Prisma } from "@prisma/client"
+import { Prisma } from "@prisma/client";
 
-import { backendApi } from "@cs-magic/common/dist/api/backend-api"
+import { backendApi } from "@cs-magic/common/dist/api/backend-api.js";
 
-import { SummaryOptions } from "../../../../schema/index.js"
+import { SummaryOptions } from "../../../../schema/index.js";
 
 export const fetchWxmpArticleViaFastapi = async (
   url: string,
@@ -14,7 +14,7 @@ export const fetchWxmpArticleViaFastapi = async (
       summary_model: options?.model,
       md_with_img: options?.withImage,
     },
-  })
-  data.time = new Date((data as { time: string }).time)
-  return data
-}
+  });
+  data.time = new Date((data as { time: string }).time);
+  return data;
+};

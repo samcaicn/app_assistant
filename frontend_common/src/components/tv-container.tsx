@@ -1,40 +1,47 @@
-"use client"
+"use client";
 
-import { useAtom } from "jotai"
-import { range } from "lodash-es"
-import { PropsWithChildren, useRef } from "react"
-import { useFullscreen, useMeasure } from "react-use"
+import { useAtom } from "jotai";
+import { range } from "lodash-es";
+import { PropsWithChildren, useRef } from "react";
+import { useFullscreen, useMeasure } from "react-use";
 
-import { FlexContainer } from "@cs-magic/react/components/flex-container"
-import { getTvScale, tvFullScreenAtom, tvScreenOnAtom } from "@cs-magic/react/dist/store/tv.atom"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+import { FlexContainer } from "@cs-magic/react/components/flex-container";
+import {
+  getTvScale,
+  tvFullScreenAtom,
+  tvScreenOnAtom,
+} from "@cs-magic/react/store/tv.atom";
+import { cn } from "@cs-magic/shadcn/lib/utils";
 
-import "../../../../assets/styles/tv.css"
+import "../../../../assets/styles/tv.css";
 
-import { Controls } from "./tv-controls"
+import { Controls } from "./tv-controls";
 
 /**
  * tv, ref: https://codepen.io/manz/pen/MWoRMja
  */
 export const TVContainer = ({ children }: PropsWithChildren) => {
-  const [isScreenOn] = useAtom(tvScreenOnAtom)
-  const [isFullScreen, setFullScreen] = useAtom(tvFullScreenAtom)
+  const [isScreenOn] = useAtom(tvScreenOnAtom);
+  const [isFullScreen, setFullScreen] = useAtom(tvFullScreenAtom);
 
-  const refFullScreen = useRef<HTMLDivElement>(null)
+  const refFullScreen = useRef<HTMLDivElement>(null);
   useFullscreen(refFullScreen, isFullScreen, {
     onClose: () => setFullScreen(false),
-  })
+  });
 
-  const channelDeg = 0
-  const volumeDeg = 0
+  const channelDeg = 0;
+  const volumeDeg = 0;
 
-  const [refViewport, viewport] = useMeasure<HTMLDivElement>()
-  const scale = getTvScale(viewport)
+  const [refViewport, viewport] = useMeasure<HTMLDivElement>();
+  const scale = getTvScale(viewport);
 
   // console.log({ scale, isScreenOn, isFullScreen })
 
   return (
-    <div className={"flex h-full w-full items-center justify-center"} ref={refViewport}>
+    <div
+      className={"flex h-full w-full items-center justify-center"}
+      ref={refViewport}
+    >
       <div
         className={cn(
           "tv",
@@ -53,7 +60,9 @@ export const TVContainer = ({ children }: PropsWithChildren) => {
           {/*  红色外框，不包含脚部分*/}
           <div className="television  ">
             {/*  不包含红色外框【目标】 */}
-            <div className={cn("television-inner", isFullScreen && "!border-none")}>
+            <div
+              className={cn("television-inner", isFullScreen && "!border-none")}
+            >
               {/*  电视机屏幕容器 */}
               <div className="television-screen-container ">
                 {/*  电视机外屏 */}
@@ -62,7 +71,9 @@ export const TVContainer = ({ children }: PropsWithChildren) => {
                   <div className="television-screen ">
                     <div className="off"></div>
 
-                    <FlexContainer className={"absolute"}>{children}</FlexContainer>
+                    <FlexContainer className={"absolute"}>
+                      {children}
+                    </FlexContainer>
 
                     {/*<div className="logo-container">*/}
                     {/*  <div className="logo">*/}
@@ -141,5 +152,5 @@ export const TVContainer = ({ children }: PropsWithChildren) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

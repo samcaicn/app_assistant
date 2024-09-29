@@ -5,23 +5,19 @@ import { useAtom } from "jotai";
 import { SettingsIcon } from "lucide-react";
 import { useState } from "react";
 
-import { IconContainer } from "@cs-magic/react/dist/components/icon-container";
-import { devEnabledAtom } from "@cs-magic/react/dist/store/dev.atom";
-import { cn } from "@cs-magic/shadcn/dist/lib/utils";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@cs-magic/shadcn/dist/ui/sheet";
+import { IconContainer } from "@cs-magic/react/components/icon-container";
+import { devEnabledAtom } from "@cs-magic/react/store/dev.atom";
+import { cn } from "@cs-magic/shadcn/lib/utils";
+import { Sheet, SheetContent, SheetTrigger } from "@cs-magic/shadcn/ui/sheet";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@cs-magic/shadcn/dist/ui/tabs";
-import { ConfigDevCard } from "@cs-magic/swot-frontend-common/dist/components/config-dev-card";
-import { ConfigLogCard } from "@cs-magic/swot-frontend-common/dist/components/config-log-card";
-import { ConfigSMSCard } from "@cs-magic/swot-frontend-common/dist/components/config-sms";
+} from "@cs-magic/shadcn/ui/tabs";
+import { ConfigDevCard } from "@/components/config-dev-card";
+import { ConfigLogCard } from "@/components/config-log-card";
+import { ConfigSMSCard } from "@/components/config-sms";
 
 import { UserSignOutButton } from "./user-sign-out-button";
 

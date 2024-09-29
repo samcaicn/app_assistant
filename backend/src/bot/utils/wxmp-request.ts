@@ -1,62 +1,67 @@
-import { Prisma } from "@prisma/client"
-import { parse } from "node-html-parser"
-import { z } from "zod"
+import { Prisma } from "@prisma/client";
+import { parse } from "node-html-parser";
+import { z } from "zod";
 
-import { api } from "@cs-magic/common/dist/api/api"
-import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index"
-import { html2md } from "@cs-magic/common/dist/markdown/html2md"
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary"
-import { WxmpArticleSimulator } from "@cs-magic/common/dist/spider/wxmp-article-simulator"
-import { withError } from "@cs-magic/common/dist/utils/index"
+import { api } from "@cs-magic/common/dist/api/api.js";
+import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index.js";
+import { html2md } from "@cs-magic/common/dist/markdown/html2md.js";
+import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary.js";
+import { WxmpArticleSimulator } from "@cs-magic/common/dist/spider/wxmp-article-simulator.js";
+import { withError } from "@cs-magic/common/dist/utils/index.js";
 
-import { RequestOptions } from "../../schema/request.js"
+import { RequestOptions } from "../../schema/request.js";
 
-import { parseWxmpArticleUrl } from "./parse-wxmp-article-url.js"
+import { parseWxmpArticleUrl } from "./parse-wxmp-article-url.js";
 
 // import { parseWxmpArticleUrl } from "@cs-magic/swot-web/utils/card-platform/wechat-article/utils"
 
-const wxmpArticleSimulator = new WxmpArticleSimulator()
+const wxmpArticleSimulator = new WxmpArticleSimulator();
 
-export const wxmpRequest = async (url: string, options?: RequestOptions): Promise<Prisma.CardUncheckedCreateInput> => {
+export const wxmpRequest = async (
+  url: string,
+  options?: RequestOptions,
+): Promise<Prisma.CardUncheckedCreateInput> => {
   // !important: 不加这个会导致环境异常: <h2 class=\"weui-msg__title\">环境异常</h2>\n        <p class=\"weui-msg__desc\">当前环境异常，完成验证后即可继续访问。</p>
-  url = url.replace(/amp;/g, "")
+  url = url.replace(/amp;/g, "");
 
   // 1. fetch page
-  let pageText: string
+  let pageText: string;
   if (options?.approach?.type === "simulate") {
     // simulate 也非万能，在服务端出现了 navigate 无法抵达 networkidle 的问题
-    wxmpArticleSimulator.launchOptions.headless = options?.approach?.headless
-    pageText = await wxmpArticleSimulator.crawl(url)
+    wxmpArticleSimulator.launchOptions.headless = options?.approach?.headless;
+    pageText = await wxmpArticleSimulator.crawl(url);
   } else {
-    pageText = (await api.get<string>(url)).data
+    pageText = (await api.get<string>(url)).data;
   }
   // console.debug(pageText)
 
   // 2. parse page
-  const html = parse(pageText)
+  const html = parse(pageText);
 
-  const urlParsed = parseWxmpArticleUrl(url)
+  const urlParsed = parseWxmpArticleUrl(url);
   // 额外解析
   if (!urlParsed.platformData.sn) {
     // e.g 1. http://mp.weixin.qq.com/s?__biz=MzAxNTg4NzAxOA==&amp;mid=2247511106&amp;idx=1&amp;sn=fa43c16f05693f6a13d10e8c6aef325f&amp;chksm=9bffd387ac885a9133f51cee60cf6dbd4f89e6c2eeb57710d2f33a3a2a7caecd7fd34a4d1a80#rd
     // e.g 2. http://mp.weixin.qq.com/s?__biz=MzAxNTg4NzAxOA==&mid=2247511106&idx=1&sn=fa43c16f05693f6a13d10e8c6aef325f&chksm=9bffd387ac885a9133f51cee60cf6dbd4f89e6c2eeb57710d2f33a3a2a7caecd7fd34a4d1a80#rd
-    const ogUrl = parseMetaFromHtml(html, "og:url", "property")!
-    urlParsed.platformData = parseWxmpArticleUrl(ogUrl).platformData
+    const ogUrl = parseMetaFromHtml(html, "og:url", "property")!;
+    urlParsed.platformData = parseWxmpArticleUrl(ogUrl).platformData;
   }
 
-  const d = new Date(Number(/var ct = "(.*?)"/.exec(pageText)?.[1]) * 1e3) // 1711455495
-  const time = await withError("should time is a Date")(z.date().parseAsync(d))
+  const d = new Date(Number(/var ct = "(.*?)"/.exec(pageText)?.[1]) * 1e3); // 1711455495
+  const time = await withError("should time is a Date")(z.date().parseAsync(d));
   // logger.info(JSON.stringify({ time }))
 
   const title = await withError("should title is valid")(
     z.string().min(1).parseAsync(parseMetaFromHtml(html, "og:title")),
-  )
+  );
   const coverUrl = await withError("should cover is valid")(
     z.string().min(1).parseAsync(parseMetaFromHtml(html, "og:image")!),
-  )
+  );
   const description = await withError("should desc is valid")(
-    z.string().parseAsync(parseMetaFromHtml(html, "og:description", "property")),
-  )
+    z
+      .string()
+      .parseAsync(parseMetaFromHtml(html, "og:description", "property")),
+  );
   // logger.info(JSON.stringify({ title }))
   // const source = parseMetaFromHtml(html, "og:site_name") // 微信公众平台
   // const authorPublisherName = parseMetaFromHtml(html, "author", "name")
@@ -79,14 +84,17 @@ export const wxmpRequest = async (url: string, options?: RequestOptions): Promis
       .string()
       .min(1)
       .parseAsync(/var user_name = "(.*?)"/.exec(pageText)?.[1]),
-  }
+  };
   // logger.info({ authorAccount })
 
   // 去除作者信息，否则会有干扰, case-id: fq-Bb_v
-  html.getElementById("meta_content")?.remove()
-  const contentHtml = await z.string().min(1).parseAsync(html.getElementById("img-content")?.innerHTML)
+  html.getElementById("meta_content")?.remove();
+  const contentHtml = await z
+    .string()
+    .min(1)
+    .parseAsync(html.getElementById("img-content")?.innerHTML);
 
-  const contentMd = html2md(contentHtml)
+  const contentMd = html2md(contentHtml);
 
   return {
     sourceUrl: url,
@@ -100,5 +108,5 @@ export const wxmpRequest = async (url: string, options?: RequestOptions): Promis
     cover: { url: coverUrl, width: null, height: null },
     html: contentHtml,
     contentMd,
-  }
-}
+  };
+};

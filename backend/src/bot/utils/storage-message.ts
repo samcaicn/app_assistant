@@ -1,8 +1,8 @@
-import { omit } from "lodash-es"
-import { Message, types } from "wechaty"
+import { omit } from "lodash-es";
+import { Message, types } from "wechaty";
 
-import { prisma } from "@cs-magic/common/dist/db/prisma"
-import logger from "@cs-magic/common/dist/log/index"
+import { prisma } from "@cs-magic/common/dist/db/prisma.js";
+import logger from "@cs-magic/common/dist/log/index.js";
 
 /**
  * 存储信息
@@ -11,24 +11,25 @@ import logger from "@cs-magic/common/dist/log/index"
  * @param message
  */
 export const storageMessage = async (message: Message) => {
-  const talker = message.talker()
-  const room = message.room()
-  const listener = message.listener()
+  const talker = message.talker();
+  const room = message.room();
+  const listener = message.listener();
 
-  const type = message.type()
+  const type = message.type();
 
-  const rawPayload = message.payload
+  const rawPayload = message.payload;
   // console.log("rawPayload: ", rawPayload)
 
   const payload = omit(rawPayload, ["talkerId", "roomId", "listenerId"]) as {
-    id: string
-    timestamp: number
-    type: types.Message
-    text?: string
-  }
+    id: string;
+    timestamp: number;
+    type: types.Message;
+    text?: string;
+  };
 
   // we can use `this.bot.Image.create(mid) to create an Image, but with image in the cache (after bot starts)`
-  if (type === types.Message.Image) payload.text = `<Image id="${payload.id}"/>`
+  if (type === types.Message.Image)
+    payload.text = `<Image id="${payload.id}"/>`;
 
   try {
     await prisma.wechatMessage.create({
@@ -67,9 +68,9 @@ export const storageMessage = async (message: Message) => {
             }
           : {},
       },
-    })
+    });
   } catch (e) {
-    logger.debug(`skipped message storaging`)
+    logger.debug(`skipped message storaging`);
     // formatError(e)
   }
-}
+};

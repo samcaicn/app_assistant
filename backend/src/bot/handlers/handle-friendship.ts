@@ -1,8 +1,8 @@
-import { Friendship, Wechaty, types } from "wechaty"
+import { Friendship, Wechaty, types } from "wechaty";
 
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
-import { moment } from "@cs-magic/common/dist/datetime/moment"
-import logger from "@cs-magic/common/dist/log/index"
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const.js";
+import { moment } from "@cs-magic/common/dist/datetime/moment.js";
+import logger from "@cs-magic/common/dist/log/index.js";
 
 /**
  * 单方面把bot删了后，再添加bot，不会触发 friendship
@@ -10,8 +10,11 @@ import logger from "@cs-magic/common/dist/log/index"
  * @param bot
  * @param friendship
  */
-export const handleFriendship = async (bot: Wechaty, friendship: Friendship) => {
-  logger.info(`onFriendship: %o`, friendship)
+export const handleFriendship = async (
+  bot: Wechaty,
+  friendship: Friendship,
+) => {
+  logger.info(`onFriendship: %o`, friendship);
 
   if (
     // todo: 这个是用户首次添加bot？ (3)
@@ -20,9 +23,9 @@ export const handleFriendship = async (bot: Wechaty, friendship: Friendship) => 
     friendship.type() === types.Friendship.Receive
   )
     // 如果不接受好友的话，无法接受转账（但红包可以，但红包无法hook）
-    await friendship.accept()
+    await friendship.accept();
 
-  const user = friendship.contact()
+  const user = friendship.contact();
 
   await bot.context?.addSendTask(async () => {
     await user.say(`您好啊！我是好用到哭的 AI 助理「飞脑」！
@@ -38,6 +41,6 @@ ${SEPARATOR_LINE}
 - 续费请扫码：XXX (新朋友免费赠送100飞币)
 - 当前版本：${bot.context?.version}
 - 当前时间：${moment().format("YYYY/MM/DD HH:mm")}
-`)
-  })
-}
+`);
+  });
+};

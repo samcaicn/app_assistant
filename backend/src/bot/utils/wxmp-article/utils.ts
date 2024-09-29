@@ -1,13 +1,16 @@
-import { parse } from "node-html-parser"
+import { parse } from "node-html-parser";
 
-import { api } from "@cs-magic/common/dist/api/api"
-import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index"
+import { api } from "@cs-magic/common/dist/api/api.js";
+import { parseMetaFromHtml } from "@cs-magic/common/dist/html/index.js";
 
-export const getWechatArticleUrlFromShortId = (shortId: string) => `https://mp.weixin.qq.com/s/${shortId}`
+export const getWechatArticleUrlFromShortId = (shortId: string) =>
+  `https://mp.weixin.qq.com/s/${shortId}`;
 
-export const parseWxmpArticleShortId = (url: string) => /mp.weixin.qq.com\/s\/(.*?)$/.exec(url)?.[1]
+export const parseWxmpArticleShortId = (url: string) =>
+  /mp.weixin.qq.com\/s\/(.*?)$/.exec(url)?.[1];
 
-export const parseWxmpArticleLongId = (url: string) => /mp.weixin.qq.com.*?sn=(.*?)&/.exec(url)?.[1]
+export const parseWxmpArticleLongId = (url: string) =>
+  /mp.weixin.qq.com.*?sn=(.*?)&/.exec(url)?.[1];
 
 /**
  * url-short: https://mp.weixin.qq.com/s/T2DpRlMxTSwYIPJm1ZYU6w
@@ -15,19 +18,19 @@ export const parseWxmpArticleLongId = (url: string) => /mp.weixin.qq.com.*?sn=(.
  * @param url
  */
 export const ensureWxmpArticleLongId = async (url: string) => {
-  let longId = parseWxmpArticleLongId(url)
+  let longId = parseWxmpArticleLongId(url);
   // console.log({ url, longId })
   if (!longId) {
-    const { data: pageText } = await api.get<string>(url)
+    const { data: pageText } = await api.get<string>(url);
     // console.log({ pageText })
-    if (!pageText) throw new Error(`no page content found!`)
+    if (!pageText) throw new Error(`no page content found!`);
 
-    const html = parse(pageText)
-    const newUrl = parseMetaFromHtml(html, "og:url", "property")
+    const html = parse(pageText);
+    const newUrl = parseMetaFromHtml(html, "og:url", "property");
     // console.log({ newUrl })
-    if (newUrl) longId = parseWxmpArticleLongId(newUrl)
+    if (newUrl) longId = parseWxmpArticleLongId(newUrl);
     // console.log({ longId })
   }
-  if (!longId) throw new Error(`failed to parse longId from url: ${url}`)
-  return longId
-}
+  if (!longId) throw new Error(`failed to parse longId from url: ${url}`);
+  return longId;
+};

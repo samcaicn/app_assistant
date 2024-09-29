@@ -1,6 +1,6 @@
-import { prisma } from "@cs-magic/common/dist/db/prisma"
+import { prisma } from "@cs-magic/common/dist/db/prisma.js";
 
-import { parseLimitedCommand } from "./parse-command.js"
+import { parseLimitedCommand } from "./parse-command.js";
 
 export const listTopics = async (convId: string) => {
   const listMessages = async (convId: string, take?: number) => {
@@ -11,30 +11,30 @@ export const listTopics = async (convId: string) => {
       },
       orderBy: { createdAt: "asc" },
       take,
-    })
-    return messages
-  }
+    });
+    return messages;
+  };
 
-  const messages = await listMessages(convId)
+  const messages = await listMessages(convId);
 
-  const topicDict: Record<string, number> = {}
-  let lastTopic: string | null = null
-  const started = true // todo: switch
+  const topicDict: Record<string, number> = {};
+  let lastTopic: string | null = null;
+  const started = true; // todo: switch
   messages.forEach((row) => {
-    const parsed = parseLimitedCommand(row.text ?? "", ["new-topic"])
+    const parsed = parseLimitedCommand(row.text ?? "", ["new-topic"]);
     if (parsed) {
       switch (parsed?.command) {
         case "new-topic":
-          lastTopic = parsed?.args ?? "默认"
-          if (!(lastTopic in topicDict)) topicDict[lastTopic] = 0
-          break
+          lastTopic = parsed?.args ?? "默认";
+          if (!(lastTopic in topicDict)) topicDict[lastTopic] = 0;
+          break;
       }
     } else if (started && lastTopic !== null && !row.text?.startsWith("/")) {
-      ++topicDict[lastTopic]!
+      ++topicDict[lastTopic]!;
     } else {
       // don't do anything
     }
-  })
+  });
 
-  return topicDict
-}
+  return topicDict;
+};

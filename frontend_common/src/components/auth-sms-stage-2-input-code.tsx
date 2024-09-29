@@ -1,56 +1,63 @@
-"use client"
+"use client";
 
-import { useHotkeys } from "@mantine/hooks"
-import { useAtom, useSetAtom } from "jotai"
-import { signIn } from "next-auth/react"
-import { useEffect, useRef } from "react"
-import { toast } from "sonner"
+import { useHotkeys } from "@mantine/hooks";
+import { useAtom, useSetAtom } from "jotai";
+import { signIn } from "next-auth/react";
+import { useEffect, useRef } from "react";
+import { toast } from "sonner";
 
-import { SMS_DIGIT_SIZE } from "@cs-magic/common/dist/config"
-import { SMS_PROVIDER_ID } from "@cs-magic/common/dist/sms.base"
-import { smsCodeAtom, smsSignInPayloadAtom } from "@cs-magic/react/dist/store/sms.atom"
-import { uiLoadingAlertDialogAtom } from "@cs-magic/react/dist/store/ui.atom"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
-import { Label } from "@cs-magic/shadcn/dist/ui/label"
+import { SMS_DIGIT_SIZE } from "@cs-magic/common/config";
+import { SMS_PROVIDER_ID } from "@cs-magic/common/sms.base";
+import {
+  smsCodeAtom,
+  smsSignInPayloadAtom,
+} from "@cs-magic/react/store/sms.atom";
+import { uiLoadingAlertDialogAtom } from "@cs-magic/react/store/ui.atom";
+import { cn } from "@cs-magic/shadcn/lib/utils";
+import { Label } from "@cs-magic/shadcn/ui/label";
 
-import { SmsReInputPhone } from "./auth-sms-reinput-phone"
-import { SmsResendCode } from "./auth-sms-resend-code"
+import { SmsReInputPhone } from "./auth-sms-reinput-phone";
+import { SmsResendCode } from "./auth-sms-resend-code";
 
 export const AuthSmsStage2InputCode = () => {
-  const [digits, setDigits] = useAtom(smsCodeAtom)
+  const [digits, setDigits] = useAtom(smsCodeAtom);
 
-  const refInput = useRef<HTMLInputElement>(null)
+  const refInput = useRef<HTMLInputElement>(null);
 
-  const [data] = useAtom(smsSignInPayloadAtom)
+  const [data] = useAtom(smsSignInPayloadAtom);
 
-  const setLoading = useSetAtom(uiLoadingAlertDialogAtom)
+  const setLoading = useSetAtom(uiLoadingAlertDialogAtom);
 
   const smsSignIn = async () => {
-    if (digits.length !== 6) return
+    if (digits.length !== 6) return;
 
-    console.log("[sms] sign in with: ", data)
+    console.log("[sms] sign in with: ", data);
 
-    setLoading(true)
+    setLoading(true);
     const res = await signIn(SMS_PROVIDER_ID, {
       ...data,
       redirect: false,
-    })
-    console.log("[sms] sign in result: ", res)
-    const ok = !!res?.ok
-    if (!ok) toast.error(`验证失败！原因：${res?.error ?? "未知"}`)
-    setLoading(false)
-  }
+    });
+    console.log("[sms] sign in result: ", res);
+    const ok = !!res?.ok;
+    if (!ok) toast.error(`验证失败！原因：${res?.error ?? "未知"}`);
+    setLoading(false);
+  };
 
   useEffect(() => {
-    void smsSignIn()
-  }, [digits])
+    void smsSignIn();
+  }, [digits]);
 
-  useHotkeys([["Backspace", () => setDigits("")]])
+  useHotkeys([["Backspace", () => setDigits("")]]);
 
   return (
     <div className={"flex w-full flex-col items-center gap-4"}>
       验证您的手机号
-      <div className={"flex flex-col items-center gap-2 text-xs text-muted-foreground"}>
+      <div
+        className={
+          "flex flex-col items-center gap-2 text-xs text-muted-foreground"
+        }
+      >
         <div>请输入发送到您手机的短信验证码</div>
 
         <Label className={"relative h-8 w-full sm:h-12"}>
@@ -68,24 +75,26 @@ export const AuthSmsStage2InputCode = () => {
             pattern="\d{6}"
             // NOTE: onKeyDown 会被 onChange劫持
             onKeyDown={(event) => {
-              event.preventDefault() // 阻止其他行为
+              event.preventDefault(); // 阻止其他行为
 
-              const key = event.key
+              const key = event.key;
               // console.log("onKeyDown key: ", event.key)
               if (/\d/.test(key)) {
-                setDigits((d) => d + key)
+                setDigits((d) => d + key);
               } else if (key === "Backspace") {
-                setDigits("")
+                setDigits("");
               }
             }}
             // NOTE: onChange 对于 one-time-code 是必须得
             onChange={(event) => {
-              setDigits(event.currentTarget.value)
+              setDigits(event.currentTarget.value);
             }}
           />
 
           <div className={"flex items-center justify-center gap-2 "}>
-            <span className={cn("font-black text-primary/75", SMS_DIGIT_SIZE)}>M - </span>
+            <span className={cn("font-black text-primary/75", SMS_DIGIT_SIZE)}>
+              M -{" "}
+            </span>
 
             {[...Array(6)].map((value, index) => (
               <div
@@ -95,7 +104,13 @@ export const AuthSmsStage2InputCode = () => {
                   SMS_DIGIT_SIZE,
                 )}
               >
-                {index < digits.length ? digits[index] : index === digits.length ? <span className={"cursor"} /> : ""}
+                {index < digits.length ? (
+                  digits[index]
+                ) : index === digits.length ? (
+                  <span className={"cursor"} />
+                ) : (
+                  ""
+                )}
               </div>
             ))}
           </div>
@@ -105,5 +120,5 @@ export const AuthSmsStage2InputCode = () => {
       </div>
       <SmsResendCode />
     </div>
-  )
-}
+  );
+};

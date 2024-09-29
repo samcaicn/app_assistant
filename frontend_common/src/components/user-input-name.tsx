@@ -1,6 +1,6 @@
 "use client";
 
-import { InputWithEnter } from "@cs-magic/react/dist/components/input";
+import { InputWithEnter } from "@cs-magic/react/components/input";
 
 import { useDraftSession } from "../hooks/use-user";
 

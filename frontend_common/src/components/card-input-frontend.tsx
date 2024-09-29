@@ -1,29 +1,40 @@
-import { PrimitiveAtom, useAtom } from "jotai"
+import { PrimitiveAtom, useAtom } from "jotai";
 
-import { backendTypeSchema, llmModelTypeSchema } from "@cs-magic/llm"
-import { AtomSelector, AtomSwitcher } from "@cs-magic/react/components/atom-switcher"
-import { LabelLine } from "@cs-magic/react/components/label-line"
-import { mapSpacingVerticalAtom } from "@cs-magic/react/dist/store/visualization.atom"
-import { Input } from "@cs-magic/shadcn/dist/ui/input"
-import { Separator } from "@cs-magic/shadcn/dist/ui/separator"
+import { backendTypeSchema, llmModelTypeSchema } from "@cs-magic/llm";
+import {
+  AtomSelector,
+  AtomSwitcher,
+} from "@cs-magic/react/components/atom-switcher";
+import { LabelLine } from "@cs-magic/react/components/label-line";
+import { mapSpacingVerticalAtom } from "@cs-magic/react/store/visualization.atom";
+import { Input } from "@cs-magic/shadcn/ui/input";
+import { Separator } from "@cs-magic/shadcn/ui/separator";
 
-import { cardAuthorWithTitleAtom } from "../store/card.atom"
+import { cardAuthorWithTitleAtom } from "../store/card.atom";
 import {
   cardFetchCommentsEnabledAtom,
   cardFetchEngineAtom,
   cardFetchStatEnabledAtom,
   cardFetchWithCacheAtom,
   cardWatermarkTextAtom,
-} from "../store/card.request.atom"
-import { cardLlmEnabledAtom, cardLlmModelTypeAtom, cardSummaryWithImageAtom } from "../store/card.summary.atom"
+} from "../store/card.request.atom";
+import {
+  cardLlmEnabledAtom,
+  cardLlmModelTypeAtom,
+  cardSummaryWithImageAtom,
+} from "../store/card.summary.atom";
 
-import { InputCardAction } from "./card-action-input"
-import { CardInputUrl } from "./card-input-url"
-import { CardInputUser } from "./card-input-user"
+import { InputCardAction } from "./card-action-input";
+import { CardInputUrl } from "./card-input-url";
+import { CardInputUser } from "./card-input-user";
 
 export const CardInputFrontend = () => {
-  const [mapSpacingVertical, setMapSpacingVertical] = useAtom(mapSpacingVerticalAtom)
-  const [cardWatermarkText, setCardWatermarkText] = useAtom(cardWatermarkTextAtom)
+  const [mapSpacingVertical, setMapSpacingVertical] = useAtom(
+    mapSpacingVerticalAtom,
+  );
+  const [cardWatermarkText, setCardWatermarkText] = useAtom(
+    cardWatermarkTextAtom,
+  );
 
   return (
     <>
@@ -37,15 +48,26 @@ export const CardInputFrontend = () => {
 
       <AtomSwitcher atom={cardLlmEnabledAtom} name={"llm-enabled"} />
 
-      <AtomSelector atom={cardLlmModelTypeAtom} name={"llm-type"} vs={llmModelTypeSchema.options} />
+      <AtomSelector
+        atom={cardLlmModelTypeAtom}
+        name={"llm-type"}
+        vs={llmModelTypeSchema.options}
+      />
 
       <AtomSwitcher atom={cardFetchStatEnabledAtom} name={"refetch-stat"} />
 
-      <AtomSwitcher atom={cardFetchCommentsEnabledAtom} name={"refetch-comments"} />
+      <AtomSwitcher
+        atom={cardFetchCommentsEnabledAtom}
+        name={"refetch-comments"}
+      />
 
       <Separator orientation={"horizontal"} />
 
-      <AtomSelector atom={cardFetchEngineAtom} name={"fetch engine"} vs={backendTypeSchema.options} />
+      <AtomSelector
+        atom={cardFetchEngineAtom}
+        name={"fetch engine"}
+        vs={backendTypeSchema.options}
+      />
 
       <AtomSwitcher atom={cardSummaryWithImageAtom} name={"md-with-img"} />
 
@@ -58,7 +80,7 @@ export const CardInputFrontend = () => {
           type={"number"}
           value={mapSpacingVertical ?? 0}
           onChange={(event) => {
-            setMapSpacingVertical(Number(event.currentTarget.value))
+            setMapSpacingVertical(Number(event.currentTarget.value));
           }}
         />
       </LabelLine>
@@ -69,7 +91,7 @@ export const CardInputFrontend = () => {
         <Input
           value={cardWatermarkText}
           onChange={(event) => {
-            setCardWatermarkText(event.currentTarget.value)
+            setCardWatermarkText(event.currentTarget.value);
           }}
         />
       </LabelLine>
@@ -81,5 +103,5 @@ export const CardInputFrontend = () => {
         <InputCardAction type={"reset"} />
       </div>
     </>
-  )
-}
+  );
+};

@@ -1,52 +1,52 @@
-import { sleep } from "@cs-magic/common/dist/datetime/utils"
-import logger from "@cs-magic/common/dist/log/index"
-import { formatError } from "@cs-magic/common/dist/utils/index"
+import { sleep } from "@cs-magic/common/dist/datetime/utils.js";
+import logger from "@cs-magic/common/dist/log/index.js";
+import { formatError } from "@cs-magic/common/dist/utils/index.js";
 
-import { QueueTask } from "../../schema/index.js"
+import { QueueTask } from "../../schema/index.js";
 
 export class SenderQueue {
-  static queue: QueueTask[]
-  static processing: boolean
-  static qps: number
+  static queue: QueueTask[];
+  static processing: boolean;
+  static qps: number;
 
   constructor(qps = 10) {
-    const QPS_MAX = 100
+    const QPS_MAX = 100;
     if (qps > QPS_MAX) {
-      qps = QPS_MAX
-      logger.warn(`qps limited to be the max = ${QPS_MAX}`)
+      qps = QPS_MAX;
+      logger.warn(`qps limited to be the max = ${QPS_MAX}`);
     }
 
-    SenderQueue.qps = qps
-    SenderQueue.queue = []
-    SenderQueue.processing = false
+    SenderQueue.qps = qps;
+    SenderQueue.queue = [];
+    SenderQueue.processing = false;
   }
 
   get cnt() {
-    return SenderQueue.queue.length
+    return SenderQueue.queue.length;
   }
 
   async addTask(task: QueueTask) {
-    SenderQueue.queue.push(task)
-    logger.info(`🌈task (cnt=${this.cnt})`)
+    SenderQueue.queue.push(task);
+    logger.info(`🌈task (cnt=${this.cnt})`);
     if (!SenderQueue.processing) {
-      SenderQueue.processing = true
-      await this._runTask()
+      SenderQueue.processing = true;
+      await this._runTask();
     }
   }
 
   private async _runTask() {
     while (SenderQueue.queue.length > 0) {
       try {
-        const task = SenderQueue.queue.shift()!
+        const task = SenderQueue.queue.shift()!;
         // logger.info(`⏳ task(cnt=${this.cnt})`)
-        await task()
-        logger.info(`✅ task (cnt=${this.cnt})`)
+        await task();
+        logger.info(`✅ task (cnt=${this.cnt})`);
       } catch (e) {
-        formatError(e)
+        formatError(e);
       } finally {
-        await sleep(1000 / SenderQueue.qps) // 限时
+        await sleep(1000 / SenderQueue.qps); // 限时
       }
     }
-    SenderQueue.processing = false
+    SenderQueue.processing = false;
   }
 }

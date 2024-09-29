@@ -4,11 +4,8 @@ import { useAtom } from "jotai";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary";
-import {
-  userImageAtom,
-  userNameAtom,
-} from "@cs-magic/react/dist/store/user.atom";
+import { IUserSummary } from "@cs-magic/common/schema/user.summary";
+import { userImageAtom, userNameAtom } from "@cs-magic/react/store/user.atom";
 
 export const useUserSummary = () => {
   const user = useSession().data?.user;

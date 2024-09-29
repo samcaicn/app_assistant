@@ -1,8 +1,8 @@
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
-import { Badge } from "@cs-magic/shadcn/dist/ui/badge"
+import { cn } from "@cs-magic/shadcn/lib/utils";
+import { Badge } from "@cs-magic/shadcn/ui/badge";
 
 export const Tags = ({ tags }: { tags: string[] | null | undefined }) => {
-  if (!tags?.length) return null
+  if (!tags?.length) return null;
 
   return (
     <div className={"flex flex-wrap items-center gap-0"}>
@@ -21,5 +21,5 @@ export const Tags = ({ tags }: { tags: string[] | null | undefined }) => {
         </Badge>
       ))}
     </div>
-  )
-}
+  );
+};

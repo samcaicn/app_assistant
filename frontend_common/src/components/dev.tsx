@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { DevSocketStatus } from "@cs-magic/swot-frontend-common/dist/components/dev-socket-status"
+import { DevSocketStatus } from "@/components/dev-socket-status";
 
-import { DevConfig } from "./dev-config"
+import { DevConfig } from "./dev-config";
 
 export const Dev = () => {
   return (
@@ -13,5 +13,5 @@ export const Dev = () => {
 
       <DevSocketStatus />
     </>
-  )
-}
+  );
+};

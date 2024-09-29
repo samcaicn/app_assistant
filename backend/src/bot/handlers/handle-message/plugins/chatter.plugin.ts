@@ -1,23 +1,23 @@
-import { types } from "wechaty"
-import { z } from "zod"
+import { types } from "wechaty";
+import { z } from "zod";
 
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const"
-import logger from "@cs-magic/common/dist/log/index"
-import { ILlmMessage } from "@cs-magic/common/dist/schema/message"
-import { safeCallLLM } from "@cs-magic/llm/dist/utils/safe-call-llm"
-import { trimMessages } from "@cs-magic/llm/dist/utils/trim-messages"
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const.js";
+import logger from "@cs-magic/common/dist/log/index.js";
+import { ILlmMessage } from "@cs-magic/common/dist/schema/message.js";
+import { safeCallLLM } from "@cs-magic/llm/dist/utils/safe-call-llm.js";
+import { trimMessages } from "@cs-magic/llm/dist/utils/trim-messages.js";
 
-import { FeatureMap, FeatureType } from "../../../../schema/index.js"
-import { listMessagesOfLatestTopic } from "../../../utils/index.js"
+import { FeatureMap, FeatureType } from "../../../../schema/index.js";
+import { listMessagesOfLatestTopic } from "../../../utils/index.js";
 
-import { BasePlugin } from "./base.plugin.js"
+import { BasePlugin } from "./base.plugin.js";
 
 const commandTypeSchema = z.enum([
   "enable",
   "disable",
   // "new", "list"
-])
-type CommandType = z.infer<typeof commandTypeSchema>
+]);
+type CommandType = z.infer<typeof commandTypeSchema>;
 const i18n: FeatureMap<CommandType> = {
   en: {
     title: "Super Chatter",
@@ -44,16 +44,16 @@ const i18n: FeatureMap<CommandType> = {
       // },
     },
   },
-}
+};
 
 export class ChatterPlugin extends BasePlugin {
-  static override name: FeatureType = "chatter"
-  public override i18n = i18n
+  static override name: FeatureType = "chatter";
+  public override i18n = i18n;
 
   override async help() {
-    const commands = await this.getCommands()
-    const desc = await this.getDescription()
-    const preference = await this.getConvPreference()
+    const commands = await this.getCommands();
+    const desc = await this.getDescription();
+    const preference = await this.getConvPreference();
     await this.standardReply(
       [
         desc,
@@ -62,12 +62,14 @@ export class ChatterPlugin extends BasePlugin {
         `  - enabled: ${preference.features.chatter.enabled}`,
         `  - model: ${preference.features.chatter.model}`,
       ].join("\n"),
-      Object.keys(commands).map((command) => `  ${ChatterPlugin.name} ${command}`),
-    )
+      Object.keys(commands).map(
+        (command) => `  ${ChatterPlugin.name} ${command}`,
+      ),
+    );
   }
 
   async safeReplyWithAI() {
-    const m = this.message
+    const m = this.message;
     // todo: @all 的时候有bug
     // const mentionList = await m.mentionList()
     // const mentionIds = mentionList.map((m) => m.id)
@@ -90,11 +92,11 @@ export class ChatterPlugin extends BasePlugin {
         //   todo: 允许开头有空格，要与后续找信息时对上（重构一下）
         !/^\s*[?？]/.exec(this.text))
     )
-      return
+      return;
 
-    const convPreference = await this.getConvPreference()
+    const convPreference = await this.getConvPreference();
     if (!convPreference.features.chatter.enabled) {
-      const convData = await this.getConvData()
+      const convData = await this.getConvData();
       // todo: user control
       if (!convData.plugin.chatter.turnOnReminded) {
         // await this.reply(
@@ -106,7 +108,7 @@ export class ChatterPlugin extends BasePlugin {
         // )
       }
 
-      return logger.debug(`!convPreference.features.chatter.enabled`)
+      return logger.debug(`!convPreference.features.chatter.enabled`);
     }
 
     // todo: 市面上最牛逼的 AI 群聊回复逻辑
@@ -122,21 +124,24 @@ export class ChatterPlugin extends BasePlugin {
 
     const filteredMessages = this.bot.context?.wxid
       ? await listMessagesOfLatestTopic(this.bot.context.wxid, this.convId)
-      : []
+      : [];
 
-    const model = convPreference.features.chatter.model
+    const model = convPreference.features.chatter.model;
     const messages: ILlmMessage[] = filteredMessages
       .filter((m) => !!m.text)
       .map((m) => ({
-        role: m.talkerId === this.bot.context?.wxid ? ("assistant" as const) : ("user" as const),
+        role:
+          m.talkerId === this.bot.context?.wxid
+            ? ("assistant" as const)
+            : ("user" as const),
         // todo: merge chats
         content: `[${m.talker.name}]: ${m.text}`,
-      }))
+      }));
 
-    trimMessages(messages, model)
+    trimMessages(messages, model);
     // logger.info(`--  context(len=${context.length})`)
 
-    void this.notify([`🌈 calling LLM (model=${model})`].join("\n"), "chatter")
+    void this.notify([`🌈 calling LLM (model=${model})`].join("\n"), "chatter");
 
     // 送给 LLM
     // todo: 送给 agent
@@ -144,14 +149,20 @@ export class ChatterPlugin extends BasePlugin {
       messages,
       model,
       user: await this.getUserIdentity(),
-    })
+    });
 
-    if (res.error) throw new Error(res.error)
+    if (res.error) throw new Error(res.error);
 
-    const content = res.response?.choices[0]?.message.content
-    if (!content) throw new Error(`invalid response content, please check Query(id=${res.query.id})`)
+    const content = res.response?.choices[0]?.message.content;
+    if (!content)
+      throw new Error(
+        `invalid response content, please check Query(id=${res.query.id})`,
+      );
 
-    void this.reply(content)
-    void this.notify([`✅ called LLM`, SEPARATOR_LINE, content].join("\n"), "chatter")
+    void this.reply(content);
+    void this.notify(
+      [`✅ called LLM`, SEPARATOR_LINE, content].join("\n"),
+      "chatter",
+    );
   }
 }

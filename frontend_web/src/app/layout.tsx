@@ -1,23 +1,11 @@
-import { FlexContainer } from "@/packages_frontend/react/src/components/flex-container";
-import { Metadata, type Viewport } from "next";
-import { Inter } from "next/font/google";
-import React, { Suspense } from "react";
-
-import { LoadingAlertDialog } from "@cs-magic/react/components/loading";
+import { Footer } from "@cs-magic/react/components/footer";
+import BaseLayout from "@cs-magic/react/layouts/base";
 import { Navbar } from "@cs-magic/react/components/navbar";
-import { cn } from "@cs-magic/shadcn/dist/lib/utils";
-import { Toaster } from "@cs-magic/shadcn/dist/ui/sonner";
-
-import { GlobalProvider } from "@/app/global-provider";
-import { SwotIcoWhite } from "@cs-magic/swot-frontend-common/dist/components/assets";
-import { SwotBanner } from "@cs-magic/swot-frontend-common/dist/components/swot-banner";
-
-import "@/styles/main.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+import { cn } from "@cs-magic/shadcn/lib/utils";
+import { SwotIcoWhite } from "@cs-magic/swot-frontend-common/components/assets";
+import { SwotBanner } from "@cs-magic/swot-frontend-common/components/swot-banner";
+import { Metadata, type Viewport } from "next";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "飞脑",
@@ -44,45 +32,12 @@ export default function RootLayout({
   // console.log(ansiColors.red("== RootLayout =="))
 
   return (
-    // html should be at the top, for providing context
-    <html lang="zh" suppressHydrationWarning>
-      <body className={cn(`font-sans`, inter.variable)}>
-        <Suspense>
-          <GlobalProvider>
-            <main className={cn("relative")}>
-              <Navbar productBanner={<SwotBanner />} />
+    <BaseLayout>
+      <Navbar productBanner={<SwotBanner />} />
 
-              <FlexContainer
-                orientation={"vertical"}
-                className={cn(
-                  "mx-auto h-full w-full sm:max-w-[1080px] !gap-0 overflow-hidden !p-0 ",
-                  // "bg-cyan-800"
-                )}
-              >
-                {/*<Header />*/}
+      <main className={cn("relative flex-grow")}>{children}</main>
 
-                <div className={"flex w-full grow flex-col overflow-hidden"}>
-                  {children}
-                </div>
-
-                {/*<Footer />*/}
-              </FlexContainer>
-
-              <Toaster
-                richColors
-                position={"top-right"}
-                duration={3000}
-                closeButton={false}
-              />
-
-              <LoadingAlertDialog />
-
-              {/*/!* 开发专用 *!/*/}
-              {/*<Dev />*/}
-            </main>
-          </GlobalProvider>
-        </Suspense>
-      </body>
-    </html>
+      <Footer />
+    </BaseLayout>
   );
 }

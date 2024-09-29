@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { LOGO_SIZE_LG } from "@cs-magic/react/dist/config";
+import { LOGO_SIZE_LG } from "@cs-magic/react/config";
 
 import { SwotLogoWhite } from "./assets";
 

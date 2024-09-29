@@ -8,6 +8,14 @@
     "tsBuildInfoFile": "dist/.tsbuildinfo",
     "baseUrl": ".",
     "paths": {
+      "@/*": [
+        "./src/*",
+        "./public/*",
+        "../../*"
+      ],
+      "@assets/*": [
+        "../../assets/*"
+      ]
     }
   },
   "include": [

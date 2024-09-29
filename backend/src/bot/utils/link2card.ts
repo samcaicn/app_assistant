@@ -1,12 +1,12 @@
 import { FileBox } from "file-box";
 
-import { env } from "@cs-magic/common/dist/env/get-env";
-import logger from "@cs-magic/common/dist/log/index";
-import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary";
+import { env } from "@cs-magic/common/dist/env/get-env.js";
+import logger from "@cs-magic/common/dist/log/index.js";
+import { IUserSummaryFilled } from "@cs-magic/common/dist/schema/user.summary.js";
 import {
   BaseSimulator,
   CardSimulator,
-} from "@cs-magic/common/dist/spider/index";
+} from "@cs-magic/common/dist/spider/index.js";
 
 import { wxmpUrl2preview } from "../../bot/index.js";
 import { IWechatPreference } from "../../schema/index.js";

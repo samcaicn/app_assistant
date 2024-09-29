@@ -2,12 +2,9 @@
 
 import { useAtom } from "jotai";
 
-import {
-  userImageAtom,
-  userNameAtom,
-} from "@cs-magic/react/dist/store/user.atom";
-import { Button } from "@cs-magic/shadcn/dist/ui/button";
-import { Label } from "@cs-magic/shadcn/dist/ui/label";
+import { userImageAtom, userNameAtom } from "@cs-magic/react/store/user.atom";
+import { Button } from "@cs-magic/shadcn/ui/button";
+import { Label } from "@cs-magic/shadcn/ui/label";
 import { UserInputAvatar } from "./user-input-avatar";
 import { UserInputName } from "./user-input-name";
 

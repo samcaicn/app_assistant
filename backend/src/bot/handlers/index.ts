@@ -1,11 +1,14 @@
 // import qrcodeTerminal from "qrcode-terminal" // cjs package
 import { ScanStatus, Wechaty } from "wechaty";
 
-import { SEPARATOR_LINE } from "@cs-magic/common/dist/const";
-import { moment } from "@cs-magic/common/dist/datetime/moment";
-import logger from "@cs-magic/common/dist/log/index";
-import { LogLevel } from "@cs-magic/common/dist/log/schema";
-import { formatError, formatString } from "@cs-magic/common/dist/utils/index";
+import { SEPARATOR_LINE } from "@cs-magic/common/dist/const.js";
+import { moment } from "@cs-magic/common/dist/datetime/moment.js";
+import logger from "@cs-magic/common/dist/log/index.js";
+import { LogLevel } from "@cs-magic/common/dist/log/schema.js";
+import {
+  formatError,
+  formatString,
+} from "@cs-magic/common/dist/utils/index.js";
 
 import { formatTalkerFromMessage, initBotContext } from "../utils/index.js";
 

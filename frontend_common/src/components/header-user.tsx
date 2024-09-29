@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { CircleUser } from "lucide-react"
-import { useSession } from "next-auth/react"
-import Link from "next/link"
+import { CircleUser } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
-import { IconContainer } from "@cs-magic/react/dist/components/icon-container"
-import { cn } from "@cs-magic/shadcn/dist/lib/utils"
+import { IconContainer } from "@cs-magic/react/components/icon-container";
+import { cn } from "@cs-magic/shadcn/lib/utils";
 
 export const UserButton = () => {
-  const session = useSession()
-  const user = session.data?.user
+  const session = useSession();
+  const user = session.data?.user;
 
   return (
     <Link href={user ? "/dashboard" : "/auth"}>
@@ -17,5 +17,5 @@ export const UserButton = () => {
         <CircleUser className={cn(user && "text-primary-foreground")} />
       </IconContainer>
     </Link>
-  )
-}
+  );
+};

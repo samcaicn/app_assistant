@@ -3,19 +3,19 @@
 import { useAtomValue } from "jotai";
 import React from "react";
 
-import { AtomSelector } from "@cs-magic/react/dist/components/atom-switcher";
-import { StandardCard } from "@cs-magic/react/dist/components/standard-card";
-import { useSearchParam } from "@cs-magic/react/dist/hooks/use-search-param";
-import { cn } from "@cs-magic/shadcn/dist/lib/utils";
-import { Separator } from "@cs-magic/shadcn/dist/ui/separator";
+import { AtomSelector } from "@cs-magic/react/components/atom-switcher";
+import { StandardCard } from "@cs-magic/react/components/standard-card";
+import { useSearchParam } from "@cs-magic/react/hooks/use-search-param";
+import { cn } from "@cs-magic/shadcn/lib/utils";
+import { Separator } from "@cs-magic/shadcn/ui/separator";
 import {
   GenCardApproach,
   cardPreviewEngineTypeSchema,
-} from "@cs-magic/swot-backend/dist/schema/card";
-import { CardInputBackend } from "@cs-magic/swot-frontend-common/dist/components/card-input-backend";
-import { CardInputFrontend } from "@cs-magic/swot-frontend-common/dist/components/card-input-frontend";
-import { cardPreviewAtom } from "@cs-magic/swot-frontend-common/dist/store/card.atom";
-import { cardPreviewEngineAtom } from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom";
+} from "@cs-magic/swot-backend/schema/card";
+import { CardInputBackend } from "@/components/card-input-backend";
+import { CardInputFrontend } from "@/components/card-input-frontend";
+import { cardPreviewAtom } from "@/store/card.atom";
+import { cardPreviewEngineAtom } from "@/store/card.rendered.atom";
 
 import { CardPreviewContainer } from "./card-preview-container";
 

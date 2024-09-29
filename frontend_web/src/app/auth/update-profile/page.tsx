@@ -1,3 +1,3 @@
-import { AuthUpdateProfile } from "@cs-magic/swot-frontend-common/dist/components/auth-update-profile";
+import { AuthUpdateProfile } from "@cs-magic/swot-frontend-common/components/auth-update-profile";
 
 export default AuthUpdateProfile;

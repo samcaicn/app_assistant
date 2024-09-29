@@ -3,23 +3,23 @@ import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 import { forwardRef } from "react";
 
-import { moment } from "@cs-magic/common/dist/datetime/moment";
-import { IUserSummary } from "@cs-magic/common/dist/schema/user.summary";
-import { VerticalAspectRatio } from "@cs-magic/react/dist/components/aspect-ratio";
-import { cn } from "@cs-magic/shadcn/dist/lib/utils";
-import { AspectRatio } from "@cs-magic/shadcn/dist/ui/aspect-ratio";
-import { ICardPreview } from "@cs-magic/swot-backend/dist/schema/card";
-import { Tags } from "@cs-magic/swot-frontend-common/dist/components/card-content-tags";
-import MarkMap from "@cs-magic/swot-frontend-common/dist/components/markmap";
+import { moment } from "@cs-magic/common/datetime/moment";
+import { IUserSummary } from "@cs-magic/common/schema/user.summary";
+import { VerticalAspectRatio } from "@cs-magic/react/components/aspect-ratio";
+import { cn } from "@cs-magic/shadcn/lib/utils";
+import { AspectRatio } from "@cs-magic/shadcn/ui/aspect-ratio";
+import { ICardPreview } from "@cs-magic/swot-backend/schema/card";
+import { Tags } from "@/components/card-content-tags";
+import MarkMap from "@/components/markmap";
 import {
   cardAuthorAvatarRenderedAtom,
   cardCoverRenderedAtom,
   cardUserAvatarRenderedAtom,
-} from "@cs-magic/swot-frontend-common/dist/store/card.rendered.atom";
-import { cardWatermarkTextAtom } from "@cs-magic/swot-frontend-common/dist/store/card.request.atom";
-import { getPlatformName } from "@cs-magic/swot-frontend-common/dist/utils/card-platform/get-platform-name";
+} from "@/store/card.rendered.atom";
+import { cardWatermarkTextAtom } from "@/store/card.request.atom";
+import { getPlatformName } from "@/utils/card-platform/get-platform-name";
 
-import CsMagicBlackLogoSvg from "@/branding/cs-magic/cs-magic_logo_1280.svg";
+import CsMagicBlackLogoSvg from "@assets/branding/cs-magic/cs-magic_logo_1280.svg";
 import { UserAvatar } from "./user-avatar";
 
 /**

@@ -37,9 +37,11 @@
       "@/*": [
         "./src/*",
         "./public/*",
-        "../../assets/*",
         "../../*"
       ],
+      "@assets/*": [
+        "../../assets/*"
+      ]
     }
   },
   // include 和 exclude 是独立的，extend的时候也要写上

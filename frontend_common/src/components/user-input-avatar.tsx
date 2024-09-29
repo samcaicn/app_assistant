@@ -1,7 +1,7 @@
 "use client";
 
-import { uploadFile } from "@cs-magic/common/dist/oss/oss.server";
-import { Label } from "@cs-magic/shadcn/dist/ui/label";
+import { uploadFile } from "@cs-magic/common/oss/oss.server";
+import { Label } from "@cs-magic/shadcn/ui/label";
 
 import { UserAvatar } from "./user-avatar";
 import { useDraftSession } from "../hooks/use-user";

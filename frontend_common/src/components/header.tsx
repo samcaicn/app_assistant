@@ -1,24 +1,20 @@
 "use client";
 
+import { BrandingTitle } from "@/components/branding-title";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import React, { PropsWithChildren } from "react";
 
-import { IconContainer } from "@cs-magic/react/dist/components/icon-container";
-import { cn } from "@cs-magic/shadcn/dist/lib/utils";
+import { IconContainer } from "@cs-magic/react/components/icon-container";
+import { cn } from "@cs-magic/shadcn/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@cs-magic/shadcn/dist/ui/navigation-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@cs-magic/shadcn/dist/ui/sheet";
-import { BrandingTitle } from "@cs-magic/swot-frontend-common/dist/components/branding-title";
+} from "@cs-magic/shadcn/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@cs-magic/shadcn/ui/sheet";
 
 import { UserButton } from "./header-user";
 

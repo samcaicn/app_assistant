@@ -1,31 +1,34 @@
-"use client"
+"use client";
 
-import { useAtom, useSetAtom } from "jotai"
-import { IPureNode } from "markmap-common"
-import { Transformer } from "markmap-lib"
-import { Markmap } from "markmap-view"
-import { useEffect, useRef, useState } from "react"
-import React from "react"
+import { useAtom, useSetAtom } from "jotai";
+import { IPureNode } from "markmap-common";
+import { Transformer } from "markmap-lib";
+import { Markmap } from "markmap-view";
+import { useEffect, useRef, useState } from "react";
+import React from "react";
 
-import { mapLevelsMaxAtom, mapSpacingVerticalAtom } from "@cs-magic/react/dist/store/visualization.atom"
-import { AspectRatio } from "@cs-magic/shadcn/dist/ui/aspect-ratio"
+import {
+  mapLevelsMaxAtom,
+  mapSpacingVerticalAtom,
+} from "@cs-magic/react/store/visualization.atom";
+import { AspectRatio } from "@cs-magic/shadcn/ui/aspect-ratio";
 
-import { cardMindmapRenderedAtom } from "../store/card.rendered.atom"
+import { cardMindmapRenderedAtom } from "../store/card.rendered.atom";
 
-const transformer = new Transformer()
+const transformer = new Transformer();
 
 export default function MarkMap({ content }: { content?: string }) {
-  const refSvg = useRef<SVGSVGElement>(null)
-  const refMm = useRef<Markmap>()
+  const refSvg = useRef<SVGSVGElement>(null);
+  const refMm = useRef<Markmap>();
 
   // 不能设置 ratio 为 0，否则会导致 svg 渲染算法出错
-  const [ratio, setRatio] = useState(1)
-  const setCardMindmapRendered = useSetAtom(cardMindmapRenderedAtom)
-  const [spacingVertical] = useAtom(mapSpacingVerticalAtom)
-  const [maxLevels] = useAtom(mapLevelsMaxAtom)
+  const [ratio, setRatio] = useState(1);
+  const setCardMindmapRendered = useSetAtom(cardMindmapRenderedAtom);
+  const [spacingVertical] = useAtom(mapSpacingVerticalAtom);
+  const [maxLevels] = useAtom(mapLevelsMaxAtom);
 
   useEffect(() => {
-    if (!refSvg.current || !content) return
+    if (!refSvg.current || !content) return;
 
     const mm = Markmap.create(refSvg.current, {
       pan: false,
@@ -38,52 +41,52 @@ export default function MarkMap({ content }: { content?: string }) {
 
       color: () => `hsl(190 85% 19% / .3)`,
       // initialExpandLevel: 3,
-    })
-    refMm.current = mm
+    });
+    refMm.current = mm;
 
-    const { root } = transformer.transform(content, {})
+    const { root } = transformer.transform(content, {});
 
     // 去掉首结点的内容
-    root.content = ""
+    root.content = "";
 
     // // 去掉第三层即以下的结点
     const dropLevel = (item: IPureNode, level: number) => {
       if (level >= maxLevels) {
-        item.children = []
+        item.children = [];
       } else {
         item.children.forEach((item) => {
-          dropLevel(item, level + 1)
-        })
+          dropLevel(item, level + 1);
+        });
       }
-    }
-    dropLevel(root, 1)
+    };
+    dropLevel(root, 1);
 
-    mm.setData(root)
-    mm.state.minY = 20 // 首结点紧贴边缘
+    mm.setData(root);
+    mm.state.minY = 20; // 首结点紧贴边缘
 
     // ref: https://github.com/markmap/markmap/issues/134#issuecomment-1267967814
-    const { maxY, maxX, minX, minY } = mm.state
-    const w = maxY - minY
-    const h = maxX - minX
-    const ratio = w / h
-    setRatio(ratio)
+    const { maxY, maxX, minX, minY } = mm.state;
+    const w = maxY - minY;
+    const h = maxX - minX;
+    const ratio = w / h;
+    setRatio(ratio);
 
     return () => {
-      mm.destroy()
-    }
-  }, [spacingVertical, content])
+      mm.destroy();
+    };
+  }, [spacingVertical, content]);
 
   /**
    * 当填充数据，并且初始化了ratio之后，才要 fit
    */
   useEffect(() => {
     if (content) {
-      setCardMindmapRendered(false)
+      setCardMindmapRendered(false);
       void refMm.current?.fit().then(() => {
-        setCardMindmapRendered(true)
-      })
+        setCardMindmapRendered(true);
+      });
     }
-  }, [ratio, content])
+  }, [ratio, content]);
 
   return (
     <div className={"w-full"}>
@@ -91,7 +94,7 @@ export default function MarkMap({ content }: { content?: string }) {
         <svg className="w-full h-full !font-songti" ref={refSvg} />
       </AspectRatio>
     </div>
-  )
+  );
 
   // console.info("-- markmap: %o", { content, ratio, state: refMm.current?.state })
 }

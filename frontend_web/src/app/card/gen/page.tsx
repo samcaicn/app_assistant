@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 const Card = dynamic(
-  () => import("@cs-magic/swot-frontend-common/dist/components/card"),
+  () => import("@cs-magic/swot-frontend-common/components/card"),
   { ssr: false },
 );
 

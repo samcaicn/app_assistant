@@ -1,5 +1,5 @@
-import { FlexContainer } from "@cs-magic/react/dist/components/flex-container";
-import { getWechatAuthorizationUrl } from "@cs-magic/common/dist/auth/providers/wechat/utils";
+import { FlexContainer } from "@cs-magic/react/components/flex-container";
+import { getWechatAuthorizationUrl } from "@cs-magic/common/auth/providers/wechat/utils";
 import { QRCodeSVG } from "qrcode.react";
 
 export const AuthQrcode = () => {

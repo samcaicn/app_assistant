@@ -4,15 +4,15 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import { UnexpectedError } from "@cs-magic/common/dist/schema/error";
+import { UnexpectedError } from "@cs-magic/common/schema/error";
 import { Loading } from "@cs-magic/react/components/loading";
-import { useEnvironments } from "@cs-magic/react/dist/hooks/use-environments";
-import { Label } from "@cs-magic/shadcn/dist/ui/label";
+import { useEnvironments } from "@cs-magic/react/hooks/use-environments";
+import { Label } from "@cs-magic/shadcn/ui/label";
 
-import { Auth } from "@cs-magic/swot-frontend-common/dist/components/auth";
-import { AuthSmsSignIn } from "@cs-magic/swot-frontend-common/dist/components/auth-sms-sign-in";
-import { AuthUpdateProfile } from "@cs-magic/swot-frontend-common/dist/components/auth-update-profile";
-import { AuthWechatSignIn } from "@cs-magic/swot-frontend-common/dist/components/auth-wechat-sign-in";
+import { Auth } from "@cs-magic/swot-frontend-common/components/auth";
+import { AuthSmsSignIn } from "@cs-magic/swot-frontend-common/components/auth-sms-sign-in";
+import { AuthUpdateProfile } from "@cs-magic/swot-frontend-common/components/auth-update-profile";
+import { AuthWechatSignIn } from "@cs-magic/swot-frontend-common/components/auth-wechat-sign-in";
 
 export default function AuthPage() {
   const session = useSession();

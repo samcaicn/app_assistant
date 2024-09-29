@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useAtom } from "jotai"
-import React from "react"
+import { useAtom } from "jotai";
+import React from "react";
 
-import { LabelLine } from "@cs-magic/react/components/label-line"
-import { Input } from "@cs-magic/shadcn/dist/ui/input"
+import { LabelLine } from "@cs-magic/react/components/label-line";
+import { Input } from "@cs-magic/shadcn/ui/input";
 
-import { cardArticleUrlAtom } from "../store/card.atom"
+import { cardArticleUrlAtom } from "../store/card.atom";
 
 export const CardInputUrl = () => {
-  const [inputUrl, setInputUrl] = useAtom(cardArticleUrlAtom)
+  const [inputUrl, setInputUrl] = useAtom(cardArticleUrlAtom);
 
   return (
     <LabelLine title={"url"}>
@@ -19,9 +19,9 @@ export const CardInputUrl = () => {
         className={"grow"}
         value={inputUrl}
         onChange={(event) => {
-          setInputUrl(event.currentTarget.value)
+          setInputUrl(event.currentTarget.value);
         }}
       />
     </LabelLine>
-  )
-}
+  );
+};

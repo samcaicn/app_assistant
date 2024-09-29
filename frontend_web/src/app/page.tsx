@@ -1,7 +1,7 @@
-import { SwotLogoWhite } from "@cs-magic/swot-frontend-common/dist/components/assets";
-import { FlexContainer } from "@/packages_frontend/react/dist/components/flex-container";
-import BackgroundLines from "@/packages_frontend/react/dist/components/背景条纹动画/components/background-lines";
-import { Button } from "@/packages_frontend/shadcn/dist/ui/button";
+import { SwotLogoWhite } from "@cs-magic/swot-frontend-common/components/assets";
+import { FlexContainer } from "@cs-magic/react/components/flex-container";
+import BackgroundLines from "@cs-magic/react/components/背景条纹动画/components/background-lines";
+import { Button } from "@cs-magic/shadcn/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 
