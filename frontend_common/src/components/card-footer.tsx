@@ -4,7 +4,7 @@ import { CalendarHeartIcon, MilestoneIcon } from "lucide-react";
 
 import { moment } from "@cs-magic/common/datetime/index";
 import { cn } from "@cs-magic/shadcn/lib/utils";
-import { CardOuterPreview } from "@cs-magic/swot-backend/schema/index";
+import { CardOuterPreview } from "@cs-magic/assistant-backend/schema/index";
 
 import { CardFooterItem } from "./card-footer-item";
 

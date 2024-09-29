@@ -13,7 +13,7 @@ import { RequestOptions } from "../../schema/request.js";
 
 import { parseWxmpArticleUrl } from "./parse-wxmp-article-url.js";
 
-// import { parseWxmpArticleUrl } from "@cs-magic/swot-web/utils/card-platform/wechat-article/utils"
+// import { parseWxmpArticleUrl } from "@cs-magic/assistant-web/utils/card-platform/wechat-article/utils"
 
 const wxmpArticleSimulator = new WxmpArticleSimulator();
 

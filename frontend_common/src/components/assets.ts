@@ -1,2 +1,2 @@
-export { default as SwotLogoWhite } from "@assets/branding/swot/swot_logo_white_500.png";
-export { default as SwotIcoWhite } from "@assets/branding/swot/swot_logo_white.ico";
+export { default as assistantLogoWhite } from "@assets/branding/assistant/assistant_logo_white_500.png";
+export { default as assistantIcoWhite } from "@assets/branding/assistant/assistant_logo_white.ico";

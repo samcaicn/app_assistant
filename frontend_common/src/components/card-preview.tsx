@@ -8,7 +8,7 @@ import { IUserSummary } from "@cs-magic/common/schema/user.summary";
 import { VerticalAspectRatio } from "@cs-magic/react/components/aspect-ratio";
 import { cn } from "@cs-magic/shadcn/lib/utils";
 import { AspectRatio } from "@cs-magic/shadcn/ui/aspect-ratio";
-import { ICardPreview } from "@cs-magic/swot-backend/schema/card";
+import { ICardPreview } from "@cs-magic/assistant-backend/schema/card";
 import { Tags } from "@/components/card-content-tags";
 import MarkMap from "@/components/markmap";
 import {

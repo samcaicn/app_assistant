@@ -7,7 +7,7 @@ import {
   Action2Type,
   GenCardApproach,
   ICardPreview,
-} from "@cs-magic/swot-backend/schema/card";
+} from "@cs-magic/assistant-backend/schema/card";
 import { PreviewCardAction } from "@/components/card-action-preview";
 import { cardRenderedAtom } from "@/store/card.rendered.atom";
 import { cardUserAtom } from "@/store/card.user.atom";

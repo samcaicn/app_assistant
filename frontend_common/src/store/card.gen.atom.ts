@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 
-import { GenWxmpArticleCardFetchOptions } from "@cs-magic/swot-backend/schema/index";
+import { GenWxmpArticleCardFetchOptions } from "@cs-magic/assistant-backend/schema/index";
 
 import {
   cardFetchCommentsEnabledAtom,

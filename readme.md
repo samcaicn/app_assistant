@@ -1,6 +1,6 @@
 # CS魔法社 - 飞脑
 
-[//]: # (![SWOT Logo]&#40;packages/swot-frontend/src/assets/branding/enterprise/swot.png&#41;)
+[//]: # (![assistant Logo]&#40;packages/assistant-frontend/src/assets/branding/enterprise/assistant.png&#41;)
 
 ## Project Overview
 
@@ -27,15 +27,15 @@ graph LR;
         frontend_common --> cs-magic_frontend;
     end
     
-    subgraph swot_backend_eco
-        general --> swot_backend;
-        wechaty_eco --> swot_backend;
+    subgraph assistant_backend_eco
+        general --> assistant_backend;
+        wechaty_eco --> assistant_backend;
     end
     
-    subgraph swot_frontend_eco
-        frontend_common_eco --> swot_frontend;
-        swot_backend_eco --> swot_frontend;
-        swot_frontend --> swot-web & swot-pc;
+    subgraph assistant_frontend_eco
+        frontend_common_eco --> assistant_frontend;
+        assistant_backend_eco --> assistant_frontend;
+        assistant_frontend --> assistant-web & assistant-pc;
     end
 ```
 
@@ -43,25 +43,25 @@ graph LR;
 
 ```shell
 # start web in dev
-yarn workspace @cs-magic/swot-backend dev & yarn workspace @cs-magic/swot-web dev
+yarn workspace @cs-magic/assistant-backend dev & yarn workspace @cs-magic/assistant-web dev
 
 # start pc in dev
-yarn workspace swot-pc dev
+yarn workspace assistant-pc dev
 
 # build backend
-yarn workspace @cs-magic/swot-backend build
+yarn workspace @cs-magic/assistant-backend build
 
 # build web
-yarn workspace @cs-magic/swot-frontend build
+yarn workspace @cs-magic/assistant-frontend build
 
 # build pc
-yarn workspace swot-pc build:mac
+yarn workspace assistant-pc build:mac
 
 # start web after build
-yarn workspace @cs-magic/swot-frontend start
+yarn workspace @cs-magic/assistant-frontend start
 
 # start pc after build
-# double click to install: packages/swot-pc/dist/swot-pc-${version}.dmg
+# double click to install: packages/assistant-pc/dist/assistant-pc-${version}.dmg
 ```
 
 
@@ -72,16 +72,16 @@ yarn workspace @cs-magic/swot-frontend start
 subgraph backend
 
 [bot]
-link2card@app_swot/backend/src/bot/handlers/handle-message/plugins/parser.plugin.ts
+link2card@app_assistant/backend/src/bot/handlers/handle-message/plugins/parser.plugin.ts
 
 [simulator]
-app_swot/frontend-web/src/app/(home)/card/gen/page.tsx
+app_assistant/frontend-web/src/app/(home)/card/gen/page.tsx
 packages_frontend/common/src/components/card.tsx:Card (js)
 packages_frontend/common/src/components/card-input-frontend.tsx:CardInputFrontend
 packages_frontend/common/src/components/card-action-input.tsx:InputCardAction
 packages_frontend/common/src/utils/gen-card.ts:genCardFromUrl
-app_swot/backend/src/bot/utils/wxmp-fetch.ts:fetchWxmpArticle
-app_swot/backend/src/bot/utils/wxmp-article/fetch/md2summary.ts:md2summary
+app_assistant/backend/src/bot/utils/wxmp-fetch.ts:fetchWxmpArticle
+app_assistant/backend/src/bot/utils/wxmp-article/fetch/md2summary.ts:md2summary
 packages/llm/src/utils/safe-call-agent.ts:safeCallAgent
 packages/llm/src/utils/load-agent.ts:loadAgent
 

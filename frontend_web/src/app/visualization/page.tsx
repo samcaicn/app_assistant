@@ -1,4 +1,4 @@
-import MarkMap from "@cs-magic/swot-frontend-common/components/markmap"
+import MarkMap from "@cs-magic/assistant-frontend-common/components/markmap";
 
 export default function VisualizationPage() {
   const content =
@@ -20,6 +20,6 @@ export default function VisualizationPage() {
     "\n" +
     "- **后续影响**\n" +
     "  - 事件引发了学术界和社交媒体的广泛关注。\n" +
-    "  - 涉及两位著名学者阵营的对峙，引人深思。"
-  return <MarkMap content={content} />
+    "  - 涉及两位著名学者阵营的对峙，引人深思。";
+  return <MarkMap content={content} />;
 }

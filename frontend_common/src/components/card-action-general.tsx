@@ -6,7 +6,7 @@ import { HTMLAttributes } from "react";
 
 import { ButtonWithLoading } from "@cs-magic/react/components/button-with-loading";
 import { cn } from "@cs-magic/shadcn/lib/utils";
-import { ActionType } from "@cs-magic/swot-backend/schema/index";
+import { ActionType } from "@cs-magic/assistant-backend/schema/index";
 
 import {
   cardCopyingAtom,

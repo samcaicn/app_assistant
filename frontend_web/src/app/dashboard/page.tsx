@@ -16,9 +16,9 @@ import {
 import { Label } from "@cs-magic/shadcn/ui/label";
 
 import { useDraftSession } from "./use-user";
-import { UserInputAvatar } from "@cs-magic/swot-frontend-common/components/user-input-avatar";
-import { UserInputName } from "@cs-magic/swot-frontend-common/components/user-input-name";
-import { UserSignOutButton } from "@cs-magic/swot-frontend-common/components/user-sign-out-button";
+import { UserInputAvatar } from "@cs-magic/assistant-frontend-common/components/user-input-avatar";
+import { UserInputName } from "@cs-magic/assistant-frontend-common/components/user-input-name";
+import { UserSignOutButton } from "@cs-magic/assistant-frontend-common/components/user-sign-out-button";
 
 export default function DashboardPage() {
   const session = useSession();

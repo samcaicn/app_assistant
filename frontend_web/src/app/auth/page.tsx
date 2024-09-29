@@ -9,10 +9,10 @@ import { Loading } from "@cs-magic/react/components/loading";
 import { useEnvironments } from "@cs-magic/react/hooks/use-environments";
 import { Label } from "@cs-magic/shadcn/ui/label";
 
-import { Auth } from "@cs-magic/swot-frontend-common/components/auth";
-import { AuthSmsSignIn } from "@cs-magic/swot-frontend-common/components/auth-sms-sign-in";
-import { AuthUpdateProfile } from "@cs-magic/swot-frontend-common/components/auth-update-profile";
-import { AuthWechatSignIn } from "@cs-magic/swot-frontend-common/components/auth-wechat-sign-in";
+import { Auth } from "@cs-magic/assistant-frontend-common/components/auth";
+import { AuthSmsSignIn } from "@cs-magic/assistant-frontend-common/components/auth-sms-sign-in";
+import { AuthUpdateProfile } from "@cs-magic/assistant-frontend-common/components/auth-update-profile";
+import { AuthWechatSignIn } from "@cs-magic/assistant-frontend-common/components/auth-wechat-sign-in";
 
 export default function AuthPage() {
   const session = useSession();

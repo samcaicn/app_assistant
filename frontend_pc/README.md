@@ -1,9 +1,9 @@
-# swot-electron-vite
+# assistant-electron-vite
 
 An Electron application with React and TypeScript
 
 ## TODO
-- [ ] server function split for swot-pc
+- [ ] server function split for assistant-pc
 
 ## Project Setup
 

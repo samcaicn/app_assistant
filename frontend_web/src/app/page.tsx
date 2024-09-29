@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
 
-import NeuroraLogoSVG from "@assets/branding/swot/Swot Logo White.svg";
+import NeuroraLogoSVG from "@assets/branding/assistant/assistant Logo White.svg";
 
 export default function HomePage() {
   return (

@@ -1,5 +1,5 @@
 {
-  "name": "@cs-magic/swot-frontend-common",
+  "name": "@cs-magic/assistant-frontend-common",
   "type": "module",
   "main": "./dist/index.js",
   "exports": {
@@ -11,9 +11,9 @@
     "build": "tsc -b"
   },
   "dependencies": {
+    "@cs-magic/assistant-backend": "workspace:^",
     "@cs-magic/common": "workspace:^",
     "@cs-magic/react": "workspace:^",
-    "@cs-magic/swot-backend": "workspace:^",
     "@radix-ui/react-select": "^2.1.1",
     "@tanstack/react-table": "^8.20.1",
     "@uiw/react-md-editor": "^4.0.4",

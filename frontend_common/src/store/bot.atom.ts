@@ -2,7 +2,7 @@ import { atom } from "jotai";
 import { Contact } from "wechaty-puppet/payloads";
 import { ScanStatus } from "wechaty-puppet/types";
 
-import { IUser } from "@cs-magic/swot-backend/schema/index";
+import { IUser } from "@cs-magic/assistant-backend/schema/index";
 
 export const botSocketOpenedAtom = atom(false);
 export const botScanValueAtom = atom("");

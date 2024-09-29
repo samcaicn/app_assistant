@@ -5,7 +5,7 @@ import { BackendType } from "@cs-magic/llm";
 import {
   RequestApproachType,
   RequestOptions,
-} from "@cs-magic/swot-backend/schema/index";
+} from "@cs-magic/assistant-backend/schema/index";
 
 export const cardFetchWithCacheAtom = atomWithStorage(
   "card.fetch.with-cache",

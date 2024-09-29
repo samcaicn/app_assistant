@@ -1,6 +1,6 @@
 import icon from '@/icon.png?asset'
 
-import { initServer } from '@cs-magic/swot-backend/dist/api/server'
+import { initServer } from '@cs-magic/assistant-backend/dist/api/server'
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { app, BrowserWindow, ipcMain, shell } from 'electron'
 

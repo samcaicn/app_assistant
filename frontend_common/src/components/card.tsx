@@ -11,7 +11,7 @@ import { Separator } from "@cs-magic/shadcn/ui/separator";
 import {
   GenCardApproach,
   cardPreviewEngineTypeSchema,
-} from "@cs-magic/swot-backend/schema/card";
+} from "@cs-magic/assistant-backend/schema/card";
 import { CardInputBackend } from "@/components/card-input-backend";
 import { CardInputFrontend } from "@/components/card-input-frontend";
 import { cardPreviewAtom } from "@/store/card.atom";

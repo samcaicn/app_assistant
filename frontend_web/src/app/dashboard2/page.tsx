@@ -7,12 +7,12 @@ import { socketStatusMap } from "@cs-magic/common/transport/schema";
 import { FlexContainer } from "@cs-magic/react/components/flex-container";
 import { LabelLine } from "@cs-magic/react/components/label-line";
 import { useInit } from "@cs-magic/react/hooks/use-init";
-import { IWechatPreference } from "@cs-magic/swot-backend/schema/bot-preference";
-import { IWechatBotTransfer } from "@cs-magic/swot-backend/schema/bot-utils";
+import { IWechatPreference } from "@cs-magic/assistant-backend/schema/bot-preference";
+import { IWechatBotTransfer } from "@cs-magic/assistant-backend/schema/bot-utils";
 
 import DDS_lanhupage_0 from "./comp";
 
-export default function SwotDashboardPage() {
+export default function assistantDashboardPage() {
   const [preference, setPreference] = useState<IWechatPreference | null>(null);
 
   // 南川

@@ -5,7 +5,7 @@ import { parseJsonSafe } from "@cs-magic/common/utils/parse-json";
 import {
   ICardInnerPreview,
   ICardPreview,
-} from "@cs-magic/swot-backend/schema/index";
+} from "@cs-magic/assistant-backend/schema/index";
 
 import { getOssKeyWithSuffix } from "../utils/get-oss-key-with-suffix";
 

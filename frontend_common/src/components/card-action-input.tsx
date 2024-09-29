@@ -1,6 +1,6 @@
 import { useAtom, useSetAtom } from "jotai";
 
-import { Action1Type } from "@cs-magic/swot-backend/schema/index";
+import { Action1Type } from "@cs-magic/assistant-backend/schema/index";
 
 import { cardArticleUrlAtom, cardInnerInputAtom } from "../store/card.atom";
 import { cardGenOptionsAtom } from "../store/card.gen.atom";

@@ -15,7 +15,7 @@ import { Button, buttonVariants } from "@cs-magic/shadcn/ui/button";
 import {
   IWechatBotTransfer,
   ScanStatus,
-} from "@cs-magic/swot-backend/schema/index";
+} from "@cs-magic/assistant-backend/schema/index";
 
 import {
   botContactsAtom,

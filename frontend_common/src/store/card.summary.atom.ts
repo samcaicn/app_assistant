@@ -2,7 +2,7 @@ import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
 import { LlmModelType } from "@cs-magic/llm";
-import { SummaryOptions } from "@cs-magic/swot-backend/schema/index";
+import { SummaryOptions } from "@cs-magic/assistant-backend/schema/index";
 
 export const cardLlmEnabledAtom = atomWithStorage<boolean>(
   "card.llm.enabled",

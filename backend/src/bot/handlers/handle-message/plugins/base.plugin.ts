@@ -38,7 +38,7 @@ export class BasePlugin {
       commands: {},
     },
     en: {
-      title: "SWOT",
+      title: "assistant",
       description: "",
       commands: {},
     },

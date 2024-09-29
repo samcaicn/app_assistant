@@ -1,5 +1,5 @@
 {
-  "name": "@cs-magic/swot-backend",
+  "name": "@cs-magic/assistant-backend",
   "version": "0.1.0",
   "main": "./dist/api/index.js",
   "type": "module",

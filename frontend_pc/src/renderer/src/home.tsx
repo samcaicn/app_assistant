@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import ConnectionPage from '@cs-magic/swot-frontend-common/pages/connection/page'
+import ConnectionPage from '@cs-magic/assistant-frontend-common/pages/connection/page'
 
-import { default as swotLogo } from '@/branding/swot/swot_logo_white.png'
+import { default as assistantLogo } from '@/branding/assistant/assistant_logo_white.png'
 
 export default function HomePage() {
   console.log('[HomePage] loaded')
@@ -10,7 +10,7 @@ export default function HomePage() {
 
   return (
     <div className={'w-screen h-screen overflow-hidden flex flex-col items-center p-4 gap-4'}>
-      <img src={swotLogo} className={'w-32 h-32 logo mt-8'} />
+      <img src={assistantLogo} className={'w-32 h-32 logo mt-8'} />
 
       <div className="text">
         <span className="gradient-1">Neurora</span>：Your AI Knowledge Companion

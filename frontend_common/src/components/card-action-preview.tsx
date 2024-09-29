@@ -8,7 +8,10 @@ import { RefObject } from "react";
 import { toast } from "sonner";
 
 import { uploadFile } from "@cs-magic/common/oss/oss.server";
-import { Action2Type, ActionType } from "@cs-magic/swot-backend/schema/index";
+import {
+  Action2Type,
+  ActionType,
+} from "@cs-magic/assistant-backend/schema/index";
 
 import { cardOssAtom, cardPreviewAtom } from "../store/card.atom";
 import { cardPreviewEngineAtom } from "../store/card.rendered.atom";

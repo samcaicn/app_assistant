@@ -1,8 +1,8 @@
-import NeuroraLogoSVG from "@assets/branding/swot/Swot Logo White.svg";
+import NeuroraLogoSVG from "@assets/branding/assistant/assistant Logo White.svg";
 
 import { LOGO_SIZE_LG } from "@cs-magic/react/config";
 
-export const SwotBanner = () => {
+export const assistantBanner = () => {
   return (
     <div className={"flex items-center gap-2 h-full"}>
       <NeuroraLogoSVG width={LOGO_SIZE_LG} height={LOGO_SIZE_LG} />

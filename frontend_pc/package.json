@@ -1,5 +1,5 @@
 {
-  "name": "@cs-magic/swot-pc",
+  "name": "@cs-magic/assistant-pc",
   "version": "0.5.30",
   "description": "飞脑科技是国内领先的社交助手解决方案服务商，致力于创建有用、有趣、有爱的产品。飞脑科技基于RPA+LLM技术自研了可以分布式、跨平台、自动安全智能地处理用户消息的飞脑引擎，有效解决用户的信息过载、阅读堆积、私域运营等问题，基于独创的个性化社交建模框架，最终打破信息孤岛，实现用户数字永生。",
   "author": "Mark <mark@cs-magic.com>",
@@ -23,12 +23,12 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "yarn workspace @cs-magic/swot-pc version patch"
+      "pre-push": "yarn workspace @cs-magic/assistant-pc version patch"
     }
   },
   "dependencies": {
-    "@cs-magic/swot-backend": "workspace:^",
-    "@cs-magic/swot-web": "workspace:^",
+    "@cs-magic/assistant-backend": "workspace:^",
+    "@cs-magic/assistant-web": "workspace:^",
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
     "@prisma/client": "^5.18.0",
@@ -45,8 +45,8 @@
     "@babel/core": "^7.24.8",
     "@babel/preset-env": "^7.24.8",
     "@babel/register": "^7.24.6",
+    "@cs-magic/assistant-frontend-common": "workspace:^",
     "@cs-magic/eslint-config": "workspace:^",
-    "@cs-magic/swot-frontend-common": "workspace:^",
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
     "@electron-toolkit/eslint-config-ts": "^2.0.0",
     "@electron-toolkit/tsconfig": "^1.0.1",
@@ -78,7 +78,7 @@
   },
   "build": {
     "extraMetadata": {
-      "name": "SWOT"
+      "name": "assistant"
     },
     "mac": {
       "notarize": {
