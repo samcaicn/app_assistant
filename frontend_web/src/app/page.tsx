@@ -1,6 +1,7 @@
 "use client";
 
 import { FlexContainer } from "@cs-magic/react/components/flex-container";
+import { cn } from "@cs-magic/shadcn/lib/utils";
 import { Button } from "@cs-magic/shadcn/ui/button";
 
 import Image from "next/image";
@@ -12,12 +13,22 @@ import NeuroraLogoSVG from "@assets/branding/swot/Swot Logo White.svg";
 export default function HomePage() {
   return (
     // <BackgroundLines>
-    <FlexContainer orientation={"vertical"} className={"!gap-8 h-full"}>
-      <h2 className={"text-6xl gradient-1"}>Your AI Knowledge Companion</h2>
+    <FlexContainer
+      orientation={"vertical"}
+      className={cn(
+        "!gap-8 transition",
+        "ease-in", // todo: ease-* 是啥, ref: https://tailwindcss.com/docs/transition-timing-function
+        "duration-1000",
+        // "duration-[3s]", // todo: why duration with arbitrary value not works
+      )}
+    >
+      <h2 className={"text-4xl gradient-1 text-center "}>
+        Your AI Knowledge Companion
+      </h2>
 
       <div
         className={
-          "text-[24px] text-center w-full sm:w-[1080px] text-[rgb(161,161,161)]"
+          "text-md sm:text-2xl text-center w-full sm:w-[1080px] text-[rgb(161,161,161)]"
         }
       >
         <p>

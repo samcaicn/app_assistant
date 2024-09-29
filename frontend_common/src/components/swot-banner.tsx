@@ -6,7 +6,9 @@ export const SwotBanner = () => {
   return (
     <div className={"flex items-center gap-2 h-full"}>
       <NeuroraLogoSVG width={LOGO_SIZE_LG} height={LOGO_SIZE_LG} />
-      <p className={"text-xl font-semibold uppercase"}>Neurora</p>
+      <p className={"hidden sm:block text-xl font-semibold uppercase"}>
+        Neurora
+      </p>
     </div>
   );
 };
